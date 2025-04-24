@@ -37,9 +37,9 @@ module apb_top;
 
   //defining configuration dtabase to access variables inside testbench components
   initial begin
-      uvm_config_db#(virtual apb_intf.DRV)::set(null, "*", "vif_drv", intf.DRV);
-      uvm_config_db#(virtual apb_intf.MON)::set(null, "*", "vif_mon_in", intf.MON);
-      uvm_config_db#(virtual apb_intf.MON)::set(null, "*", "vif_mon_out", intf.MON);
+      uvm_config_db#(virtual apb_intf)::set(null, "*", "vif", intf);
+     // uvm_config_db#(virtual apb_intf.MON)::set(null, "*", "vif_mon_in", intf.MON);
+      //uvm_config_db#(virtual apb_intf.MON)::set(null, "*", "vif_mon_out", intf.MON);
 	     
       $dumpfile("dump.vcd");
       $dumpvars();  
@@ -48,6 +48,6 @@ module apb_top;
   //Initiating the testbench
   initial
     begin
-      run_test();
+      run_test("apb_write_slave1_test");
   end
 endmodule

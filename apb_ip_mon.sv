@@ -22,7 +22,7 @@ class apb_ip_mon extends uvm_monitor;
     super.build_phase(phase);
 
     //configuration database to get virtual interface handle
-    if(!uvm_config_db #(virtual apb_intf) :: get(this, "", "vif_mon_in", vif))
+    if(!uvm_config_db #(virtual apb_intf) :: get(this, "", "vif", vif))
        `uvm_fatal("Input_Monitor", "Unable to get virtual interface")
 
     //create instance of analsis port    
@@ -32,21 +32,22 @@ class apb_ip_mon extends uvm_monitor;
   //run phase of input monitor	
   task run_phase(uvm_phase phase);
     forever begin
-      @(posedge vif.mon_cb)
+      @( vif.mon_cb)
 
         //capturing data from virtual interface in the sequence item packet
-        packet = apb_seq_item::type_id::create("packet")
+        packet = apb_seq_item::type_id::create("packet");
         packet.read_write = vif.mon_cb.read_write;
         packet.transfer = vif.mon_cb.transfer;
         packet.apb_read_paddr = vif.mon_cb.apb_read_paddr;
         packet.apb_write_paddr = vif.mon_cb.apb_write_paddr;
         packet.apb_write_data = vif.mon_cb.apb_write_data;
 
+        packet.print();     
+   
         //write method of analysis port
         ip_mon_port.write(packet);
-
-    
-	 
+        
+    end	 
   endtask
 endclass
    	

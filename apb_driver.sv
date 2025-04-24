@@ -4,7 +4,7 @@ class apb_driver extends uvm_driver #(apb_seq_item);
   `uvm_component_utils(apb_driver)
    
   //declaring a virtual interface for driver
-  virtual apb_interface.DRV vif;
+  virtual apb_intf vif;
        
   //declaring a handle for sequence item
   apb_seq_item  packet;
@@ -19,7 +19,7 @@ class apb_driver extends uvm_driver #(apb_seq_item);
    super.build_phase(phase);
    
    //configuration database to get virtual interface handle
-   if(!uvm_config_db #(virtual apb_intf.DRV) :: get (this, "", "vif_drv", vif))
+   if(!uvm_config_db #(virtual apb_intf) :: get (this, "", "vif", vif))
       begin
         `uvm_fatal(get_type_name(), "Unable to get the virtual interface");
      end
@@ -63,5 +63,6 @@ class apb_driver extends uvm_driver #(apb_seq_item);
        vif.drv_cb.apb_write_data <= packet.apb_write_data;
        `uvm_info("DRIVER",$sformatf("[%0t] Transfer = %0b | read_write = %0b | apb_write_paddr = %0h | apb_write_data = %0b | apb_read_paddr = %0h",$time, vif.transfer, vif.read_write, vif.apb_write_paddr, vif.apb_write_data, vif.apb_read_paddr,),UVM_LOW)
     end
+packet.print();
   endtask
 endclass

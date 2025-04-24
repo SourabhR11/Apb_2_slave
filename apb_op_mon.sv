@@ -26,7 +26,7 @@ class apb_op_mon extends uvm_monitor;
     super.build_phase(phase);
 
     //configuration database to get virtual interface	  
-    if(!uvm_config_db #(virtual apb_intf) :: get(this, "", "vif_mon_out", vif))
+    if(!uvm_config_db #(virtual apb_intf) :: get(this, "", "vif", vif))
       `uvm_fatal("monitor", "Unable to  virtual interface")
   endfunction
 
@@ -37,11 +37,12 @@ class apb_op_mon extends uvm_monitor;
   
        //capturing data from the dut in the sequence item packet through virtual interface  
        packet.apb_read_data_out = vif.mon_cb.apb_read_data_out;
+       
+        packet.print();   
 
-       //write method of output monitor
+        //write method of output monitor
        op_mon_port.write(packet);
-
-   
+   end
   endtask
 endclass
    

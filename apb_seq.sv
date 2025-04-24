@@ -3,7 +3,7 @@ class apb_seq extends uvm_sequence #(apb_seq_item);
   `uvm_object_utils(apb_seq)
    
   //delcaring a virtual interface for sequence
-  virtual apb_interface.drv_mp mvif;
+  virtual apb_intf vif;
 
   //class constructor 
   function new(string name = "apb_seq");
@@ -31,10 +31,10 @@ endclass
 class apb_write_slave1 extends apb_seq;
 
   //factory registration
-  `uvm_object_utils(apb_write)
+  `uvm_object_utils(apb_write_slave1)
   
   //class constructor
-  function new (string name = "apb_write" );
+  function new (string name = "apb_write_slave1" );
     super.new(name);
   endfunction
 
