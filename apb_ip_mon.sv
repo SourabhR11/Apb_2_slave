@@ -31,6 +31,7 @@ class apb_ip_mon extends uvm_monitor;
 
   //run phase of input monitor	
   task run_phase(uvm_phase phase);
+    `uvm_info("IP MONITOR","Inside run phase of input monitor",UVM_HIGH);
     forever begin
       @( vif.mon_cb)
 
@@ -46,6 +47,10 @@ class apb_ip_mon extends uvm_monitor;
    
         //write method of analysis port
         ip_mon_port.write(packet);
+
+        `uvm_info("INPUT MONITOR","----------------------------------Input monitor sending data------------------",UVM_LOW);
+        packet.print(uvm_default_table_printer);
+        `uvm_info("INPUT MONITOR","------------------------------------------------------------------------------",UVM_LOW);
         
     end	 
   endtask

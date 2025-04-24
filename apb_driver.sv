@@ -30,6 +30,8 @@ class apb_driver extends uvm_driver #(apb_seq_item);
 
  //run phase of driver
  task run_phase(uvm_phase phase);
+   
+   `uvm_info("DRIVER","Inside run phase  of driver",UVM_HIGH);
     forever
       begin
       seq_item_port.get_next_item(packet);
@@ -61,8 +63,12 @@ class apb_driver extends uvm_driver #(apb_seq_item);
        vif.drv_cb.apb_read_paddr <= packet.apb_read_paddr;
        vif.drv_cb.apb_write_paddr <= packet.apb_write_paddr;
        vif.drv_cb.apb_write_data <= packet.apb_write_data;
-       `uvm_info("DRIVER",$sformatf("[%0t] Transfer = %0b | read_write = %0b | apb_write_paddr = %0h | apb_write_data = %0b | apb_read_paddr = %0h",$time, vif.transfer, vif.read_write, vif.apb_write_paddr, vif.apb_write_data, vif.apb_read_paddr,),UVM_LOW)
+      // `uvm_info("DRIVER",$sformatf("[%0t] Transfer = %0b | read_write = %0b | apb_write_paddr = %0h | apb_write_data = %0b | apb_read_paddr = %0h",$time, vif.transfer, vif.read_write, vif.apb_write_paddr, vif.apb_write_data, vif.apb_read_paddr,),UVM_LOW)
+     
+
+     `uvm_info("DRIVER","------------------------DRIVER DRIVING DATA-----------------------------------------",UVM_LOW); 
+     packet.print();
+     `uvm_info("DRIVER","-----------------------------------------------------------------------------------",UVM_LOW);
     end
-packet.print();
   endtask
 endclass

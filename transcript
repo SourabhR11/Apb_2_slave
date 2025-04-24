@@ -1,7 +1,6 @@
-# vsim -c apb_top 
-# Start time: 16:25:29 on Apr 24,2025
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# ** Warning: apb_seq.sv(23): (vopt-2240) Treating stand-alone use of function 'randomize' as an implicit VOID cast.
+# vsim -c apb_top "+UVM_VERBOSITY=UVM_LOW" -do "run -all" 
+# Start time: 20:06:36 on Apr 24,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt
 # //  Questa Sim
 # //  Version 10.6c linux Jul 25 2017
 # //
@@ -23,6 +22,7 @@
 # Loading mtiUvm.questa_uvm_pkg(fast)
 # Loading work.apb_intf(fast)
 # Loading /tools/mentor/questasim_10.6c/questasim/uvm-1.1d/linux/uvm_dpi.so
+# run -all
 # ----------------------------------------------------------------
 # UVM-1.1d
 # (C) 2007-2013 Mentor Graphics Corporation
@@ -43,8 +43,6 @@
 # 
 #       (Specify +UVM_NO_RELNOTES to turn off this notice)
 # 
-# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(215) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
-# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(217) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
 # UVM_INFO @ 0: reporter [RNTST] Running test apb_write_slave1_test...
 # UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
 # --------------------------------------------------------------
@@ -73,36 +71,20 @@
 #       op_scb_imp           uvm_analysis_imp_op     -     @698 
 # --------------------------------------------------------------
 # 
-# ----------------------------------------------------------------------------------------------------
-# Name                           Type          Size  Value                                            
-# ----------------------------------------------------------------------------------------------------
-# item                           apb_seq_item  -     @718                                             
-#   read_write                   integral      1     'h1                                              
-#   apb_write_paddr              integral      9     'h1b                                             
-#   apb_read_paddr               integral      9     'h34                                             
-#   apb_write_data               integral      8     'h51                                             
-#   apb_read_data_out            integral      8     'h0                                              
-#   begin_time                   time          64    0                                                
-#   depth                        int           32    'd2                                              
-#   parent sequence (name)       string        14    write_slave1_h                                   
-#   parent sequence (full name)  string        49    uvm_test_top.env_h.active_h.seqr_h.write_slave1_h
-#   sequencer                    string        34    uvm_test_top.env_h.active_h.seqr_h               
-# ----------------------------------------------------------------------------------------------------
 # UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 5: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
 # 
 # --- UVM Report Summary ---
 # 
 # ** Report counts by severity
-# UVM_INFO :    5
+# UVM_INFO :    3
 # UVM_WARNING :    0
 # UVM_ERROR :    0
 # UVM_FATAL :    0
 # ** Report counts by id
-# [Questa UVM]     2
 # [RNTST]     1
 # [TEST_DONE]     1
 # [UVMTOP]     1
 # ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
 #    Time: 5 ns  Iteration: 61  Instance: /apb_top
-# End time: 16:25:35 on Apr 24,2025, Elapsed time: 0:00:06
-# Errors: 0, Warnings: 1
+# End time: 20:06:37 on Apr 24,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
