@@ -21,8 +21,8 @@ class apb_env extends uvm_env;
  
   function void connect_phase(uvm_phase phase);
     super.connect_phase(phase);
-   active_h.in_mon_h.item_collected_port.connect(sb_h.input_import);
-   passive2_h.op_mon_h.item_collected_port.connect(sb_h.output_import);
+   active_h.in_mon_h.item_collected_port.connect(sb_h.ip_mon_port);
+   passive2_h.op_mon_h.item_collected_port.connect(sb_h.op_mon_port);
     //agent1_h.monitor_h.item_collected_port.connect(coverage_h.analysis_import);
   endfunction
  
