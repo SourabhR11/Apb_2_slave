@@ -21,10 +21,10 @@ module apb_top;
 
   //driving reset
   initial begin
-    presetn = 1;
-    #80;  presetn = 1;
-    #100; presetn = 0;
-    #20;  presetn = 1;
+//    presetn = 0;
+      presetn = 1;
+   
+
   end
 
   //Instantiating DUT
