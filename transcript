@@ -1,6 +1,7 @@
-# vsim -c apb_top "+UVM_VERBOSITY=UVM_LOW" -do "run -all" 
-# Start time: 20:06:36 on Apr 24,2025
-# ** Note: (vsim-8009) Loading existing optimized design _opt
+# vsim -c apb_top 
+# Start time: 10:42:08 on Apr 25,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: apb_seq.sv(23): (vopt-2240) Treating stand-alone use of function 'randomize' as an implicit VOID cast.
 # //  Questa Sim
 # //  Version 10.6c linux Jul 25 2017
 # //
@@ -22,7 +23,6 @@
 # Loading mtiUvm.questa_uvm_pkg(fast)
 # Loading work.apb_intf(fast)
 # Loading /tools/mentor/questasim_10.6c/questasim/uvm-1.1d/linux/uvm_dpi.so
-# run -all
 # ----------------------------------------------------------------
 # UVM-1.1d
 # (C) 2007-2013 Mentor Graphics Corporation
@@ -43,6 +43,8 @@
 # 
 #       (Specify +UVM_NO_RELNOTES to turn off this notice)
 # 
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(215) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(217) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
 # UVM_INFO @ 0: reporter [RNTST] Running test apb_write_slave1_test...
 # UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
 # --------------------------------------------------------------
@@ -50,41 +52,100 @@
 # --------------------------------------------------------------
 # uvm_test_top               apb_write_slave1_test   -     @471 
 #   env_h                    apb_env                 -     @478 
-#     active_h               apb_active_agent        -     @493 
-#       drv_h                apb_driver              -     @624 
-#         rsp_port           uvm_analysis_port       -     @639 
-#         seq_item_port      uvm_seq_item_pull_port  -     @631 
-#       in_mon_h             apb_ip_mon              -     @647 
-#         ip_mon_port        uvm_analysis_port       -     @660 
-#       seqr_h               apb_seqr                -     @515 
-#         rsp_export         uvm_analysis_export     -     @522 
-#         seq_item_export    uvm_seq_item_pull_imp   -     @616 
+#     active_h               apb_active_agent        -     @489 
+#       drv_h                apb_driver              -     @620 
+#         rsp_port           uvm_analysis_port       -     @635 
+#         seq_item_port      uvm_seq_item_pull_port  -     @627 
+#       in_mon_h             apb_ip_mon              -     @643 
+#         ip_mon_port        uvm_analysis_port       -     @656 
+#       seqr_h               apb_seqr                -     @511 
+#         rsp_export         uvm_analysis_export     -     @518 
+#         seq_item_export    uvm_seq_item_pull_imp   -     @612 
 #         arbitration_queue  array                   0     -    
 #         lock_queue         array                   0     -    
 #         num_last_reqs      integral                32    'd1  
 #         num_last_rsps      integral                32    'd1  
-#     passive_h              apb_passive_agent       -     @500 
-#       out_mon_h            apb_op_mon              -     @674 
-#         op_mon_port        uvm_analysis_port       -     @681 
-#     sb_h                   apb_sb                  -     @507 
+#     passive_h              apb_passive_agent       -     @496 
+#       out_mon_h            apb_op_mon              -     @670 
+#         op_mon_port        uvm_analysis_port       -     @677 
+#     sb_h                   apb_sb                  -     @503 
 #       ip_scb_imp           uvm_analysis_imp_ip     -     @690 
 #       op_scb_imp           uvm_analysis_imp_op     -     @698 
 # --------------------------------------------------------------
 # 
-# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 5: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# ** Warning: (vsim-PLI-3070) apb_driver.sv(66): $sformatf : Too many arguments.
+#    Time: 5 ns  Iteration: 1  Region: /uvm_pkg::uvm_task_phase::execute
+# UVM_INFO apb_driver.sv(66) @ 5: uvm_test_top.env_h.active_h.drv_h [DRIVER] [5] Transfer = x | read_write = x | apb_write_paddr = x | apb_write_data = x | apb_read_paddr = x 
+# UVM_INFO apb_driver.sv(69) @ 5: uvm_test_top.env_h.active_h.drv_h [DRIVER] ------------------------DRIVER DRIVING DATA-----------------------------------------
+# ----------------------------------------------------------------------------------------------------
+# Name                           Type          Size  Value                                            
+# ----------------------------------------------------------------------------------------------------
+# item                           apb_seq_item  -     @726                                             
+#   read_write                   integral      1     'h1                                              
+#   apb_write_paddr              integral      9     'hd8                                             
+#   apb_read_paddr               integral      9     'h34                                             
+#   apb_write_data               integral      8     'h51                                             
+#   apb_read_data_out            integral      8     'h0                                              
+#   begin_time                   time          64    0                                                
+#   depth                        int           32    'd2                                              
+#   parent sequence (name)       string        14    write_slave1_h                                   
+#   parent sequence (full name)  string        49    uvm_test_top.env_h.active_h.seqr_h.write_slave1_h
+#   sequencer                    string        34    uvm_test_top.env_h.active_h.seqr_h               
+# ----------------------------------------------------------------------------------------------------
+# UVM_INFO apb_sb.sv(59) @ 15: uvm_test_top.env_h.sb_h [Scoreboard] ACTUAL TRANSACTION: Queue size = 1 | read_write = 0 | transfer = 0 | apb_write_paddr = 0 | apb_write_data = 0 | apb_read_paddr = 0 | apb_read_data_out = 00 
+# ---------------------------------------------------------------------------------------
+# UVM_INFO apb_op_mon.sv(46) @ 15: uvm_test_top.env_h.passive_h.out_mon_h [OUTPUT_MONITOR] ---------------------Output monitor sending data-----------------------------------
+# ----------------------------------------------
+# Name                 Type          Size  Value
+# ----------------------------------------------
+# packet               apb_seq_item  -     @685 
+#   read_write         integral      1     'h0  
+#   apb_write_paddr    integral      9     'h0  
+#   apb_read_paddr     integral      9     'h0  
+#   apb_write_data     integral      8     'h0  
+#   apb_read_data_out  integral      8     'h0  
+# ----------------------------------------------
+# UVM_INFO apb_op_mon.sv(48) @ 15: uvm_test_top.env_h.passive_h.out_mon_h [OUTPUT_MONITOR] -----------------------------------------------------------------------------------
+# UVM_INFO apb_sb.sv(52) @ 25: uvm_test_top.env_h.sb_h [Scoreboard] EXPECTED TRANSACTION: Queue size = 1 | read_write = 1 | transfer = 1 | apb_write_paddr = d8 | apb_write_data = 51 | apb_read_paddr = 34 | apb_read_data_out = 00 
+# ---------------------------------------------------------------------------------------
+# UVM_INFO apb_ip_mon.sv(55) @ 25: uvm_test_top.env_h.active_h.in_mon_h [INPUT MONITOR] ----------------------------------Input monitor sending data------------------
+# ----------------------------------------------
+# Name                 Type          Size  Value
+# ----------------------------------------------
+# packet               apb_seq_item  -     @755 
+#   read_write         integral      1     'h1  
+#   apb_write_paddr    integral      9     'hd8 
+#   apb_read_paddr     integral      9     'h34 
+#   apb_write_data     integral      8     'h51 
+#   apb_read_data_out  integral      8     'h0  
+# ----------------------------------------------
+# UVM_INFO apb_ip_mon.sv(57) @ 25: uvm_test_top.env_h.active_h.in_mon_h [INPUT MONITOR] ------------------------------------------------------------------------------
+# UVM_INFO apb_sb.sv(101) @ 25: uvm_test_top.env_h.sb_h [compare] -------------Test FAIL------------
+#  Expected apb_write_data = 1010001 Actual apb_write_data = 0  expected apb_write_paddr =d8 actual apb_write_apddr = 0 
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 35: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO apb_sb.sv(126) @ 35: uvm_test_top.env_h.sb_h [apb_sb] ---------------------------------------
+# UVM_INFO apb_sb.sv(127) @ 35: uvm_test_top.env_h.sb_h [apb_sb] ----       TEST FAIL COUNTS  1     ----
+# UVM_INFO apb_sb.sv(128) @ 35: uvm_test_top.env_h.sb_h [apb_sb] ---------------------------------------
 # 
 # --- UVM Report Summary ---
 # 
 # ** Report counts by severity
-# UVM_INFO :    3
+# UVM_INFO :   17
 # UVM_WARNING :    0
 # UVM_ERROR :    0
 # UVM_FATAL :    0
 # ** Report counts by id
+# [DRIVER]     2
+# [INPUT MONITOR]     2
+# [OUTPUT_MONITOR]     2
+# [Questa UVM]     2
 # [RNTST]     1
+# [Scoreboard]     2
 # [TEST_DONE]     1
 # [UVMTOP]     1
+# [apb_sb]     3
+# [compare]     1
 # ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
-#    Time: 5 ns  Iteration: 61  Instance: /apb_top
-# End time: 20:06:37 on Apr 24,2025, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
+#    Time: 35 ns  Iteration: 53  Instance: /apb_top
+# End time: 10:42:14 on Apr 25,2025, Elapsed time: 0:00:06
+# Errors: 0, Warnings: 2

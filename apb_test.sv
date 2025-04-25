@@ -55,7 +55,7 @@ class apb_write_slave1_test extends apb_test;
 
   virtual function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-    write_slave1_h = apb_write_slave1::type_id::create("write_slave1_h");
+   // write_slave1_h = apb_write_slave1::type_id::create("write_slave1_h");
   endfunction
 
 
@@ -63,10 +63,11 @@ class apb_write_slave1_test extends apb_test;
   task run_phase(uvm_phase phase);
     phase.raise_objection(this);
 
-  //  write_slave1_h = apb_write_slave1::type_id::create("write_slave1_h");
+    write_slave1_h = apb_write_slave1::type_id::create("write_slave1_h");
     write_slave1_h.start(env_h.active_h.seqr_h);
 
     phase.drop_objection(this);
+    phase.phase_done.set_drain_time(this,30);
   endtask
 
 endclass

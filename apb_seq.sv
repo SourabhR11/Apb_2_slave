@@ -41,6 +41,7 @@ class apb_write_slave1 extends apb_seq;
   apb_seq_item item;
 
   virtual task body();
+    item = apb_seq_item::type_id::create("item");
     `uvm_do_with(item,{transfer == 1'b1;
                       read_write == 1'b1;
                        apb_write_paddr[8] == 1'b0;

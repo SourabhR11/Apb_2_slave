@@ -22,7 +22,7 @@ module apb_top;
 
   //driving reset
   initial begin
-    presetn = 0;
+    presetn = 1;
     #80;  presetn = 1;
     #100; presetn = 0;
     #20;  presetn = 1;

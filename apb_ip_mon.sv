@@ -31,27 +31,31 @@ class apb_ip_mon extends uvm_monitor;
 
   //run phase of input monitor	
   task run_phase(uvm_phase phase);
+////////////////
+    repeat(2)@(vif.mon_cb);
     `uvm_info("IP MONITOR","Inside run phase of input monitor",UVM_HIGH);
+     packet = apb_seq_item::type_id::create("packet");
+
     forever begin
       @( vif.mon_cb)
 
         //capturing data from virtual interface in the sequence item packet
-        packet = apb_seq_item::type_id::create("packet");
+       // packet = apb_seq_item::type_id::create("packet");
         packet.read_write = vif.mon_cb.read_write;
         packet.transfer = vif.mon_cb.transfer;
         packet.apb_read_paddr = vif.mon_cb.apb_read_paddr;
         packet.apb_write_paddr = vif.mon_cb.apb_write_paddr;
         packet.apb_write_data = vif.mon_cb.apb_write_data;
 
-        packet.print();     
+  //      packet.print();     
    
         //write method of analysis port
         ip_mon_port.write(packet);
 
         `uvm_info("INPUT MONITOR","----------------------------------Input monitor sending data------------------",UVM_LOW);
-        packet.print(uvm_default_table_printer);
+        packet.print();
         `uvm_info("INPUT MONITOR","------------------------------------------------------------------------------",UVM_LOW);
-        
+    //  repeat(2)@(vif.mon_cb);
     end	 
   endtask
 endclass

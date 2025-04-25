@@ -23,7 +23,8 @@ class apb_seq_item extends uvm_sequence_item;
     super.new(name);
   endfunction
 
-  constraint slave_sel {apb_write_paddr[8] dist {0  := 50, 1 := 50};}
+  
+  constraint slave_sel { soft apb_write_paddr[8] dist {0  := 50, 1 := 50};}
 
   constraint deassert_transfer {if(! transfer ) {
     read_write == 0;
@@ -33,5 +34,13 @@ class apb_seq_item extends uvm_sequence_item;
     apb_write_data == 0;
     }
   }
+
+  
+  constraint write_addr_range {if(transfer == 1 && read_write == 1)
+                                 apb_write_paddr inside {[0:511]};}
+ 
+  constraint read_addr_range {if(transfer == 1 && read_write == 1)
+                                apb_read_paddr inside {[0:511]};}
+
 
 endclass

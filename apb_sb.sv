@@ -49,14 +49,14 @@ class apb_sb extends uvm_scoreboard;
   //write function for expected values   
   function void write_ip(apb_seq_item in_mon);
     in_queue.push_back(in_mon);
-    `uvm_info("Scoreboard",$sformatf("Got expected trnasaction: Queue size = %0d | read_write = %0b | transfer = %0b | apb_write_paddr = %0h | apb_write_data = %0b | apb_read_paddr = %0h | apb_read_data_out = %ob ",in_queue.size(),in_mon.read_write,in_mon.transfer,in_mon.apb_write_paddr,in_mon.apb_write_data,in_mon.apb_read_paddr,in_mon.apb_read_data_out),UVM_LOW)
+    `uvm_info("Scoreboard",$sformatf("EXPECTED TRANSACTION: Queue size = %0h | read_write = %0h | transfer = %0h | apb_write_paddr = %0h | apb_write_data = %0h | apb_read_paddr = %0h | apb_read_data_out = %h ",in_queue.size(),in_mon.read_write,in_mon.transfer,in_mon.apb_write_paddr,in_mon.apb_write_data,in_mon.apb_read_paddr,in_mon.apb_read_data_out),UVM_LOW)
   $display("---------------------------------------------------------------------------------------");
   endfunction
   
   //write function of actual values
   function void write_op(apb_seq_item out_mon);
     out_queue.push_back(out_mon);
-     `uvm_info("Scoreboard",$sformatf("Got actual  trnasaction: Queue size = %0d | read_write = %0b | transfer = %0b | apb_write_paddr = %0h | apb_write_data = %0b | apb_read_paddr = %0h | apb_read_data_out = %ob ",out_queue.size(),out_mon.read_write,out_mon.transfer,out_mon.apb_write_paddr,out_mon.apb_write_data,out_mon.apb_read_paddr,out_mon.apb_read_data_out),UVM_LOW)
+     `uvm_info("Scoreboard",$sformatf("ACTUAL TRANSACTION: Queue size = %0h | read_write = %0h | transfer = %0h | apb_write_paddr = %0h | apb_write_data = %0h | apb_read_paddr = %0h | apb_read_data_out = %h ",out_queue.size(),out_mon.read_write,out_mon.transfer,out_mon.apb_write_paddr,out_mon.apb_write_data,out_mon.apb_read_paddr,out_mon.apb_read_data_out),UVM_LOW)
   $display("---------------------------------------------------------------------------------------");
 
   endfunction
