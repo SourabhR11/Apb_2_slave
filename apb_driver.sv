@@ -68,6 +68,7 @@ class apb_driver extends uvm_driver #(apb_seq_item);
 
      `uvm_info("DRIVER","------------------------DRIVER DRIVING DATA-----------------------------------------",UVM_LOW); 
      packet.print();
+     `uvm_info("DRIVER","------------------------------------------------------------------------------------",UVM_LOW);
   //   `uvm_info()
     end
   endtask

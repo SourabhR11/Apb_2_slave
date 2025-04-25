@@ -13,6 +13,6 @@ import uvm_pkg::*;
 `include "apb_active_agent.sv"
 `include "apb_passive_agent.sv"
 `include "apb_sb.sv"
-//`include "apb_coverage.sv"
+`include "apb_cov.sv"
 `include "apb_env.sv"
 `include "apb_test.sv"

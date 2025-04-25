@@ -4,7 +4,6 @@
 `include "defines.svh"
 `include "apb_package.sv"
 //`include "apb_intf.sv"
-//`include "apb_slave.sv"
 
 
 module apb_top;

@@ -32,12 +32,17 @@ class apb_op_mon extends uvm_monitor;
 
   //run phase of output monitor	    
   task run_phase(uvm_phase phase);
-   repeat(1)@(vif.mon_cb);
+   repeat(2)@(vif.mon_cb);
    `uvm_info("OP MONITOR","Inside run phase of op monitor",UVM_HIGH);
    forever begin
      @(vif.mon_cb)
   
-       //capturing data from the dut in the sequence item packet through virtual interface  
+       //capturing data from the dut in the sequence item packet through virtual interface
+       packet.transfer = vif.mon_cb.transfer;
+       packet.read_write = vif.mon_cb.read_write;
+       packet.apb_write_paddr = vif.mon_cb.apb_write_paddr;
+       packet.apb_read_paddr = vif.mon_cb.apb_read_paddr;
+       packet.apb_write_data = vif.mon_cb.apb_write_data;  
        packet.apb_read_data_out = vif.mon_cb.apb_read_data_out; 
 
         //write method of output monitor

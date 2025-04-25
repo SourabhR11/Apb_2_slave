@@ -1,5 +1,5 @@
 # vsim -c apb_top 
-# Start time: 10:42:08 on Apr 25,2025
+# Start time: 12:20:53 on Apr 25,2025
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # ** Warning: apb_seq.sv(23): (vopt-2240) Treating stand-alone use of function 'randomize' as an implicit VOID cast.
 # //  Questa Sim
@@ -92,21 +92,22 @@
 #   parent sequence (full name)  string        49    uvm_test_top.env_h.active_h.seqr_h.write_slave1_h
 #   sequencer                    string        34    uvm_test_top.env_h.active_h.seqr_h               
 # ----------------------------------------------------------------------------------------------------
-# UVM_INFO apb_sb.sv(59) @ 15: uvm_test_top.env_h.sb_h [Scoreboard] ACTUAL TRANSACTION: Queue size = 1 | read_write = 0 | transfer = 0 | apb_write_paddr = 0 | apb_write_data = 0 | apb_read_paddr = 0 | apb_read_data_out = 00 
+# UVM_INFO apb_driver.sv(71) @ 5: uvm_test_top.env_h.active_h.drv_h [DRIVER] ------------------------------------------------------------------------------------
+# UVM_INFO apb_sb.sv(52) @ 15: uvm_test_top.env_h.sb_h [Scoreboard] EXPECTED TRANSACTION: Queue size = 1 | read_write = 1 | transfer = 1 | apb_write_paddr = d8 | apb_write_data = 51 | apb_read_paddr = 34 | apb_read_data_out = 00 
 # ---------------------------------------------------------------------------------------
-# UVM_INFO apb_op_mon.sv(46) @ 15: uvm_test_top.env_h.passive_h.out_mon_h [OUTPUT_MONITOR] ---------------------Output monitor sending data-----------------------------------
+# UVM_INFO apb_ip_mon.sv(55) @ 15: uvm_test_top.env_h.active_h.in_mon_h [INPUT MONITOR] ----------------------------------Input monitor sending data------------------
 # ----------------------------------------------
 # Name                 Type          Size  Value
 # ----------------------------------------------
-# packet               apb_seq_item  -     @685 
-#   read_write         integral      1     'h0  
-#   apb_write_paddr    integral      9     'h0  
-#   apb_read_paddr     integral      9     'h0  
-#   apb_write_data     integral      8     'h0  
+# packet               apb_seq_item  -     @755 
+#   read_write         integral      1     'h1  
+#   apb_write_paddr    integral      9     'hd8 
+#   apb_read_paddr     integral      9     'h34 
+#   apb_write_data     integral      8     'h51 
 #   apb_read_data_out  integral      8     'h0  
 # ----------------------------------------------
-# UVM_INFO apb_op_mon.sv(48) @ 15: uvm_test_top.env_h.passive_h.out_mon_h [OUTPUT_MONITOR] -----------------------------------------------------------------------------------
-# UVM_INFO apb_sb.sv(52) @ 25: uvm_test_top.env_h.sb_h [Scoreboard] EXPECTED TRANSACTION: Queue size = 1 | read_write = 1 | transfer = 1 | apb_write_paddr = d8 | apb_write_data = 51 | apb_read_paddr = 34 | apb_read_data_out = 00 
+# UVM_INFO apb_ip_mon.sv(57) @ 15: uvm_test_top.env_h.active_h.in_mon_h [INPUT MONITOR] ------------------------------------------------------------------------------
+# UVM_INFO apb_sb.sv(52) @ 25: uvm_test_top.env_h.sb_h [Scoreboard] EXPECTED TRANSACTION: Queue size = 2 | read_write = 1 | transfer = 1 | apb_write_paddr = d8 | apb_write_data = 51 | apb_read_paddr = 34 | apb_read_data_out = 00 
 # ---------------------------------------------------------------------------------------
 # UVM_INFO apb_ip_mon.sv(55) @ 25: uvm_test_top.env_h.active_h.in_mon_h [INPUT MONITOR] ----------------------------------Input monitor sending data------------------
 # ----------------------------------------------
@@ -120,32 +121,46 @@
 #   apb_read_data_out  integral      8     'h0  
 # ----------------------------------------------
 # UVM_INFO apb_ip_mon.sv(57) @ 25: uvm_test_top.env_h.active_h.in_mon_h [INPUT MONITOR] ------------------------------------------------------------------------------
-# UVM_INFO apb_sb.sv(101) @ 25: uvm_test_top.env_h.sb_h [compare] -------------Test FAIL------------
-#  Expected apb_write_data = 1010001 Actual apb_write_data = 0  expected apb_write_paddr =d8 actual apb_write_apddr = 0 
+# UVM_INFO apb_sb.sv(59) @ 25: uvm_test_top.env_h.sb_h [Scoreboard] ACTUAL TRANSACTION: Queue size = 1 | read_write = 1 | transfer = 1 | apb_write_paddr = d8 | apb_write_data = 51 | apb_read_paddr = 34 | apb_read_data_out = 00 
+# ---------------------------------------------------------------------------------------
+# UVM_INFO apb_op_mon.sv(51) @ 25: uvm_test_top.env_h.passive_h.out_mon_h [OUTPUT_MONITOR] ---------------------Output monitor sending data-----------------------------------
+# ----------------------------------------------
+# Name                 Type          Size  Value
+# ----------------------------------------------
+# packet               apb_seq_item  -     @685 
+#   read_write         integral      1     'h1  
+#   apb_write_paddr    integral      9     'hd8 
+#   apb_read_paddr     integral      9     'h34 
+#   apb_write_data     integral      8     'h51 
+#   apb_read_data_out  integral      8     'h0  
+# ----------------------------------------------
+# UVM_INFO apb_op_mon.sv(53) @ 25: uvm_test_top.env_h.passive_h.out_mon_h [OUTPUT_MONITOR] -----------------------------------------------------------------------------------
+# UVM_INFO apb_sb.sv(96) @ 25: uvm_test_top.env_h.sb_h [compare] -------------Test PASS------------
+#  Expected apb_write_data = 51 Actual apb_write_data = 51  expected apb_write_paddr =d8 actual apb_write_apddr = d8 
 # UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 35: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
-# UVM_INFO apb_sb.sv(126) @ 35: uvm_test_top.env_h.sb_h [apb_sb] ---------------------------------------
-# UVM_INFO apb_sb.sv(127) @ 35: uvm_test_top.env_h.sb_h [apb_sb] ----       TEST FAIL COUNTS  1     ----
-# UVM_INFO apb_sb.sv(128) @ 35: uvm_test_top.env_h.sb_h [apb_sb] ---------------------------------------
+# UVM_INFO apb_sb.sv(132) @ 35: uvm_test_top.env_h.sb_h [apb_sb] ---------------------------------------
+# UVM_INFO apb_sb.sv(133) @ 35: uvm_test_top.env_h.sb_h [apb_sb]       TEST PASS COUNT:  1     
+# UVM_INFO apb_sb.sv(134) @ 35: uvm_test_top.env_h.sb_h [apb_sb] ---------------------------------------
 # 
 # --- UVM Report Summary ---
 # 
 # ** Report counts by severity
-# UVM_INFO :   17
+# UVM_INFO :   21
 # UVM_WARNING :    0
 # UVM_ERROR :    0
 # UVM_FATAL :    0
 # ** Report counts by id
-# [DRIVER]     2
-# [INPUT MONITOR]     2
+# [DRIVER]     3
+# [INPUT MONITOR]     4
 # [OUTPUT_MONITOR]     2
 # [Questa UVM]     2
 # [RNTST]     1
-# [Scoreboard]     2
+# [Scoreboard]     3
 # [TEST_DONE]     1
 # [UVMTOP]     1
 # [apb_sb]     3
 # [compare]     1
 # ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
 #    Time: 35 ns  Iteration: 53  Instance: /apb_top
-# End time: 10:42:14 on Apr 25,2025, Elapsed time: 0:00:06
+# End time: 12:20:59 on Apr 25,2025, Elapsed time: 0:00:06
 # Errors: 0, Warnings: 2

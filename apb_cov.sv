@@ -4,8 +4,8 @@
 class apb_cov extends uvm_subscriber #(apb_seq_item);
    `uvm_component_utils(apb_cov)
     
-  uvm_analysis_imp_ip_mon#(apb_seq_item, apb_coverage) ip_cov_imp;
-  uvm_analysis_imp_op_mon#(apb_seq_item, apb_coverage) op_cov_imp;
+  uvm_analysis_imp_ip_mon#(apb_seq_item, apb_cov) ip_cov_imp;
+  uvm_analysis_imp_op_mon#(apb_seq_item, apb_cov) op_cov_imp;
 
     apb_seq_item ip_seq;
     apb_seq_item op_seq;
@@ -20,23 +20,23 @@ class apb_cov extends uvm_subscriber #(apb_seq_item);
          bins i_transfer_1 = {1'b1};
       }
       coverpoint ip_seq.apb_write_paddr {
-        bins i_write_paddr_low = {[:]};
-        bins i_write_paddr_mid = {[:]};
-        bins i_write_paddr_high = {[:]};
+        bins i_write_paddr_low = {[0:200]};
+        bins i_write_paddr_mid = {[201:300]};
+        bins i_write_paddr_high = {[301:511]};
       }
       coverpoint ip_seq.apb_read_paddr {
-         bins i_read_paddr_low = {[8'h00:8'h03],[8'h08:8'h0b]};
-         bins i_read_paddr_mid = {[8'h04:8'h07]};
-         bins i_read_paddr_high = {[8'h0c:8'h0f],[8'h10:8'h13]};
+         bins i_read_paddr_low = {[0:200]};
+         bins i_read_paddr_mid = {[201:350]};
+         bins i_read_paddr_high = {[351:511]};
       }
 
-      coverpoint ip_seq.apb_write_data[];
+      coverpoint ip_seq.apb_write_data;
       
     endgroup
     
     covergroup fun_cov_op;
       
-      coverpoint op_seq.apb_read_data_out[]; 
+      coverpoint op_seq.apb_read_data_out;
       
      endgroup
 
