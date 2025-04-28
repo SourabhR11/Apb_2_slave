@@ -41,7 +41,7 @@ class apb_ip_mon extends uvm_monitor;
 
         //capturing data from virtual interface in the sequence item packet
        // packet = apb_seq_item::type_id::create("packet");
-        packet.read_write = vif.mon_cb.read_write;
+        packet.READ_WRITE = vif.mon_cb.READ_WRITE;
         packet.transfer = vif.mon_cb.transfer;
         packet.apb_read_paddr = vif.mon_cb.apb_read_paddr;
         packet.apb_write_paddr = vif.mon_cb.apb_write_paddr;
