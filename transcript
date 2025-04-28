@@ -1,6 +1,20 @@
 # vsim -c apb_top 
-# Start time: 14:19:10 on Apr 25,2025
-# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Start time: 16:41:00 on Apr 28,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: apb_top.sv(16): (vopt-2241) Connection width does not match width of port 'apb_write_paddr'. The port definition is at: apb_design.sv(327).
+# ** Warning: apb_top.sv(16): (vopt-2241) Connection width does not match width of port 'apb_write_data'. The port definition is at: apb_design.sv(328).
+# ** Warning: apb_top.sv(16): (vopt-2241) Connection width does not match width of port 'apb_read_paddr'. The port definition is at: apb_design.sv(329).
+# ** Warning: apb_top.sv(16): (vopt-2241) Connection width does not match width of port 'apb_read_data_out'. The port definition is at: apb_design.sv(331).
+# ** Warning: apb_top.sv(16): (vopt-2685) [TFMPC] - Too few port connections for 'dut'.  Expected 9, found 8.
+# ** Warning: apb_top.sv(16): (vopt-2718) [TFMPC] - Missing connection for port 'PSLVERR'.
+# ** Warning: apb_top.sv(17): (vopt-2958) Implicit wire 'PCLK' does not have any driver.
+# ** Warning: apb_top.sv(17): (vopt-2958) Implicit wire 'PRESETn' does not have any driver.
+# ** Warning: apb_top.sv(17): (vopt-2958) Implicit wire 'transfer' does not have any driver.
+# ** Warning: apb_top.sv(17): (vopt-2958) Implicit wire 'READ_WRITE' does not have any driver.
+# ** Warning: apb_top.sv(17): (vopt-2958) Implicit wire 'apb_write_paddr' does not have any driver.
+# ** Warning: apb_top.sv(17): (vopt-2958) Implicit wire 'apb_write_data' does not have any driver.
+# ** Warning: apb_top.sv(17): (vopt-2958) Implicit wire 'apb_read_paddr' does not have any driver.
+# ** Warning: apb_seq.sv(23): (vopt-2240) Treating stand-alone use of function 'randomize' as an implicit VOID cast.
 # //  Questa Sim
 # //  Version 10.6c linux Jul 25 2017
 # //
@@ -135,7 +149,7 @@
 # ----------------------------------------------
 # UVM_INFO apb_op_mon.sv(53) @ 25: uvm_test_top.env_h.passive_h.out_mon_h [OUTPUT_MONITOR] -----------------------------------------------------------------------------------
 # UVM_INFO apb_sb.sv(96) @ 25: uvm_test_top.env_h.sb_h [compare] -------------Test PASS------------
-#  Expected apb_write_data = 51 Actual apb_write_data = 51  expected apb_write_paddr =d8 actual apb_write_apddr = d8 
+#  Expected apb_write_data = 51 |  Actual apb_write_data = 51 |  Expected apb_write_paddr =d8 |  Actual apb_write_apddr = d8 
 # UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 35: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
 # UVM_INFO apb_sb.sv(132) @ 35: uvm_test_top.env_h.sb_h [apb_sb] ---------------------------------------
 # UVM_INFO apb_sb.sv(133) @ 35: uvm_test_top.env_h.sb_h [apb_sb]       TEST PASS COUNT:  1     
@@ -161,5 +175,5 @@
 # [compare]     1
 # ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
 #    Time: 35 ns  Iteration: 53  Instance: /apb_top
-# End time: 14:19:15 on Apr 25,2025, Elapsed time: 0:00:05
-# Errors: 0, Warnings: 1
+# End time: 16:41:17 on Apr 28,2025, Elapsed time: 0:00:17
+# Errors: 0, Warnings: 15
