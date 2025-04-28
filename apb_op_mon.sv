@@ -39,7 +39,7 @@ class apb_op_mon extends uvm_monitor;
   
        //capturing data from the dut in the sequence item packet through virtual interface
        packet.transfer = vif.mon_cb.transfer;
-       packet.read_write = vif.mon_cb.read_write;
+       packet.READ_WRITE = vif.mon_cb.READ_WRITE;
        packet.apb_write_paddr = vif.mon_cb.apb_write_paddr;
        packet.apb_read_paddr = vif.mon_cb.apb_read_paddr;
        packet.apb_write_data = vif.mon_cb.apb_write_data;  
