@@ -49,14 +49,14 @@ class apb_sb extends uvm_scoreboard;
   //write function for expected values   
   function void write_ip(apb_seq_item in_mon);
     in_queue.push_back(in_mon);
-    `uvm_info("Scoreboard",$sformatf("EXPECTED TRANSACTION: Queue size = %0h | read_write = %0h | transfer = %0h | apb_write_paddr = %0h | apb_write_data = %0h | apb_read_paddr = %0h | apb_read_data_out = %h ",in_queue.size(),in_mon.read_write,in_mon.transfer,in_mon.apb_write_paddr,in_mon.apb_write_data,in_mon.apb_read_paddr,in_mon.apb_read_data_out),UVM_LOW)
+    `uvm_info("Scoreboard",$sformatf("EXPECTED TRANSACTION: Queue size = %0h | READ_WRITE = %0h | transfer = %0h | apb_write_paddr = %0h | apb_write_data = %0h | apb_read_paddr = %0h | apb_read_data_out = %h ",in_queue.size(),in_mon.READ_WRITE,in_mon.transfer,in_mon.apb_write_paddr,in_mon.apb_write_data,in_mon.apb_read_paddr,in_mon.apb_read_data_out),UVM_LOW)
   $display("---------------------------------------------------------------------------------------");
   endfunction
   
   //write function of actual values
   function void write_op(apb_seq_item out_mon);
     out_queue.push_back(out_mon);
-     `uvm_info("Scoreboard",$sformatf("ACTUAL TRANSACTION: Queue size = %0h | read_write = %0h | transfer = %0h | apb_write_paddr = %0h | apb_write_data = %0h | apb_read_paddr = %0h | apb_read_data_out = %h ",out_queue.size(),out_mon.read_write,out_mon.transfer,out_mon.apb_write_paddr,out_mon.apb_write_data,out_mon.apb_read_paddr,out_mon.apb_read_data_out),UVM_LOW)
+     `uvm_info("Scoreboard",$sformatf("ACTUAL TRANSACTION: Queue size = %0h | READ_WRITE = %0h | transfer = %0h | apb_write_paddr = %0h | apb_write_data = %0h | apb_read_paddr = %0h | apb_read_data_out = %h ",out_queue.size(),out_mon.READ_WRITE,out_mon.transfer,out_mon.apb_write_paddr,out_mon.apb_write_data,out_mon.apb_read_paddr,out_mon.apb_read_data_out),UVM_LOW)
   $display("---------------------------------------------------------------------------------------");
 
   endfunction
@@ -75,7 +75,7 @@ class apb_sb extends uvm_scoreboard;
 
         if(exp_trans.transfer == 1)
           begin
-            if(exp_trans.read_write == 1)
+            if(exp_trans.READ_WRITE == 1)
               begin
                 apb_mem[exp_trans.apb_write_paddr] =exp_trans.apb_write_data;
                    end      
@@ -89,7 +89,7 @@ class apb_sb extends uvm_scoreboard;
     endtask
 
   virtual function void compare(apb_seq_item exp_trans,apb_seq_item act_trans);
-    if(exp_trans.read_write)
+    if(exp_trans.READ_WRITE)
       begin
         if((exp_trans.apb_write_data == act_trans.apb_write_data) && (exp_trans.apb_write_paddr == act_trans.apb_write_paddr))
           begin
