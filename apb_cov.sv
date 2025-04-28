@@ -11,9 +11,9 @@ class apb_cov extends uvm_subscriber #(apb_seq_item);
     apb_seq_item op_seq;
   
     covergroup fun_cov_in;
-      coverpoint ip_seq.read_write {
-        bins i_read_write_0 = {1'b0};
-        bins i_read_write_1 = {1'b1};
+      coverpoint ip_seq.READ_WRITE {
+        bins i_READ_WRITE_0 = {1'b0};
+        bins i_READ_WRITE_1 = {1'b1};
       }
       coverpoint ip_seq.transfer {
          bins i_transfer_0 = {1'b0};
