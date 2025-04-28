@@ -41,13 +41,13 @@ class apb_driver extends uvm_driver #(apb_seq_item);
   
 //drive task 
  virtual task drive();
-   if( vif.presetn)
+   if( vif.PRESETn)
    /* begin
 
       //if reset deasserted drivethe signal as zero
-       @(posedge vif.pclk);
+       @(posedge vif.PCLK);
        vif.drv_cb.transfer <= 'b0;
-       vif.drv_cb.read_write <= 'bx;
+       vif.drv_cb.READ_WRITE <= 'bx;
        vif.drv_cb.apb_read_paddr <= 'b0;
        vif.drv_cb.apb_write_paddr <= 'b0;
        vif.drv_cb.apb_write_data <= 'b0;
@@ -56,14 +56,14 @@ class apb_driver extends uvm_driver #(apb_seq_item);
      begin
 
        //drivethe signal to dut through virtual interface
-       @( vif.pclk);
+       @( vif.PCLK);
        vif.drv_cb.transfer <= packet.transfer;
-       vif.drv_cb.read_write <= packet.read_write;
+       vif.drv_cb.READ_WRITE <= packet.READ_WRITE;
        vif.drv_cb.apb_read_paddr <= packet.apb_read_paddr;
        vif.drv_cb.apb_write_paddr <= packet.apb_write_paddr;
        vif.drv_cb.apb_write_data <= packet.apb_write_data;
 
-       `uvm_info("DRIVER",$sformatf("[%0t] Presetn = %0h |  Transfer = %0h | read_write = %0h | apb_write_paddr = %0h | apb_write_data = %0h | apb_read_paddr = %0h",$time,vif.presetn,  packet.transfer, packet.read_write, packet.apb_write_paddr, packet.apb_write_data, packet.apb_read_paddr,),UVM_LOW)
+       `uvm_info("DRIVER",$sformatf("[%0t] PRESETn = %0h |  Transfer = %0h | READ_WRITE = %0h | apb_write_paddr = %0h | apb_write_data = %0h | apb_read_paddr = %0h",$time,vif.PRESETn,  packet.transfer, packet.READ_WRITE, packet.apb_write_paddr, packet.apb_write_data, packet.apb_read_paddr,),UVM_LOW)
      
 
      `uvm_info("DRIVER","------------------------DRIVER DRIVING DATA-----------------------------------------",UVM_LOW); 
