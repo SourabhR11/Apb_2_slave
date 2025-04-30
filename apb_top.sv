@@ -17,8 +17,7 @@ module apb_top;
   .PCLK(PCLK),.PRESETn(PRESETn),.transfer(transfer),.READ_WRITE(READ_WRITE),.apb_write_paddr(apb_write_paddr),.apb_write_data(apb_write_data),.apb_read_paddr(apb_read_paddr),.apb_read_data_out(apb_read_data_out));
 	
   //defining clock generation
-  initial
-  begin
+  initial  begin
     pclk <= 0;
     forever #5 pclk = ~pclk;  
   end
@@ -35,8 +34,8 @@ module apb_top;
   
   //Instantiating Interface
   apb_intf intf(
-	  .pclk(pclk),
-	  .presetn(presetn));
+	  .PCLK(PCLK),
+	  .PRESETn(PRESETn));
 
   //defining configuration dtabase to access variables inside testbench components
   initial begin
@@ -49,8 +48,7 @@ module apb_top;
   end
 
   //Initiating the testbench
-  initial
-    begin
-      run_test("apb_write_slave1_test");
+  initial  begin
+      run_test("apb_read_slave1_test");
   end
 endmodule

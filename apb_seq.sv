@@ -49,4 +49,26 @@ class apb_write_slave1 extends apb_seq;
   endtask
 endclass
                        
-   
+ 
+//apb_read_sequence
+class apb_read_slave1 extends apb_seq;
+
+  //factory registration
+  `uvm_object_utils(apb_read_slave1)
+  
+  //class constructor
+  function new (string name = "apb_read_slave1" );
+    super.new(name);
+  endfunction
+
+  apb_seq_item item;
+
+  virtual task body();
+    item = apb_seq_item::type_id::create("item");
+    `uvm_do_with(item,{transfer == 1'b1;
+                      READ_WRITE == 1'b0;
+                       apb_write_paddr[8] == 1'b0;
+                      })
+  endtask
+endclass
+     
