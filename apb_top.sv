@@ -9,23 +9,30 @@
 module apb_top;
 
   //declaring clock and reset
-  bit pclk;
-  bit presetn;
+  bit PCLK;
+  bit PRESETn;
 
   //instantiate the dut
   APB_Protocol dut (
   .PCLK(PCLK),.PRESETn(PRESETn),.transfer(transfer),.READ_WRITE(READ_WRITE),.apb_write_paddr(apb_write_paddr),.apb_write_data(apb_write_data),.apb_read_paddr(apb_read_paddr),.apb_read_data_out(apb_read_data_out));
 	
   //defining clock generation
+<<<<<<< HEAD
   initial  begin
     pclk <= 0;
     forever #5 pclk = ~pclk;  
+=======
+  initial
+  begin
+    PCLK <= 0;
+    forever #5 PCLK = ~PCLK;  
+>>>>>>> ed76208aec6fa93b4cc8bebfdef21831106f481b
   end
 
   //driving reset
   initial begin
-//    presetn = 0;
-      presetn = 1;
+//    PRESETn = 0;
+      PRESETn = 1;
    
 
   end
