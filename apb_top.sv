@@ -9,8 +9,8 @@
 module apb_top;
 
   //declaring clock and reset
-  bit pclk;
-  bit presetn;
+  bit PCLK;
+  bit PRESETn;
 
   //instantiate the dut
   APB_Protocol dut (
@@ -19,14 +19,14 @@ module apb_top;
   //defining clock generation
   initial
   begin
-    pclk <= 0;
-    forever #5 pclk = ~pclk;  
+    PCLK <= 0;
+    forever #5 PCLK = ~PCLK;  
   end
 
   //driving reset
   initial begin
-//    presetn = 0;
-      presetn = 1;
+//    PRESETn = 0;
+      PRESETn = 1;
    
 
   end
@@ -35,8 +35,8 @@ module apb_top;
   
   //Instantiating Interface
   apb_intf intf(
-	  .pclk(pclk),
-	  .presetn(presetn));
+	  .PCLK(PCLK),
+	  .PRESETn(PRESETn));
 
   //defining configuration dtabase to access variables inside testbench components
   initial begin
