@@ -43,7 +43,7 @@ class apb_write_slave1 extends apb_seq;
   virtual task body();
     item = apb_seq_item::type_id::create("item");
     `uvm_do_with(item,{transfer == 1'b1;
-                      READ_WRITE == 1'b1;
+                      READ_WRITE == 1'b0;
                        apb_write_paddr[8] == 1'b0;
                       })
   endtask
@@ -66,8 +66,9 @@ class apb_read_slave1 extends apb_seq;
   virtual task body();
     item = apb_seq_item::type_id::create("item");
     `uvm_do_with(item,{transfer == 1'b1;
-                      READ_WRITE == 1'b0;
+                      READ_WRITE == 1'b1;
                        apb_write_paddr[8] == 1'b0;
+                       apb_read_data_out == 8'hff;
                       })
   endtask
 endclass

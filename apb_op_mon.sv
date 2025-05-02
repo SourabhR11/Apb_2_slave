@@ -44,7 +44,6 @@ class apb_op_mon extends uvm_monitor;
        packet.apb_read_paddr = vif.mon_cb.apb_read_paddr;
        packet.apb_write_data = vif.mon_cb.apb_write_data;  
        packet.apb_read_data_out = vif.mon_cb.apb_read_data_out; 
-
         //write method of output monitor
        op_mon_port.write(packet);
 

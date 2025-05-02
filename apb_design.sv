@@ -328,7 +328,7 @@ module APB_Protocol(
 		 input [7:0]apb_write_data,
 		 input [8:0] apb_read_paddr,
 		 output PSLVERR, 
-                 output [7:0] apb_read_data_out
+                 output  [7:0] apb_read_data_out
           );
 
        wire [7:0]PWDATA,PRDATA,PRDATA1,PRDATA2;

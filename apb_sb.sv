@@ -29,7 +29,7 @@ class apb_sb extends uvm_scoreboard;
 
 
   //class constructor
-  function new(string name = "apb_scoreboard", uvm_component parent);
+  function new(string name = "apb_sb", uvm_component parent);
     super.new(name, parent);
   endfunction
 
@@ -75,7 +75,7 @@ class apb_sb extends uvm_scoreboard;
 
         if(exp_trans.transfer == 1)
           begin
-            if(exp_trans.READ_WRITE == 1)
+            if(exp_trans.READ_WRITE == 0)
               begin
                 apb_mem[exp_trans.apb_write_paddr] =exp_trans.apb_write_data;
                    end      

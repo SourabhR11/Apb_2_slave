@@ -14,19 +14,12 @@ module apb_top;
 
   //instantiate the dut
   APB_Protocol dut (
-  .PCLK(PCLK),.PRESETn(PRESETn),.transfer(transfer),.READ_WRITE(READ_WRITE),.apb_write_paddr(apb_write_paddr),.apb_write_data(apb_write_data),.apb_read_paddr(apb_read_paddr),.apb_read_data_out(apb_read_data_out));
+  .PCLK(PCLK),.PRESETn(PRESETn),.transfer(intf.transfer),.READ_WRITE(intf.READ_WRITE),.apb_write_paddr(intf.apb_write_paddr),.apb_write_data(intf.apb_write_data),.apb_read_paddr(intf.apb_read_paddr),.apb_read_data_out(intf.apb_read_data_out));
 	
   //defining clock generation
-<<<<<<< HEAD
   initial  begin
-    pclk <= 0;
-    forever #5 pclk = ~pclk;  
-=======
-  initial
-  begin
-    PCLK <= 0;
+    PCLK = 0;
     forever #5 PCLK = ~PCLK;  
->>>>>>> ed76208aec6fa93b4cc8bebfdef21831106f481b
   end
 
   //driving reset
