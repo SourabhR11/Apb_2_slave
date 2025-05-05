@@ -6,7 +6,7 @@ class apb_seq_item extends uvm_sequence_item;
   rand bit [`AW-1:0] apb_write_paddr;  // Address for Write operation
   rand bit [`AW-1:0] apb_read_paddr;   // Address for Read operation
   rand bit [`DW-1:0] apb_write_data;   // Data to be written during Write
-  bit [`DW-1:0] apb_read_data_out;     // Data received from slave after read
+  logic [`DW-1:0] apb_read_data_out;     // Data received from slave after read
 
   
   //uvm fsctory registration and field macros
@@ -36,10 +36,10 @@ class apb_seq_item extends uvm_sequence_item;
   }
 
   
-  constraint write_addr_range {if(transfer == 0 && READ_WRITE == 0)
+  constraint write_addr_range {if(transfer == 1 && READ_WRITE == 0)
                                  apb_write_paddr inside {[0:511]};}
  
-  constraint read_addr_range {if(transfer == 0 && READ_WRITE == 1)
+  constraint read_addr_range {if(transfer == 1 && READ_WRITE == 1)
                                 apb_read_paddr inside {[0:511]};}
 
 

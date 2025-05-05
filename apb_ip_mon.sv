@@ -31,7 +31,6 @@ class apb_ip_mon extends uvm_monitor;
 
   //run phase of input monitor	
   task run_phase(uvm_phase phase);
-////////////////
     repeat(1)@(vif.mon_cb);
     `uvm_info("IP MONITOR","Inside run phase of input monitor",UVM_HIGH);
      packet = apb_seq_item::type_id::create("packet");
@@ -55,7 +54,7 @@ class apb_ip_mon extends uvm_monitor;
         `uvm_info("INPUT MONITOR","----------------------------------Input monitor sending data------------------",UVM_LOW);
         packet.print();
         `uvm_info("INPUT MONITOR","------------------------------------------------------------------------------",UVM_LOW);
-    //  repeat(2)@(vif.mon_cb);
+    //     repeat(2)@(vif.mon_cb);
     end	 
   endtask
 endclass

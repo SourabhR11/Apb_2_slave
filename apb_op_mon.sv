@@ -32,7 +32,7 @@ class apb_op_mon extends uvm_monitor;
 
   //run phase of output monitor	    
   task run_phase(uvm_phase phase);
-   repeat(2)@(vif.mon_cb);
+   repeat(1)@(vif.mon_cb);
    `uvm_info("OP MONITOR","Inside run phase of op monitor",UVM_HIGH);
    forever begin
      @(vif.mon_cb)

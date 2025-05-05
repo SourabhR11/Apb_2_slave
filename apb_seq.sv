@@ -27,7 +27,7 @@ class apb_seq extends uvm_sequence #(apb_seq_item);
 endclass
 
 
-//apb_write sequence
+////////// apb_write sequence ////////////////////////
 class apb_write_slave1 extends apb_seq;
 
   //factory registration
@@ -41,16 +41,19 @@ class apb_write_slave1 extends apb_seq;
   apb_seq_item item;
 
   virtual task body();
+ repeat(5)begin
     item = apb_seq_item::type_id::create("item");
-    `uvm_do_with(item,{transfer == 1'b1;
-                      READ_WRITE == 1'b0;
-                       apb_write_paddr[8] == 1'b0;
-                      })
+    //repeat(10) begin
+      `uvm_do_with(item,{transfer == 1'b1;
+                        READ_WRITE == 1'b0;
+                         apb_write_paddr[8] == 1'b0;
+                        })
+    end
   endtask
 endclass
                        
  
-//apb_read_sequence
+///////////// apb_read_sequence ////////////////////////////
 class apb_read_slave1 extends apb_seq;
 
   //factory registration
@@ -62,19 +65,19 @@ class apb_read_slave1 extends apb_seq;
   endfunction
 
   apb_seq_item item;
-
   virtual task body();
+    repeat(5) begin
     item = apb_seq_item::type_id::create("item");
     `uvm_do_with(item,{transfer == 1'b1;
                       READ_WRITE == 1'b1;
                        apb_write_paddr[8] == 1'b0;
-                      // apb_read_data_out == 8'hff;
                       })
+   end
   endtask
 endclass
 
 /*
-//apb_write_read_sequence
+/////////// apb_write_read_sequence //////////////////////
 
 class apb_write_read_slave1 extends apb_seq;
  

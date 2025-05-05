@@ -73,7 +73,7 @@ class apb_sb extends uvm_scoreboard;
         exp_trans = in_queue.pop_front();
         act_trans = out_queue.pop_front();
 
-        if(exp_trans.transfer == 0)
+        if(exp_trans.transfer == 1)
           begin
             if(exp_trans.READ_WRITE == 0)
               begin
