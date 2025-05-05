@@ -11,10 +11,11 @@ class apb_seq_item extends uvm_sequence_item;
   
   //uvm fsctory registration and field macros
   `uvm_object_utils_begin(apb_seq_item)
+  `uvm_field_int (transfer, UVM_DEFAULT)
   `uvm_field_int (READ_WRITE, UVM_DEFAULT)
   `uvm_field_int (apb_write_paddr, UVM_DEFAULT)
-  `uvm_field_int (apb_read_paddr, UVM_DEFAULT)
   `uvm_field_int (apb_write_data, UVM_DEFAULT)
+  `uvm_field_int (apb_read_paddr, UVM_DEFAULT)
   `uvm_field_int (apb_read_data_out, UVM_DEFAULT)
   `uvm_object_utils_end
   
@@ -23,9 +24,8 @@ class apb_seq_item extends uvm_sequence_item;
     super.new(name);
   endfunction
 
-  
   //constraint slave_sel { soft apb_write_paddr[8] dist {0  := 50, 1 := 50};}
-
+  /*
   constraint deassert_transfer {if(! transfer ) {
     READ_WRITE == 0;
     apb_read_paddr == 0;
@@ -35,7 +35,7 @@ class apb_seq_item extends uvm_sequence_item;
     }
   }
 
-  
+  */
   constraint write_addr_range {if(transfer == 1 && READ_WRITE == 0)
                                  apb_write_paddr inside {[0:511]};}
  

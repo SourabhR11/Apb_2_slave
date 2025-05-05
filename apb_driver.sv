@@ -38,6 +38,7 @@ class apb_driver extends uvm_driver #(apb_seq_item);
       drive();
       seq_item_port.item_done();
      end
+ // repeat(2)@(vif.drv_cb);
  endtask
   
 //drive task 
