@@ -73,7 +73,7 @@ class apb_sb extends uvm_scoreboard;
         exp_trans = in_queue.pop_front();
         act_trans = out_queue.pop_front();
 
-        if(exp_trans.transfer == 1)
+        if(exp_trans.transfer == 0)
           begin
             if(exp_trans.READ_WRITE == 0)
               begin
@@ -89,7 +89,7 @@ class apb_sb extends uvm_scoreboard;
     endtask
 
   virtual function void compare(apb_seq_item exp_trans,apb_seq_item act_trans);
-    if(exp_trans.READ_WRITE)
+    if(!(exp_trans.READ_WRITE))
       begin
         if((exp_trans.apb_write_data == act_trans.apb_write_data) && (exp_trans.apb_write_paddr == act_trans.apb_write_paddr))
           begin
@@ -107,12 +107,12 @@ class apb_sb extends uvm_scoreboard;
       begin
              if((exp_trans.apb_read_data_out == act_trans.apb_read_data_out) && (exp_trans.apb_read_paddr == act_trans.apb_read_paddr))
           begin
-            `uvm_info("compare", $sformatf("-------------Test PASS------------\n Expected apb_read_data = %0h  | Actual apb_read_data = %0h  | Expected apb_read_paddr =%0h  | Actual apb_write_apddr = %0h ", exp_trans.apb_write_data, act_trans.apb_write_data, exp_trans.apb_write_paddr, act_trans.apb_write_paddr), UVM_LOW);
+            `uvm_info("compare", $sformatf("-------------Test PASS------------\n Expected apb_read_data = %0h  | Actual apb_read_data = %0h  | Expected apb_read_paddr =%0h  | Actual apb_read_apddr = %0h ", exp_trans.apb_read_data_out, act_trans.apb_read_data_out, exp_trans.apb_read_paddr, act_trans.apb_read_paddr), UVM_LOW);
              pass++;
           end
         else
           begin
-            `uvm_info("compare", $sformatf("-------------Test FAIL------------\n Expected apb_write_data = %0h  | Actual apb_write_data = %0h |  Expected apb_write_paddr =%0h | Actual apb_write_apddr = %0h ", exp_trans.apb_write_data, act_trans.apb_write_data, exp_trans.apb_write_paddr, act_trans.apb_write_paddr), UVM_LOW);
+            `uvm_info("compare", $sformatf("-------------Test FAIL------------\n Expected apb_read_data_out = %0h  | Actual apb_read_data_out = %0h |  Expected apb_read_paddr =%0h | Actual apb_read_addr = %0h ", exp_trans.apb_read_data_out, act_trans.apb_read_data_out, exp_trans.apb_read_paddr, act_trans.apb_read_paddr), UVM_LOW);
              fail++;
           end
       end
