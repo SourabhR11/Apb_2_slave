@@ -84,6 +84,7 @@ class apb_sb extends uvm_scoreboard;
                     exp_trans.apb_read_data_out =  apb_mem[exp_trans.apb_read_paddr];
                   end
               end
+       $display("@@@@@@@@@@@@@@@@@@@@@@@@@ For comparing exp trans = %d | act trans = %d",exp_trans.apb_read_data_out,act_trans.apb_read_data_out);
        compare(exp_trans,act_trans);
      end
     endtask

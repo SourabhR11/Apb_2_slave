@@ -50,7 +50,7 @@ class apb_op_mon extends uvm_monitor;
        `uvm_info("OUTPUT_MONITOR","---------------------Output monitor sending data-----------------------------------",UVM_LOW);
        packet.print();
        `uvm_info("OUTPUT_MONITOR","-----------------------------------------------------------------------------------",UVM_LOW); 
-       repeat(2)@(vif.mon_cb);    
+      // repeat(2)@(vif.mon_cb);    
 end
   endtask
 endclass
