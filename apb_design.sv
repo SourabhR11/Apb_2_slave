@@ -51,7 +51,7 @@ module master_bridge(
 		     IDLE: begin 
 		              PENABLE =0;
 
-		            if(transfer)   ///! transfer ut should be
+		            if(!transfer)   ///! transfer ut should be
 	        	      next_state = IDLE ;
 	                    else
 			      next_state = SETUP;
@@ -69,7 +69,7 @@ module master_bridge(
                                   PADDR = apb_write_paddr;
 				  PWDATA = apb_write_data;  end
 			    
-			    if(transfer && PSLVERR)//// ! pslverr
+			    if(transfer && !PSLVERR)//// ! pslverr
 			      next_state = ENABLE;
 		            else
            	              next_state = IDLE;
@@ -175,7 +175,12 @@ module master_bridge(
 		             end
 	      endcase
       end */
-     assign {PSEL1,PSEL2} = ((state == IDLE) ? (PADDR[8] ? {1'b0,1'b1} : {1'b1,1'b0}) : 2'd0);// state 1=idle it should be
+   //  assign {PSEL1,PSEL2} = ((state == IDLE) ? (PADDR[8] ? {1'b0,1'b1} : {1'b1,1'b0}) : 2'd0);// state 1=idle it should be
+//    assign {PSEL1,PSEL2} = ((state == IDLE) ?2'd0: (PADDR[8] ? {1'b0,1'b1} : {1'b1,1'b0}));// state 1=idle it should be
+assign {PSEL1, PSEL2} = 
+    (state == IDLE) ? 2'b00 : 
+    (PADDR[8]        ? 2'b01 : 2'b10);
+
 
   // PSLVERR LOGIC
   
@@ -266,7 +271,7 @@ module slave1(
 	     begin  PREADY = 1;
                     reg_addr =  PADDR; 
 	       end
-          else if(PSEL && PENABLE && PWRITE)//!penable
+          else if(PSEL && !PENABLE && PWRITE)//!penable
 	     begin  PREADY = 0; end
 
 	  else if(PSEL && PENABLE && PWRITE)
@@ -308,7 +313,7 @@ module slave2(
 	     begin  PREADY = 1;
                     reg_addr =  PADDR; 
 	       end
-          else if(PSEL && PENABLE && PWRITE)  //!penable
+          else if(PSEL && !PENABLE && PWRITE)  //!penable
 	     begin  PREADY = 0; end
 
 	  else if(PSEL && PENABLE && PWRITE)

@@ -135,7 +135,7 @@ class apb_write_read_slave1_test extends apb_test;
     write_read_slave1_h.start(env_h.active_h.seqr_h);
 
     phase.drop_objection(this);
-    phase.phase_done.set_drain_time(this,30);
+    phase.phase_done.set_drain_time(this,100);
   endtask
 
 

@@ -93,14 +93,16 @@ class apb_write_read_slave1 extends apb_seq;
  
  
   virtual task body();
-  // write_txn = apb_seq_item::type_id::create("write_txn");
-  // read_txn = apb_seq_item::type_id::create("read_txn");
+   repeat(10) begin
+   write_txn = apb_seq_item::type_id::create("write_txn");
+   read_txn = apb_seq_item::type_id::create("read_txn");
 
-  `uvm_do_with(write_txn,{write_txn.transfer = 1'b1;write_txn.READ_WRITE = 1'b0; write_txn.apb_write_paddr[8] = 0;});
+  `uvm_do_with(write_txn,{write_txn.transfer == 1'b1;write_txn.READ_WRITE == 1'b0; write_txn.apb_write_paddr[8] == 0;});
   
   write_txn.apb_write_paddr.rand_mode(0);
   
-  `uvm_do_with(read_txn,{read_txn.transfer = 1'b1; read_txn.READ_WRITE = 1'b1; read_txn.apb_read_paddr = write_txn.apb_write_paddr;})
+  `uvm_do_with(read_txn,{read_txn.transfer == 1'b1; read_txn.READ_WRITE == 1'b1; read_txn.apb_read_paddr == write_txn.apb_write_paddr;})
+  end
   endtask
  
 endclass 
