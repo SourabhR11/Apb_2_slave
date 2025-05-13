@@ -30,7 +30,7 @@ class apb_driver extends uvm_driver #(apb_seq_item);
 
  //run phase of driver
  task run_phase(uvm_phase phase);
-   // repeat(1)@(vif.drv_cb);
+//    repeat(2)@(vif.drv_cb);
     forever
       begin
       `uvm_info("DRIVER","Inside RUN_PHASE of apb driver",UVM_HIGH);
@@ -59,7 +59,7 @@ class apb_driver extends uvm_driver #(apb_seq_item);
   //   begin
 
        //drivethe signal to dut through virtual interface
-       @( vif.drv_cb);
+       @( vif.drv_cb) 
        begin
        vif.drv_cb.transfer <= packet.transfer;
        vif.drv_cb.READ_WRITE <= packet.READ_WRITE;

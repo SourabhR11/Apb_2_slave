@@ -175,11 +175,10 @@ module master_bridge(
 		             end
 	      endcase
       end */
-   //  assign {PSEL1,PSEL2} = ((state == IDLE) ? (PADDR[8] ? {1'b0,1'b1} : {1'b1,1'b0}) : 2'd0);// state 1=idle it should be
-//    assign {PSEL1,PSEL2} = ((state == IDLE) ?2'd0: (PADDR[8] ? {1'b0,1'b1} : {1'b1,1'b0}));// state 1=idle it should be
-assign {PSEL1, PSEL2} = 
-    (state == IDLE) ? 2'b00 : 
-    (PADDR[8]        ? 2'b01 : 2'b10);
+
+     // assign {PSEL1,PSEL2} = ((state == IDLE) ? (PADDR[8] ? {1'b0,1'b1} : {1'b1,1'b0}) : 2'd0);// state 1=idle it should be
+     assign {PSEL1,PSEL2} =( (state == SETUP || state == ENABLE) ? (PADDR[8] ? {1'b0,1'b1} : {1'b1,1'b0}):2'd0);// state 1=idle it should be
+
 
 
   // PSLVERR LOGIC
@@ -245,6 +244,7 @@ assign {PSEL1, PSEL2} =
 	 
 
  endmodule
+
 ////////////////////////
 ///////slave 1//////////
 module slave1(
