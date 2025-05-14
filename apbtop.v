@@ -55,4 +55,4 @@ module APB_Protocol(
       
 
 
-endmodule                                	             		     		     		     	             		     		     		     		     	             		     		     	             	             	             		     		     	                                 endmodule
+endmodule

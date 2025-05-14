@@ -1,4 +1,4 @@
-timescale 1ns/1ns
+`timescale 1ns/1ns
 
   module master_bridge(
 	input [8:0]apb_write_paddr,apb_read_paddr,
