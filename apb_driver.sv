@@ -30,7 +30,7 @@ class apb_driver extends uvm_driver #(apb_seq_item);
 
  //run phase of driver
  task run_phase(uvm_phase phase);
-//    repeat(2)@(vif.drv_cb);
+  repeat(2)@(vif.drv_cb);
     forever
       begin
       `uvm_info("DRIVER","Inside RUN_PHASE of apb driver",UVM_HIGH);
@@ -39,7 +39,7 @@ class apb_driver extends uvm_driver #(apb_seq_item);
       seq_item_port.item_done();
      end
     // `uvm_info("drv",$sformatf("%d %d",$time, vif.apb_write_data),UVM_HIGH)
-    //  repeat(2)@(vif.drv_cb);
+    //repeat(2)@(vif.drv_cb);
  endtask
   
 //drive task 
@@ -57,22 +57,28 @@ class apb_driver extends uvm_driver #(apb_seq_item);
      end
    else*/
   //   begin
-
-       //drivethe signal to dut through virtual interface
-       @( vif.drv_cb) 
-       begin
-       vif.drv_cb.transfer <= packet.transfer;
-       vif.drv_cb.READ_WRITE <= packet.READ_WRITE;
-       vif.drv_cb.apb_read_paddr <= packet.apb_read_paddr;
-       vif.drv_cb.apb_write_paddr <= packet.apb_write_paddr;
-       vif.drv_cb.apb_write_data <= packet.apb_write_data;
-
-       `uvm_info("DRIVER",$sformatf("[%0t] Transfer = %0d | read_write = %0d | apb_write_paddr = %0h | apb_write_data = %0d | apb_read_paddr = %0h",$time, vif.transfer, vif.READ_WRITE, vif.apb_write_paddr, vif.apb_write_data, vif.apb_read_paddr,),UVM_LOW)
+  // drive data
+  @(vif.drv_cb)
+  begin
+    vif.drv_cb.transfer <= packet.transfer;
+    vif.drv_cb.READ_WRITE <= packet.READ_WRITE;
+    
+    if (packet.transfer)
+    begin
+      if (packet.READ_WRITE)
+        vif.drv_cb.apb_read_paddr <= packet.apb_read_paddr;
+      else
+      begin
+        vif.drv_cb.apb_write_paddr <= packet.apb_write_paddr;
+        vif.drv_cb.apb_write_data <= packet.apb_write_data;
+      end
+ end
+        `uvm_info("DRIVER",$sformatf("[%0t] Transfer = %0d | read_write = %0d | apb_write_paddr = %0h | apb_write_data = %0d | apb_read_paddr = %0h",$time, vif.transfer, vif.READ_WRITE, vif.apb_write_paddr, vif.apb_write_data, vif.apb_read_paddr,),UVM_LOW)
      
 
      `uvm_info("DRIVER","------------------------DRIVER DRIVING DATA-----------------------------------------",UVM_LOW); 
      packet.print();
      `uvm_info("DRIVER","------------------------------------------------------------------------------------",UVM_LOW);
-    end
-  endtask
+end 
+ endtask
 endclass

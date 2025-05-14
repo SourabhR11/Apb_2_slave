@@ -176,8 +176,8 @@ module master_bridge(
 	      endcase
       end */
 
-     // assign {PSEL1,PSEL2} = ((state == IDLE) ? (PADDR[8] ? {1'b0,1'b1} : {1'b1,1'b0}) : 2'd0);// state 1=idle it should be
-     assign {PSEL1,PSEL2} =( (state == SETUP || state == ENABLE) ? (PADDR[8] ? {1'b0,1'b1} : {1'b1,1'b0}):2'd0);// state 1=idle it should be
+     //assign {PSEL1,PSEL2} = ((state == IDLE) ? (PADDR[8] ? {1'b0,1'b1} : {1'b1,1'b0}) : 2'd0);// state 1=idle it should be
+      assign {PSEL1,PSEL2} =( (state == SETUP || state == ENABLE) ? (PADDR[8] ? {1'b0,1'b1} : {1'b1,1'b0}):2'd0);// state 1=idle it should be
 
 
 

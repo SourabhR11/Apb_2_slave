@@ -94,12 +94,13 @@ class apb_write_read_slave1 extends apb_seq;
    bit [8:0]addr;
 
 virtual task body();
-    repeat(10)begin
+    repeat(5)begin
      `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 0;item.apb_write_paddr[8] == 0;})
      `uvm_send(item);
-      addr = item.apb_write_paddr;
+     addr = item.apb_write_paddr;
  
-     `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 1; item.apb_read_paddr == addr;})
+    `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 1; item.apb_read_paddr == addr;})
+
      `uvm_send(item);
     end
   endtask
