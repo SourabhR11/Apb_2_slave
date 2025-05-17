@@ -39,7 +39,7 @@ class apb_driver extends uvm_driver #(apb_seq_item);
       seq_item_port.item_done();
      end
     // `uvm_info("drv",$sformatf("%d %d",$time, vif.apb_write_data),UVM_HIGH)
-    //repeat(2)@(vif.drv_cb);
+ //  repeat(2)@(vif.drv_cb);
  endtask
   
 //drive task 

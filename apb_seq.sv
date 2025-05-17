@@ -200,16 +200,17 @@ class apb_10write_1read_slave1 extends apb_seq;
   bit [8:0] last_addr;
 
 virtual task body();
-    repeat(5)begin
+   // repeat(5)begin
    for (int i = 0; i < 10; i++) begin
      `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 0; item.apb_write_paddr[8] == 0;})
       `uvm_send(item);
      
-       last_addr = item.apb_write_paddr
-     
+       last_addr = item.apb_write_paddr;
+    end 
      `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 1; item.apb_read_paddr == last_addr;})
      `uvm_send(item);
-    end
+    
+   // end
   endtask
 endclass
 
