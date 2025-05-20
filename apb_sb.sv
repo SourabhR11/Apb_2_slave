@@ -22,7 +22,7 @@ class apb_sb extends uvm_scoreboard;
   apb_seq_item  out_queue[$];
   apb_seq_item  in_queue[$];
 
-  logic [`DW-1:0] apb_mem [511:0];
+  logic [`DW-1:0] apb_mem [255:0];
   
   int pass = 0;
   int fail = 0;

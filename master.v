@@ -157,7 +157,9 @@
 		             end
 	      endcase
       end */
-     assign {PSEL1,PSEL2} = ((state != IDLE) ? (PADDR[8] ? {1'b0,1'b1} : {1'b1,1'b0}) : 2'd0);
+    // assign {PSEL1,PSEL2} = ((state != IDLE) ? (PADDR[8] ? {1'b0,1'b1} : {1'b1,1'b0}) : 2'd0);
+     assign {PSEL1,PSEL2} = ((state == SETUP || state == ENABLE) ? (PADDR[8] ? {1'b0,1'b1} : {1'b1,1'b0}) : 2'd0);
+
  
   // PSLVERR LOGIC
   always @(*)

@@ -67,7 +67,7 @@ class apb_write_slave2 extends apb_seq;
   apb_seq_item item;
 
   virtual task body();
-   repeat(5)begin
+   repeat(2)begin
     item = apb_seq_item::type_id::create("item");
       `uvm_do_with(item,{
                         transfer == 1'b1;

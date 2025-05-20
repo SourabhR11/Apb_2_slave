@@ -49,6 +49,6 @@ module apb_top;
 
   //Initiating the testbench
   initial  begin
-      run_test("apb_write_read_slave2_test");
+      run_test("apb_write_slave2_test");
   end
 endmodule

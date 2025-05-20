@@ -38,4 +38,4 @@ module slave2(
 
            else PREADY = 0;
         end
-    endmodule
+endmodule
