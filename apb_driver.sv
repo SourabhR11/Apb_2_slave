@@ -73,7 +73,7 @@ class apb_driver extends uvm_driver #(apb_seq_item);
         vif.drv_cb.apb_write_data <= packet.apb_write_data;
       end
  end
-        `uvm_info("DRIVER",$sformatf("[%0t] Transfer = %0d | read_write = %0d | apb_write_paddr = %0h | apb_write_data = %0d | apb_read_paddr = %0h",$time, vif.transfer, vif.READ_WRITE, vif.apb_write_paddr, vif.apb_write_data, vif.apb_read_paddr,),UVM_LOW)
+       // `uvm_info("DRIVER",$sformatf("[%0t] Transfer = %0d | read_write = %0d | apb_write_paddr = %0h | apb_write_data = %0d | apb_read_paddr = %0h",$time, vif.transfer, vif.READ_WRITE, vif.apb_write_paddr, vif.apb_write_data, vif.apb_read_paddr),UVM_LOW)
      
 
      `uvm_info("DRIVER","------------------------DRIVER DRIVING DATA-----------------------------------------",UVM_LOW); 

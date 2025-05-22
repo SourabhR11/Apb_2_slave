@@ -37,10 +37,10 @@ class apb_seq_item extends uvm_sequence_item;
 
   */
   constraint write_addr_range {if(transfer == 1 && READ_WRITE == 0)
-                                 apb_write_paddr inside {[0:255]};}
+                                 apb_write_paddr inside {[0:256]};}
  
   constraint read_addr_range {if(transfer == 1 && READ_WRITE == 1)
-                                apb_read_paddr inside {[0:255]};}
+                                apb_read_paddr inside {[0:256]};}
 
 
 endclass

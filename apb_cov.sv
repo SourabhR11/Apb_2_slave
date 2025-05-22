@@ -11,34 +11,69 @@ class apb_cov extends uvm_subscriber #(apb_seq_item);
     apb_seq_item op_seq;
   
     covergroup fun_cov_in;
-      coverpoint ip_seq.READ_WRITE {
+
+    apb_write_slave_select_cp: coverpoint ip_seq.apb_write_paddr[8] {
+        bins i_apb_write_paddr_0 = {1'b0};
+        bins i_apb_write_paddr_1 = {1'b1};
+        
+      }
+     
+    apb_read_slave_select_cp: coverpoint ip_seq.apb_read_paddr[8] {
+        bins i_apb_read_paddr_0 = {1'b0};
+        bins i_apb_read_paddr_1 = {1'b1};
+        
+      }
+    apb_read_write_cp: coverpoint ip_seq.READ_WRITE {
         bins i_READ_WRITE_0 = {1'b0};
         bins i_READ_WRITE_1 = {1'b1};
       }
-      coverpoint ip_seq.transfer {
+
+    apb_transfer_cp: coverpoint ip_seq.transfer {
          bins i_transfer_0 = {1'b0};
          bins i_transfer_1 = {1'b1};
-      }
-      coverpoint ip_seq.apb_write_paddr {
-        bins i_write_paddr_low = {[0:200]};
-        bins i_write_paddr_mid = {[201:300]};
-        bins i_write_paddr_high = {[301:511]};
-      }
-      coverpoint ip_seq.apb_read_paddr {
-         bins i_read_paddr_low = {[0:200]};
-         bins i_read_paddr_mid = {[201:350]};
-         bins i_read_paddr_high = {[351:511]};
+      } 
+
+    apb_write_paddr_cp: coverpoint ip_seq.apb_write_paddr {
+        bins i_write_paddr_low = {[0:80]};
+        bins i_write_paddr_mid = {[81:180]};
+        bins i_write_paddr_high = {[181:256]};
       }
 
-      coverpoint ip_seq.apb_write_data;
+     apb_read_paddr_cp: coverpoint ip_seq.apb_read_paddr {
+         bins i_read_paddr_low = {[0:80]};
+         bins i_read_paddr_mid = {[81:180]};
+         bins i_read_paddr_high = {[181:256]};
+      }
+
+     apb_write_data_cp: coverpoint ip_seq.apb_write_data {
+         bins i_write_data_low = {[0:80]};
+         bins i_write_data_mid = {[81:180]};
+         bins i_write_data_high = {[181:255]};
+      }
+
+   //cross coverage
+   
+   apb_read_write_cp_X_apb_write_slave_sel_cp: cross apb_write_slave_select_cp,apb_read_write_cp;
+ 
+   apb_read_write_cp_X_apb_read_slave_sel_cp: cross apb_read_slave_select_cp,apb_read_write_cp;
+
+   apb_read_write_cp_X_apb_transfer_cp: cross apb_read_write_cp,apb_transfer_cp;
+
+   apb_write_data_cp_X_apb_write_paddr_cp: cross apb_write_data_cp,apb_write_paddr_cp; 
+  
       
-    endgroup
+  endgroup
     
-    covergroup fun_cov_op;
-      
-      coverpoint op_seq.apb_read_data_out;
-      
-     endgroup
+  covergroup fun_cov_op;
+     
+       apb_read_data_cp: coverpoint ip_seq.apb_read_data_out {
+         bins i_read_data_low = {[0:80]};
+         bins i_read_data_mid = {[81:180]};
+         bins i_read_data_high = {[181:255]};
+      }
+
+
+  endgroup
 
     real ip_cov_val, op_cov_val;
   
