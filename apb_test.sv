@@ -39,6 +39,39 @@ class apb_test extends uvm_test;
   endtask
 endclass
 
+
+///////////test case: apb_transfer /////////////////////
+class apb_transfer_test extends apb_test;
+
+  //factory registration
+  `uvm_component_utils(apb_transfer_test)
+
+  //sequence handle
+  apb_transfer transfer_h;
+   
+  //class constructor  
+  function new(string name = "apb_transfer_test", uvm_component parent);
+    super.new(name,parent);
+  endfunction
+
+  virtual function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+   // write_slave1_h = apb_write_slave1::type_id::create("write_slave1_h");
+  endfunction
+
+  //run phase
+  task run_phase(uvm_phase phase);
+    phase.raise_objection(this);
+
+    transfer_h = apb_transfer::type_id::create("transfer_h");
+    transfer_h.start(env_h.active_h.seqr_h);
+
+    phase.drop_objection(this);
+    phase.phase_done.set_drain_time(this,30);
+  endtask
+endclass
+
+
 ///////////test case: apb_write_slave1 /////////////////////
 class apb_write_slave1_test extends apb_test;
 
@@ -62,9 +95,11 @@ class apb_write_slave1_test extends apb_test;
   task run_phase(uvm_phase phase);
     phase.raise_objection(this);
 
+    `uvm_info(get_type_name(),$sformatf("------ !! WRITE SLAVE 1 !! -------"),UVM_LOW)
+    repeat(5) begin
     write_slave1_h = apb_write_slave1::type_id::create("write_slave1_h");
     write_slave1_h.start(env_h.active_h.seqr_h);
-
+    end
     phase.drop_objection(this);
     phase.phase_done.set_drain_time(this,30);
   endtask
@@ -92,6 +127,7 @@ class apb_write_slave2_test extends apb_test;
   //run phase
   task run_phase(uvm_phase phase);
     phase.raise_objection(this);
+   `uvm_info(get_type_name(),$sformatf("------ !! WRITE SLAVE 2 !! -------"),UVM_LOW)
 
     write_slave2_h = apb_write_slave2::type_id::create("write_slave2_h");
     write_slave2_h.start(env_h.active_h.seqr_h);
@@ -122,6 +158,7 @@ class apb_read_slave1_test extends apb_test;
   //run phase
   task run_phase(uvm_phase phase);
     phase.raise_objection(this);
+   `uvm_info(get_type_name(),$sformatf("------ !! READ SLAVE 1 !! -------"),UVM_LOW)
 
     read_slave1_h = apb_read_slave1::type_id::create("read_slave1_h");
     read_slave1_h.start(env_h.active_h.seqr_h);
@@ -152,6 +189,7 @@ class apb_read_slave2_test extends apb_test;
   //run phase
   task run_phase(uvm_phase phase);
     phase.raise_objection(this);
+   `uvm_info(get_type_name(),$sformatf("------ !! READ SLAVE 2 !! -------"),UVM_LOW)
 
     read_slave2_h = apb_read_slave2::type_id::create("read_slave2_h");
     read_slave2_h.start(env_h.active_h.seqr_h);
@@ -178,15 +216,20 @@ class apb_write_read_slave1_test extends apb_test;
 
   virtual function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-   // write_slave1_h = apb_write_slave1::type_id::create("write_slave1_h");
+    write_read_slave1_h = apb_write_read_slave1::type_id::create("write_read_slave1_h");
+
   endfunction
+
   //run phase
   task run_phase(uvm_phase phase);
-    phase.raise_objection(this);
+    super.run_phase(phase);
+      phase.raise_objection(this);
 
-   write_read_slave1_h = apb_write_read_slave1::type_id::create("write_read_slave1_h");
+    `uvm_info(get_type_name(),$sformatf("------ !! WRITE READ SLAVE 1 !! -------"),UVM_LOW)
+     
+   repeat(5) begin
     write_read_slave1_h.start(env_h.active_h.seqr_h);
-
+    end
     phase.drop_objection(this);
     phase.phase_done.set_drain_time(this,100);
   endtask
@@ -215,6 +258,7 @@ class apb_write_read_slave2_test extends apb_test;
   //run phase
   task run_phase(uvm_phase phase);
     phase.raise_objection(this);
+   `uvm_info(get_type_name(),$sformatf("------ !! WRITE READ SLAVE 2 !! -------"),UVM_LOW)
 
     write_read_slave2_h = apb_write_read_slave2::type_id::create("write_read_slave2_h");
     write_read_slave2_h.start(env_h.active_h.seqr_h);
@@ -250,6 +294,7 @@ class apb_10write_1read_slave1_test extends apb_test;
   task run_phase(uvm_phase phase);
     phase.raise_objection(this);
 
+   `uvm_info(get_type_name(),$sformatf("------ !! 10_WRITE 1_READ SLAVE 1 !! -------"),UVM_LOW)
    write10_read1_slave1_h = apb_10write_1read_slave1::type_id::create("write10_read1_slave1_h");
     write10_read1_slave1_h.start(env_h.active_h.seqr_h);
 
@@ -281,6 +326,7 @@ class apb_10write_1read_slave2_test extends apb_test;
   task run_phase(uvm_phase phase);
     phase.raise_objection(this);
 
+   `uvm_info(get_type_name(),$sformatf("------ !! 10_WRITE  1_READ SLAVE 1 !! -------"),UVM_LOW)
    write10_read1_slave2_h = apb_10write_1read_slave2::type_id::create("write10_read1_slave2_h");
     write10_read1_slave2_h.start(env_h.active_h.seqr_h);
 

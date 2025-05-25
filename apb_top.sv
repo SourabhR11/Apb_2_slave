@@ -24,7 +24,8 @@ module apb_top;
 
   //driving reset
   initial begin
-//    PRESETn = 0;
+      PRESETn = 0;
+      #10;
       PRESETn = 1;
    
 
@@ -49,6 +50,6 @@ module apb_top;
 
   //Initiating the testbench
   initial  begin
-      run_test("apb_regression_test");
+      run_test("apb_write_read_slave1_test");
   end
 endmodule
