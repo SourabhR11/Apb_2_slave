@@ -22,16 +22,13 @@ module apb_top;
     forever #5 PCLK = ~PCLK;  
   end
 
-  //driving reset
+  // reset signal
   initial begin
       PRESETn = 0;
-      #10;
+      #20;
       PRESETn = 1;
-   
-
   end
 
-  //Instantiating DUT
   
   //Instantiating Interface
   apb_intf intf(
@@ -40,16 +37,11 @@ module apb_top;
 
   //defining configuration dtabase to access variables inside testbench components
   initial begin
-      uvm_config_db#(virtual apb_intf)::set(null, "*", "vif", intf);
-     // uvm_config_db#(virtual apb_intf.MON)::set(null, "*", "vif_mon_in", intf.MON);
-      //uvm_config_db#(virtual apb_intf.MON)::set(null, "*", "vif_mon_out", intf.MON);
-	     
-      $dumpfile("dump.vcd");
-      $dumpvars();  
+      uvm_config_db#(virtual apb_intf)::set(null, "*", "vif", intf);	     
   end
 
   //Initiating the testbench
   initial  begin
-      run_test("apb_write_read_slave1_test");
+      run_test("apb_write_read_slave2_test");
   end
 endmodule

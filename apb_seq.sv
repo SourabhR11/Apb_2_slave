@@ -76,7 +76,7 @@ class apb_write_slave1 extends apb_seq;
                         READ_WRITE == 1'b0;
                         apb_write_paddr[8] == 0;
                         })
-    //  `uvm_send(item);
+    `uvm_send(item);
 //  `uvm_info("In seq",UVM_LOW);
    end
   endtask
@@ -96,23 +96,17 @@ class apb_write_slave2 extends apb_seq;
   apb_seq_item item;
 
   virtual task body();
-   repeat(10)begin
+   repeat(5)begin
     item = apb_seq_item::type_id::create("item");
-     /* `uvm_do_with(item,{
+      `uvm_do_with(item, { 
                         transfer == 1'b1;
                         READ_WRITE == 1'b0;
-                        apb_write_paddr[8] == 1'b1;
+                        apb_write_paddr[8] == 1;
                         })
       `uvm_send(item);
-*/
 
-        start_item(item);
 
-    if(!(item.randomize()  with{item.transfer == 1; item.READ_WRITE == 0;item.apb_write_paddr[8] == 1; }))
-      `uvm_error("SEQ","randomization failed"); 
-   //  start_item(item);
-    finish_item(item);
-// `uvm_info("SEQ","In seq",UVM_LOW);
+
     end
   endtask
 endclass
@@ -184,7 +178,7 @@ class apb_write_read_slave1 extends apb_seq;
    bit [8:0]addr;
 
 virtual task body();
-//      repeat(5)begin
+      repeat(5)begin
      `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 0;item.apb_write_paddr[8] == 0;})
      `uvm_send(item);
      addr = item.apb_write_paddr;
@@ -192,7 +186,7 @@ virtual task body();
     `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 1; item.apb_read_paddr == addr;})
 
      `uvm_send(item);
- //   end
+      end
   endtask
 endclass
 
@@ -211,7 +205,7 @@ class apb_write_read_slave2 extends apb_seq;
    bit [8:0]addr;
 
 virtual task body();
-    repeat(10)begin
+    repeat(5)begin
       `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 0;item.apb_write_paddr[8] == 1;})
      `uvm_send(item);
      addr = item.apb_write_paddr;

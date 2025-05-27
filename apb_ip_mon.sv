@@ -20,6 +20,7 @@ class apb_ip_mon extends uvm_monitor;
   //build phase of input monitor	
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
+    packet = apb_seq_item::type_id::create("packet");
 
     //configuration database to get virtual interface handle
     if(!uvm_config_db #(virtual apb_intf) :: get(this, "", "vif", vif))
@@ -30,13 +31,12 @@ class apb_ip_mon extends uvm_monitor;
   endfunction
 
   //run phase of input monitor	
-  task run_phase(uvm_phase phase);
-    repeat(1)@(vif.mon_cb);
+  virtual task run_phase(uvm_phase phase);
+ // repeat(2)@(vif.mon_cb);
     `uvm_info("IP MONITOR","Inside run phase of input monitor",UVM_HIGH);
-     packet = apb_seq_item::type_id::create("packet");
 
     forever begin
-      @( vif.mon_cb)
+      @( vif.mon_cb) 
 
         //capturing data from virtual interface in the sequence item packet
         packet.READ_WRITE = vif.mon_cb.READ_WRITE;
@@ -52,7 +52,8 @@ class apb_ip_mon extends uvm_monitor;
         `uvm_info("INPUT MONITOR","----------------------------------Input monitor sending data------------------",UVM_LOW);
         packet.print();
         `uvm_info("INPUT MONITOR","------------------------------------------------------------------------------",UVM_LOW);
-      // repeat(2)@(vif.mon_cb);
+     // repeat(2)@(vif.mon_cb);
+    
     end	 
   endtask
 endclass

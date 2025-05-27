@@ -49,15 +49,17 @@ class apb_sb extends uvm_scoreboard;
   //write function for expected values   
   function void write_ip(apb_seq_item in_mon);
     in_queue.push_back(in_mon);
-    `uvm_info("Scoreboard",$sformatf("EXPECTED TRANSACTION: Queue size = %0h | READ_WRITE = %0h | transfer = %0h | apb_write_paddr = %0h | apb_write_data = %0h | apb_read_paddr = %0h | apb_read_data_out = %h ",in_queue.size(),in_mon.READ_WRITE,in_mon.transfer,in_mon.apb_write_paddr,in_mon.apb_write_data,in_mon.apb_read_paddr,in_mon.apb_read_data_out),UVM_LOW)
+   /* `uvm_info("Scoreboard",$sformatf("EXPECTED TRANSACTION: Queue size = %0h | READ_WRITE = %0h | transfer = %0h | apb_write_paddr = %0h | apb_write_data = %0h | apb_read_paddr = %0h | apb_read_data_out = %h ",in_queue.size(),in_mon.READ_WRITE,in_mon.transfer,in_mon.apb_write_paddr,in_mon.apb_write_data,in_mon.apb_read_paddr,in_mon.apb_read_data_out),UVM_LOW)
   $display("---------------------------------------------------------------------------------------");
+*/
   endfunction
   
   //write function of actual values
   function void write_op(apb_seq_item out_mon);
     out_queue.push_back(out_mon);
-     `uvm_info("Scoreboard",$sformatf("ACTUAL TRANSACTION: Queue size = %0h | READ_WRITE = %0h | transfer = %0h | apb_write_paddr = %0h | apb_write_data = %0h | apb_read_paddr = %0h | apb_read_data_out = %h ",out_queue.size(),out_mon.READ_WRITE,out_mon.transfer,out_mon.apb_write_paddr,out_mon.apb_write_data,out_mon.apb_read_paddr,out_mon.apb_read_data_out),UVM_LOW)
+  /*   `uvm_info("Scoreboard",$sformatf("ACTUAL TRANSACTION: Queue size = %0h | READ_WRITE = %0h | transfer = %0h | apb_write_paddr = %0h | apb_write_data = %0h | apb_read_paddr = %0h | apb_read_data_out = %h ",out_queue.size(),out_mon.READ_WRITE,out_mon.transfer,out_mon.apb_write_paddr,out_mon.apb_write_data,out_mon.apb_read_paddr,out_mon.apb_read_data_out),UVM_LOW)
   $display("---------------------------------------------------------------------------------------");
+*/
 
   endfunction
 
@@ -94,12 +96,12 @@ class apb_sb extends uvm_scoreboard;
       begin
         if((exp_trans.apb_write_data == act_trans.apb_write_data) && (exp_trans.apb_write_paddr == act_trans.apb_write_paddr))
           begin
-            `uvm_info("compare", $sformatf("-------------Test PASS------------\n Expected apb_write_data = %0h |  Actual apb_write_data = %0h |  Expected apb_write_paddr =%0h |  Actual apb_write_apddr = %0h ", exp_trans.apb_write_data, act_trans.apb_write_data, exp_trans.apb_write_paddr, act_trans.apb_write_paddr), UVM_LOW);
+            `uvm_info("compare", $sformatf("-------------WRITE  PASS------------\n Expected apb_write_data = %0h |  Actual apb_write_data = %0h |  Expected apb_write_paddr =%0h |  Actual apb_write_apddr = %0h ", exp_trans.apb_write_data, act_trans.apb_write_data, exp_trans.apb_write_paddr, act_trans.apb_write_paddr), UVM_LOW);
              pass++;
           end
         else
           begin
-            `uvm_info("compare", $sformatf("-------------Test FAIL------------\n Expected apb_write_data = %0h |  Actual apb_write_data = %0h  |  Expected apb_write_paddr =%0h | Actual apb_write_apddr = %0h ", exp_trans.apb_write_data, act_trans.apb_write_data, exp_trans.apb_write_paddr, act_trans.apb_write_paddr), UVM_LOW);
+            `uvm_info("compare", $sformatf("-------------WRITE  FAIL------------\n Expected apb_write_data = %0h |  Actual apb_write_data = %0h  |  Expected apb_write_paddr =%0h | Actual apb_write_apddr = %0h ", exp_trans.apb_write_data, act_trans.apb_write_data, exp_trans.apb_write_paddr, act_trans.apb_write_paddr), UVM_LOW);
              fail++;
           end
       end
@@ -108,12 +110,12 @@ class apb_sb extends uvm_scoreboard;
       begin
              if((exp_trans.apb_read_data_out == act_trans.apb_read_data_out) && (exp_trans.apb_read_paddr == act_trans.apb_read_paddr))
           begin
-            `uvm_info("compare", $sformatf("-------------Test PASS------------\n Expected apb_read_data = %0h  | Actual apb_read_data = %0h  | Expected apb_read_paddr =%0h  | Actual apb_read_apddr = %0h ", exp_trans.apb_read_data_out, act_trans.apb_read_data_out, exp_trans.apb_read_paddr, act_trans.apb_read_paddr), UVM_LOW);
+            `uvm_info("compare", $sformatf("-------------READ  PASS------------\n Expected apb_read_data = %0h  | Actual apb_read_data = %0h  | Expected apb_read_paddr =%0h  | Actual apb_read_apddr = %0h ", exp_trans.apb_read_data_out, act_trans.apb_read_data_out, exp_trans.apb_read_paddr, act_trans.apb_read_paddr), UVM_LOW);
              pass++;
           end
         else
           begin
-            `uvm_info("compare", $sformatf("-------------Test FAIL------------\n Expected apb_read_data_out = %0h  | Actual apb_read_data_out = %0h |  Expected apb_read_paddr =%0h | Actual apb_read_addr = %0h ", exp_trans.apb_read_data_out, act_trans.apb_read_data_out, exp_trans.apb_read_paddr, act_trans.apb_read_paddr), UVM_LOW);
+            `uvm_info("compare", $sformatf("-------------READ  FAIL------------\n Expected apb_read_data_out = %0h  | Actual apb_read_data_out = %0h |  Expected apb_read_paddr =%0h | Actual apb_read_addr = %0h ", exp_trans.apb_read_data_out, act_trans.apb_read_data_out, exp_trans.apb_read_paddr, act_trans.apb_read_paddr), UVM_LOW);
              fail++;
           end
       end
