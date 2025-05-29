@@ -95,7 +95,6 @@ class apb_write_slave1_test extends apb_test;
   task run_phase(uvm_phase phase);
     phase.raise_objection(this);
 
-    `uvm_info(get_type_name(),$sformatf("------ !! WRITE SLAVE 1 !! -------"),UVM_LOW)
 //    repeat(5) begin
     write_slave1_h = apb_write_slave1::type_id::create("write_slave1_h");
     write_slave1_h.start(env_h.active_h.seqr_h);
@@ -127,7 +126,6 @@ class apb_write_slave2_test extends apb_test;
   //run phase
   task run_phase(uvm_phase phase);
     phase.raise_objection(this);
-   `uvm_info(get_type_name(),$sformatf("------ !! WRITE SLAVE 2 !! -------"),UVM_LOW)
 
     write_slave2_h = apb_write_slave2::type_id::create("write_slave2_h");
     write_slave2_h.start(env_h.active_h.seqr_h);
@@ -158,7 +156,6 @@ class apb_read_slave1_test extends apb_test;
   //run phase
   task run_phase(uvm_phase phase);
     phase.raise_objection(this);
-   `uvm_info(get_type_name(),$sformatf("------ !! READ SLAVE 1 !! -------"),UVM_LOW)
 
     read_slave1_h = apb_read_slave1::type_id::create("read_slave1_h");
     read_slave1_h.start(env_h.active_h.seqr_h);
@@ -189,7 +186,6 @@ class apb_read_slave2_test extends apb_test;
   //run phase
   task run_phase(uvm_phase phase);
     phase.raise_objection(this);
-   `uvm_info(get_type_name(),$sformatf("------ !! READ SLAVE 2 !! -------"),UVM_LOW)
 
     read_slave2_h = apb_read_slave2::type_id::create("read_slave2_h");
     read_slave2_h.start(env_h.active_h.seqr_h);
@@ -225,7 +221,6 @@ class apb_write_read_slave1_test extends apb_test;
     super.run_phase(phase);
       phase.raise_objection(this);
 
-    `uvm_info(get_type_name(),$sformatf("------ !! WRITE READ SLAVE 1 !! -------"),UVM_LOW)
      
   // repeat(5) begin
     write_read_slave1_h.start(env_h.active_h.seqr_h);
@@ -258,7 +253,6 @@ class apb_write_read_slave2_test extends apb_test;
   //run phase
   task run_phase(uvm_phase phase);
     phase.raise_objection(this);
-   `uvm_info(get_type_name(),$sformatf("------ !! WRITE READ SLAVE 2 !! -------"),UVM_LOW)
 
     write_read_slave2_h = apb_write_read_slave2::type_id::create("write_read_slave2_h");
     write_read_slave2_h.start(env_h.active_h.seqr_h);
@@ -273,16 +267,16 @@ endclass
 
 
 ///////////test case: apb_10write_1read_slave1 /////////////////////
-class apb_10write_1read_slave1_test extends apb_test;
+class apb_3write_1read_slave1_test extends apb_test;
 
   //factory registration
-  `uvm_component_utils(apb_10write_1read_slave1_test)
+  `uvm_component_utils(apb_3write_1read_slave1_test)
 
   //sequence handle
-  apb_10write_1read_slave1 write10_read1_slave1_h;
+  apb_3write_1read_slave1 write3_read1_slave1_h;
    
   //class constructor  
-  function new(string name = "apb_10write_1read_slave1_test", uvm_component parent);
+  function new(string name = "apb_3write_1read_slave1_test", uvm_component parent);
     super.new(name,parent);
   endfunction
 
@@ -294,9 +288,8 @@ class apb_10write_1read_slave1_test extends apb_test;
   task run_phase(uvm_phase phase);
     phase.raise_objection(this);
 
-   `uvm_info(get_type_name(),$sformatf("------ !! 10_WRITE 1_READ SLAVE 1 !! -------"),UVM_LOW)
-   write10_read1_slave1_h = apb_10write_1read_slave1::type_id::create("write10_read1_slave1_h");
-    write10_read1_slave1_h.start(env_h.active_h.seqr_h);
+   write3_read1_slave1_h = apb_3write_1read_slave1::type_id::create("write3_read1_slave1_h");
+    write3_read1_slave1_h.start(env_h.active_h.seqr_h);
 
     phase.drop_objection(this);
     phase.phase_done.set_drain_time(this,100);
@@ -304,17 +297,17 @@ class apb_10write_1read_slave1_test extends apb_test;
 endclass
 
 
-///////////test case: apb_10write_1read_slave2 /////////////////////
-class apb_10write_1read_slave2_test extends apb_test;
+///////////test case: apb_3write_1read_slave2 /////////////////////
+class apb_3write_1read_slave2_test extends apb_test;
 
   //factory registration
-  `uvm_component_utils(apb_10write_1read_slave2_test)
+  `uvm_component_utils(apb_3write_1read_slave2_test)
 
   //sequence handle
-  apb_10write_1read_slave2 write10_read1_slave2_h;
+  apb_3write_1read_slave2 write3_read1_slave2_h;
    
   //class constructor  
-  function new(string name = "apb_10write_1read_slave2_test", uvm_component parent);
+  function new(string name = "apb_3write_1read_slave2_test", uvm_component parent);
     super.new(name,parent);
   endfunction
 
@@ -326,9 +319,8 @@ class apb_10write_1read_slave2_test extends apb_test;
   task run_phase(uvm_phase phase);
     phase.raise_objection(this);
 
-   `uvm_info(get_type_name(),$sformatf("------ !! 10_WRITE  1_READ SLAVE 1 !! -------"),UVM_LOW)
-   write10_read1_slave2_h = apb_10write_1read_slave2::type_id::create("write10_read1_slave2_h");
-    write10_read1_slave2_h.start(env_h.active_h.seqr_h);
+   write3_read1_slave2_h = apb_3write_1read_slave2::type_id::create("write3_read1_slave2_h");
+    write3_read1_slave2_h.start(env_h.active_h.seqr_h);
 
     phase.drop_objection(this);
     phase.phase_done.set_drain_time(this,100);
@@ -347,8 +339,8 @@ class apb_regression_test extends apb_test;
 //  apb_read_slave2 read_slave2_h;
   apb_write_read_slave1 write_read_slave1_h;
   apb_write_read_slave2 write_read_slave2_h;
-  apb_10write_1read_slave1 write10_read1_slave1_h;
-  apb_10write_1read_slave2 write10_read1_slave2_h;
+  apb_3write_1read_slave1 write3_read1_slave1_h;
+  apb_3write_1read_slave2 write3_read1_slave2_h;
 
   function new (string name = "alu_regression_test", uvm_component parent);
     super.new (name, parent);
@@ -363,8 +355,8 @@ class apb_regression_test extends apb_test;
   //  read_slave2_h = apb_read_slave2::type_id::create("read_slave2_h");
     write_read_slave1_h = apb_write_read_slave1::type_id::create("write_read_slave1_h");
     write_read_slave2_h = apb_write_read_slave2::type_id::create("write_read_slave2_h");
-    write10_read1_slave1_h = apb_10write_1read_slave1::type_id::create("write10_read1_slave1_h");
-    write10_read1_slave2_h = apb_10write_1read_slave2::type_id::create("write10_read1_slave2_h");
+    write3_read1_slave1_h = apb_3write_1read_slave1::type_id::create("write3_read1_slave1_h");
+    write3_read1_slave2_h = apb_3write_1read_slave2::type_id::create("write3_read1_slave2_h");
 
   endfunction
 
@@ -402,13 +394,13 @@ class apb_regression_test extends apb_test;
   
 
     phase.raise_objection (this);
-    write10_read1_slave1_h.start(env_h.active_h.seqr_h);
+    write3_read1_slave1_h.start(env_h.active_h.seqr_h);
     phase.drop_objection (this);
     phase.phase_done.set_drain_time(this,100);
 
 
     phase.raise_objection (this);
-    write10_read1_slave2_h.start(env_h.active_h.seqr_h);
+    write3_read1_slave2_h.start(env_h.active_h.seqr_h);
     phase.drop_objection (this);
     phase.phase_done.set_drain_time(this,100);
  

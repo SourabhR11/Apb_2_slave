@@ -22,7 +22,7 @@ class apb_sb extends uvm_scoreboard;
   apb_seq_item  out_queue[$];
   apb_seq_item  in_queue[$];
 
-  logic [`DW-1:0] apb_mem [255:0];
+  logic [`DW-1:0] apb_mem [511:0];
   
   int pass = 0;
   int fail = 0;
@@ -52,6 +52,7 @@ class apb_sb extends uvm_scoreboard;
    /* `uvm_info("Scoreboard",$sformatf("EXPECTED TRANSACTION: Queue size = %0h | READ_WRITE = %0h | transfer = %0h | apb_write_paddr = %0h | apb_write_data = %0h | apb_read_paddr = %0h | apb_read_data_out = %h ",in_queue.size(),in_mon.READ_WRITE,in_mon.transfer,in_mon.apb_write_paddr,in_mon.apb_write_data,in_mon.apb_read_paddr,in_mon.apb_read_data_out),UVM_LOW)
   $display("---------------------------------------------------------------------------------------");
 */
+  in_mon.print;
   endfunction
   
   //write function of actual values
@@ -60,6 +61,7 @@ class apb_sb extends uvm_scoreboard;
   /*   `uvm_info("Scoreboard",$sformatf("ACTUAL TRANSACTION: Queue size = %0h | READ_WRITE = %0h | transfer = %0h | apb_write_paddr = %0h | apb_write_data = %0h | apb_read_paddr = %0h | apb_read_data_out = %h ",out_queue.size(),out_mon.READ_WRITE,out_mon.transfer,out_mon.apb_write_paddr,out_mon.apb_write_data,out_mon.apb_read_paddr,out_mon.apb_read_data_out),UVM_LOW)
   $display("---------------------------------------------------------------------------------------");
 */
+  out_mon.print;
 
   endfunction
 
@@ -86,7 +88,6 @@ class apb_sb extends uvm_scoreboard;
                     exp_trans.apb_read_data_out =  apb_mem[exp_trans.apb_read_paddr];
                   end
               end
-//       $display("@@@@@@@@@@@@@@@@@@@@@@@@@ For comparing exp trans = %d | act trans = %d",exp_trans.apb_read_data_out,act_trans.apb_read_data_out);
        compare(exp_trans,act_trans);
      end
     endtask

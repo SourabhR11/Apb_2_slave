@@ -32,11 +32,11 @@ class apb_ip_mon extends uvm_monitor;
 
   //run phase of input monitor	
   virtual task run_phase(uvm_phase phase);
- // repeat(2)@(vif.mon_cb);
+ //  repeat(2)@(vif.mon_cb);
     `uvm_info("IP MONITOR","Inside run phase of input monitor",UVM_HIGH);
 
     forever begin
-      @( vif.mon_cb) 
+      @( vif.mon_cb) begin 
 
         //capturing data from virtual interface in the sequence item packet
         packet.READ_WRITE = vif.mon_cb.READ_WRITE;
@@ -53,7 +53,7 @@ class apb_ip_mon extends uvm_monitor;
         packet.print();
         `uvm_info("INPUT MONITOR","------------------------------------------------------------------------------",UVM_LOW);
      // repeat(2)@(vif.mon_cb);
-    
+      end
     end	 
   endtask
 endclass

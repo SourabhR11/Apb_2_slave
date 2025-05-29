@@ -1,0 +1,21 @@
+var g_data = {
+g773:[{dummy:0},
+{name:'fun_cov_in',f:1,type:1,id:774,tb:'38',h:'36',m:'2',hp:'94.73%',cov:['96.71%','G'],g:'100.00%',gp:['96.71%','G'],opts:[[],['merge_instance','auto(true)']],parent:'773'},
+{name:'fun_cov_op',f:1,type:1,id:786,tb:'3',h:'3',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],opts:[[],['merge_instance','auto(true)']],parent:'773'}],
+c774:{name:'fun_cov_in',type:1,pHash:'773',pPath:'/apb_top_sv_unit/apb_cov',totals:[17,17,'100.00%','G',21,19,'90.47%','G'],cvp:[{dummy:0},
+{name:'apb_write_slave_select_cp',f:1,type:4,id:775,tb:'2',h:'2',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],hasb:1,parent:'774'},
+{name:'apb_read_slave_select_cp',f:1,type:4,id:776,tb:'2',h:'2',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],hasb:1,parent:'774'},
+{name:'apb_read_write_cp',f:1,type:4,id:777,tb:'2',h:'2',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],hasb:1,parent:'774'},
+{name:'apb_transfer_cp',f:1,type:4,id:778,tb:'2',h:'2',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],hasb:1,parent:'774'},
+{name:'apb_write_paddr_cp',f:1,type:4,id:779,tb:'3',h:'3',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],hasb:1,parent:'774'},
+{name:'apb_read_paddr_cp',f:1,type:4,id:780,tb:'3',h:'3',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],hasb:1,parent:'774'},
+{name:'apb_write_data_cp',f:1,type:4,id:781,tb:'3',h:'3',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],hasb:1,parent:'774'}],crx:[{dummy:0},
+{name:'apb_read_write_cp_X_apb_write_slave_sel_cp',f:1,type:5,id:782,tb:'4',h:'4',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],hasb:1,parent:'774',cross:['apb_write_slave_select_cp','apb_read_write_cp']},
+{name:'apb_read_write_cp_X_apb_read_slave_sel_cp',f:1,type:5,id:783,tb:'4',h:'4',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],hasb:1,parent:'774',cross:['apb_read_slave_select_cp','apb_read_write_cp']},
+{name:'apb_read_write_cp_X_apb_transfer_cp',f:1,type:5,id:784,tb:'4',h:'3',m:'1',hp:'75.00%',cov:['75.00%','Y'],g:'100.00%',gp:['75.00%','Y'],hasb:1,parent:'774',cross:['apb_read_write_cp','apb_transfer_cp']},
+{name:'apb_write_data_cp_X_apb_write_paddr_cp',f:1,type:5,id:785,tb:'9',h:'8',m:'1',hp:'88.88%',cov:['88.88%','Y'],g:'100.00%',gp:['88.88%','Y'],hasb:1,parent:'774',cross:['apb_write_data_cp','apb_write_paddr_cp']}]},
+c786:{name:'fun_cov_op',type:1,pHash:'773',pPath:'/apb_top_sv_unit/apb_cov',totals:[3,3,'100.00%','G',0,0,'0.00%','R'],cvp:[{dummy:0},
+{name:'apb_read_data_cp',f:1,type:4,id:787,tb:'3',h:'3',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],hasb:1,parent:'786'}],crx:[{dummy:0}]},
+dummyEnd:0
+};
+processCovergroupsData(g_data);

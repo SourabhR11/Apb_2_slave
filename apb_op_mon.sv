@@ -32,7 +32,7 @@ class apb_op_mon extends uvm_monitor;
 
   //run phase of output monitor	    
   task run_phase(uvm_phase phase);
-   repeat(3) @(vif.mon_cb);
+   repeat(1) @(vif.mon_cb);
    `uvm_info("OP MONITOR","Inside run phase of op monitor",UVM_HIGH);
    forever begin
      @(vif.mon_cb)
@@ -45,15 +45,15 @@ class apb_op_mon extends uvm_monitor;
          packet.apb_read_data_out = vif.apb_read_data_out;
        end
        else begin
-         packet.apb_write_paddr = vif.mon_cb.apb_write_paddr;  
-         packet.apb_write_data = vif.mon_cb.apb_write_data;
+         packet.apb_write_paddr = vif.apb_write_paddr;  
+         packet.apb_write_data = vif.apb_write_data;
        end 
        op_mon_port.write(packet);
 
        `uvm_info("OUTPUT_MONITOR","---------------------Output monitor sending data-----------------------------------",UVM_LOW);
        packet.print();
        `uvm_info("OUTPUT_MONITOR","-----------------------------------------------------------------------------------",UVM_LOW); 
-       repeat(3)@(vif.mon_cb);    
+       repeat(1)@(vif.mon_cb);    
       
     end
   endtask

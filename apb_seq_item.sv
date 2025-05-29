@@ -25,7 +25,7 @@ class apb_seq_item extends uvm_sequence_item;
   endfunction
 
   //constraint slave_sel { soft apb_write_paddr[8] dist {0  := 50, 1 := 50};}
- /* 
+/* 
   constraint deassert_transfer {if(! transfer ) {
     READ_WRITE == 0;
     apb_read_paddr == 0;

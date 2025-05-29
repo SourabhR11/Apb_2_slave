@@ -44,9 +44,9 @@ class apb_driver extends uvm_driver #(apb_seq_item);
   
 //drive task 
  virtual task drive();
-  repeat(1) @(vif.drv_cb);
- // @(vif.drv_cb) begin
-  /* if(! vif.PRESETn)
+ repeat(1) @(vif.drv_cb);
+   @(vif.drv_cb) begin
+   if(! vif.PRESETn)
      begin
 
       //if reset deasserted drive the signal as zero
@@ -59,10 +59,10 @@ class apb_driver extends uvm_driver #(apb_seq_item);
      end
    else
    begin
-*/
+
   // drive data
-    @(vif.drv_cb)
-    begin
+//    @(vif.drv_cb)
+//    begin
     vif.drv_cb.transfer <= packet.transfer;
     vif.drv_cb.READ_WRITE <= packet.READ_WRITE;
     
@@ -75,13 +75,14 @@ class apb_driver extends uvm_driver #(apb_seq_item);
         vif.drv_cb.apb_write_paddr <= packet.apb_write_paddr;
         vif.drv_cb.apb_write_data <= packet.apb_write_data;
       end
- 
-     
+ end
+end
 
      `uvm_info("DRIVER","------------------------DRIVER DRIVING DATA-----------------------------------------",UVM_LOW); 
      packet.print();
      `uvm_info("DRIVER","------------------------------------------------------------------------------------",UVM_LOW);
-end 
+
+ 
 end
  endtask
 endclass

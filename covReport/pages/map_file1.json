@@ -1,0 +1,8 @@
+var g_data = {'dummy':{null},
+'/apb_top/intf':{h:'16',a:1,z:1},
+'work.apb_top':{h:'4',z:1},
+'/apb_top':{h:'11',z:1},
+'/apb_top_sv_unit/apb_cov':{h:'773',g:1,z:1},
+'work.apb_top_sv_unit':{h:'3',z:1},
+'/apb_top_sv_unit':{h:'736',z:1},
+'work.apb_intf':{h:'9',a:1,z:1}};

@@ -38,7 +38,7 @@ interface apb_intf(input bit PCLK, input bit PRESETn);
   modport MON (clocking mon_cb);
 
 ///////// Assertion  Properties ///////////////
-
+/*
 //parametric property to check signal is not X/Z
 property ppt_signal_stability (signal) ;
    @(posedge PCLK) disable iff(!PRESETn)
@@ -70,15 +70,56 @@ apb_read_data_out_never_x    : assert property (ppt_signal_stability(apb_read_da
                           $info("[%0t] Info: apb_read_data_out is valid.", $time) ;
                     else $error("[%0t] Error! apb_read_data_out is unknown (=X/Z)", $time) ;
 
+*/
+//check write address stability
+property ppt_write_address_validity;
+  @(posedge PCLK) disable iff (!PRESETn)
+  (transfer && !READ_WRITE |-> !$isunknown(apb_write_paddr));
+endproperty
+
+  assert property (ppt_write_address_validity)
+    $info("WRITE_ADDRESS_VALIDITY: Assertion pass");
+  else $error("WRITE_ADDRESS_VALIDITY: Assertion pass");
+ 
+//check read address validity
+property ppt_read_address_validity;
+  @(posedge PCLK) disable iff (!PRESETn)
+  (transfer && READ_WRITE) |-> !$isunknown(apb_read_paddr);
+endproperty
+
+  assert property (ppt_read_address_validity)
+    $info("READ_ADDRESS_VALIDITY: Assertion pass");
+  else $error("READ_ADDRESS_VALIDITY: Assertion fail");
+
+
+//check write data validity
+property ppt_write_data_validity;
+  @(posedge PCLK) disable iff (!PRESETn)
+  (transfer && !READ_WRITE) |-> !$isunknown(apb_write_data);
+endproperty
+
+  assert property (ppt_write_data_validity)
+    $info("WRITE_DATA_VALIDITY: Assertion pass");
+  else $error("WRITE_DATA_VALIDITY: ssertion fail");
+ 
+
+//check read data validity
+property ppt_read_data_validity;
+  @(posedge PCLK) disable iff (!PRESETn)
+  (transfer && READ_WRITE) |-> !$isunknown(apb_read_data_out);
+endproperty
+
+  assert property (ppt_read_data_validity)
+    $info("READ_DATA_VALIDITY: Assertion pass");
+  else $error("READ_DATA_VALIDITY: Assertion fail");
 
 //check write address stability
-
 property ppt_write_addr_stability;
     @(posedge PCLK) disable iff (!PRESETn)
-      transfer && !READ_WRITE |=> $stable(apb_write_paddr);
+      transfer && !READ_WRITE |-> $stable(apb_write_paddr);
   endproperty
  
-  write_address_stability: assert property (ppt_write_addr_stability)
+   assert property (ppt_write_addr_stability)
     $display("WRITE_ADDRESS_STABILITY: ASSERTION PASS");
   else
     $error("WRITE_ADDRESS_STABILITY: ASSERTION FAIL");
@@ -88,10 +129,10 @@ property ppt_write_addr_stability;
 
 property ppt_read_addr_stability;
     @(posedge PCLK) disable iff (!PRESETn)
-      transfer && READ_WRITE |=> $stable(apb_read_paddr);
+      transfer && READ_WRITE |-> $stable(apb_read_paddr);
   endproperty
  
-  read_address_stability: assert property (ppt_read_addr_stability)
+  assert property (ppt_read_addr_stability)
     $display("READ_ADDRESS_STABILITY: ASSERTION PASS");
   else
     $error("READ_ADDRESS_STABILITY: ASSERTION FAIL");
