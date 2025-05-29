@@ -98,6 +98,7 @@ class apb_write_slave2 extends apb_seq;
   apb_seq_item item;
 
   virtual task body();
+   `uvm_info(get_type_name(),"######  Write slave2 sequence ######",UVM_LOW);
    repeat(5)begin
     item = apb_seq_item::type_id::create("item");
       `uvm_do_with(item, { 
@@ -106,10 +107,9 @@ class apb_write_slave2 extends apb_seq;
                         apb_write_paddr[8] == 1;
                         })
  //     `uvm_send(item);
-
-
-
-    end
+      end
+     `uvm_info(get_type_name(),"###### End Write slave2 sequence ######",UVM_LOW);
+   
   endtask
 endclass
                        
@@ -128,6 +128,7 @@ class apb_read_slave1 extends apb_seq;
 
   apb_seq_item item;
   virtual task body();
+    `uvm_info(get_type_name(),"###### Read slave1 sequence ######",UVM_LOW);
     repeat(5) begin
     item = apb_seq_item::type_id::create("item");
     `uvm_do_with(item,{
@@ -136,7 +137,8 @@ class apb_read_slave1 extends apb_seq;
                        apb_read_paddr[8] == 1'b0;
                       })
  //  `uvm_send(item);
-   end
+       end
+    `uvm_info(get_type_name(),"###### End Read slave1 sequence ######",UVM_LOW);
   endtask
 endclass
 
@@ -153,6 +155,7 @@ class apb_read_slave2 extends apb_seq;
 
   apb_seq_item item;
   virtual task body();
+    `uvm_info(get_type_name(),"###### Read slave2 sequence ######",UVM_LOW);
     repeat(5) begin
     item = apb_seq_item::type_id::create("item");
     `uvm_do_with(item,{
@@ -161,7 +164,9 @@ class apb_read_slave2 extends apb_seq;
                        apb_read_paddr[8] == 1'b1;
                       })
  //  `uvm_send(item);
-   end
+       end
+      `uvm_info(get_type_name(),"###### End Read slave sequence ######",UVM_LOW);
+ 
   endtask
 endclass
 
@@ -180,6 +185,7 @@ class apb_write_read_slave1 extends apb_seq;
    bit [8:0]addr;
 
 virtual task body();
+  `uvm_info(get_type_name(),"######  Write Read slave1 sequence ######",UVM_LOW);
       repeat(5)begin
      `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 0;item.apb_write_paddr[8] == 0;})
     // `uvm_send(item);
@@ -188,7 +194,9 @@ virtual task body();
     `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 1; item.apb_read_paddr == addr;})
 
    //  `uvm_send(item);
-      end
+         end
+        `uvm_info(get_type_name(),"###### End Write Read slave1 sequence ######",UVM_LOW);
+    
   endtask
 endclass
 
@@ -207,6 +215,7 @@ class apb_write_read_slave2 extends apb_seq;
    bit [8:0]addr;
 
 virtual task body();
+  `uvm_info(get_type_name(),"######  Write  Read slave2 sequence ######",UVM_LOW);
     repeat(5)begin
       `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 0;item.apb_write_paddr[8] == 1;})
     // `uvm_send(item);
@@ -214,8 +223,9 @@ virtual task body();
  
     `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 1; item.apb_read_paddr == addr;})
 
-    // `uvm_send(item);
+    // `uvm_send(item)    
     end
+  `uvm_info(get_type_name(),"###### End Write Read slave2 sequence ######",UVM_LOW);
   endtask
 endclass
 
@@ -234,6 +244,7 @@ class apb_3write_1read_slave1 extends apb_seq;
   bit [8:0] addr;
 
 virtual task body();
+  `uvm_info(get_type_name(),"###### 3Write 1Read slave1 sequence ######",UVM_LOW);
    // repeat(10)begin
   // for (int i = 0; i < 4; i++) begin
      `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 0; item.apb_write_paddr[8] == 0;})
@@ -246,7 +257,7 @@ virtual task body();
      `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 1; item.apb_read_paddr == addr;})
     // `uvm_send(item);
     
-    
+  `uvm_info(get_type_name(),"###### End 3Write 1Read slave1 sequence ######",UVM_LOW);
   endtask
 endclass
 
@@ -264,6 +275,7 @@ class apb_3write_1read_slave2 extends apb_seq;
 
   bit [8:0] addr;
 virtual task body();
+  `uvm_info(get_type_name(),"###### 3Write 1Read slave2 sequence ######",UVM_LOW);
    // repeat(10)begin
   // for (int i = 0; i < 4; i++) begin
      `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 0; item.apb_write_paddr[8] == 1;})
@@ -275,7 +287,7 @@ virtual task body();
     end
      `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 1; item.apb_read_paddr == addr;})
     // `uvm_send(item);
-    
+  `uvm_info(get_type_name(),"###### End 3Write 1Read slave2 sequence ######",UVM_LOW);
     
   endtask
 
