@@ -44,24 +44,25 @@ class apb_driver extends uvm_driver #(apb_seq_item);
   
 //drive task 
  virtual task drive();
- repeat(1) @(vif.drv_cb);
+   repeat(1) @(vif.drv_cb);
    @(vif.drv_cb) begin
    if(! vif.PRESETn)
      begin
 
       //if reset deasserted drive the signal as zero
-    //  @(posedge vif.pclk);
-       vif.transfer <= 'b0;
+       @(posedge vif.PCLK);
+       vif.drv_cb.transfer <= 'b0;
        vif.drv_cb.READ_WRITE <= 'bx;
-       vif.apb_read_paddr <= 'b0;
-       vif.apb_write_paddr <= 'b0;
-       vif.apb_write_data <= 'b0;
-     end
+       vif.drv_cb.apb_read_paddr <= 'b0;
+       vif.drv_cb.apb_write_paddr <= 'b0;
+       vif.drv_cb.apb_write_data <= 'b0;
+ //      vif.drv_cb.apb_read_data_out <= 'b0;
+    end
    else
    begin
-
+  // repeat(2) @(vif.drv_cb);
   // drive data
-//    @(vif.drv_cb)
+  //  @(vif.drv_cb)
 //    begin
     vif.drv_cb.transfer <= packet.transfer;
     vif.drv_cb.READ_WRITE <= packet.READ_WRITE;

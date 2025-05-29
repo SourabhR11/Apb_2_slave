@@ -6,7 +6,7 @@ class apb_seq_item extends uvm_sequence_item;
   rand bit [`AW-1:0] apb_write_paddr;  // Address for Write operation
   rand bit [`AW-1:0] apb_read_paddr;   // Address for Read operation
   rand bit [`DW-1:0] apb_write_data;   // Data to be written during Write
-  logic [`DW-1:0] apb_read_data_out;     // Data received from slave after read
+  bit [`DW-1:0] apb_read_data_out;     // Data received from slave after read
 
   
   //uvm fsctory registration and field macros

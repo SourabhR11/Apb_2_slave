@@ -1,9 +1,9 @@
 var g_data = {
 z16:{prod:'Questa',reporttype:'in',scopes:[{s:'11',b:'1',val:'apb_top'},{link:'z.htm?f=1&s=16',val:'intf'}],du:{val:'work.apb_intf',link:'z.htm?f=1&s=16'},lang:'SystemVerilog',src:{z:'apb_top.sv'},summaryTables:{loctable:{
 headers:['Coverage Type', 'Bins', 'Hits', 'Misses', 'Weight', '% Hit', 'Coverage'],
-totalhits:{class:'odd_r', val:'50.00%'},avgw:{class:'bgYellow', val:'50.00%'},
+totalhits:{class:'odd_r', val:'66.66%'},avgw:{class:'bgYellow', val:'66.66%'},
 data:[
-{link:{class:'odd',val:'a.htm?f=1&s=16,Assertions'},tb:{class:'odd_r', val:'6'},cb:{class:'odd_r', val:'3'},ms:{class:'odd_r', val:'3'},wt:{class:'odd_r', val:'1'},hp:{class:'odd_r', val:'50.00%'},cp:{class:'bgYellow', val:'50.00%'}}
+{link:{class:'odd',val:'a.htm?f=1&s=16,Assertions'},tb:{class:'odd_r', val:'6'},cb:{class:'odd_r', val:'4'},ms:{class:'odd_r', val:'2'},wt:{class:'odd_r', val:'1'},hp:{class:'odd_r', val:'66.66%'},cp:{class:'bgYellow', val:'66.66%'}}
 ]
 }
 }
@@ -11,14 +11,14 @@ data:[
 z4:{prod:'Questa',reporttype:'du',duname:'work.apb_top',lang:'SystemVerilog',src:{z:'apb_top.sv'}},
 z11:{prod:'Questa',reporttype:'in',scopes:[{link:'z.htm?f=1&s=11',val:'apb_top'}],du:{val:'work.apb_top',link:'z.htm?f=1&s=11'},lang:'SystemVerilog',src:{z:'apb_top.sv'},summaryTables:{
 headers:['Assertion'],
-instances:[{parent:'0',ln:'TOTAL',covs:[{class:'bgYellow', val:'50.00'},{class:'bgYellow', val:'50.00'}]},
-{parent:'1',link:'z.htm?f=1&s=16',ln:'intf',covs:[{class:'bgYellow', val:'50.00'},{class:'bgYellow', val:'50.00'}]},
+instances:[{parent:'0',ln:'TOTAL',covs:[{class:'bgYellow', val:'66.66'},{class:'bgYellow', val:'66.66'}]},
+{parent:'1',link:'z.htm?f=1&s=16',ln:'intf',covs:[{class:'bgYellow', val:'66.66'},{class:'bgYellow', val:'66.66'}]},
 ]
 ,rectable:{
 headers:['Coverage Type', 'Bins', 'Hits', 'Misses', 'Weight', '% Hit', 'Coverage'],
-totalhits:{class:'odd_r', val:'50.00%'},avgw:{class:'bgYellow', val:'50.00%'},
+totalhits:{class:'odd_r', val:'66.66%'},avgw:{class:'bgYellow', val:'66.66%'},
 data:[
-{link:{class:'odd',val:'Assertions'},tb:{class:'odd_r', val:'6'},cb:{class:'odd_r', val:'3'},ms:{class:'odd_r', val:'3'},wt:{class:'odd_r', val:'1'},hp:{class:'odd_r', val:'50.00%'},cp:{class:'bgYellow', val:'50.00%'}}
+{link:{class:'odd',val:'Assertions'},tb:{class:'odd_r', val:'6'},cb:{class:'odd_r', val:'4'},ms:{class:'odd_r', val:'2'},wt:{class:'odd_r', val:'1'},hp:{class:'odd_r', val:'66.66%'},cp:{class:'bgYellow', val:'66.66%'}}
 ]
 }
 }
@@ -65,9 +65,9 @@ data:[
 },
 z9:{prod:'Questa',reporttype:'du',duname:'work.apb_intf',lang:'SystemVerilog',src:{z:'apb_intf.sv'},summaryTables:{loctable:{
 headers:['Coverage Type', 'Bins', 'Hits', 'Misses', 'Weight', '% Hit', 'Coverage'],
-totalhits:{class:'odd_r', val:'66.66%'},avgw:{class:'bgYellow', val:'50.00%'},
+totalhits:{class:'odd_r', val:'66.66%'},avgw:{class:'bgYellow', val:'66.66%'},
 data:[
-{link:{class:'odd',val:'a.htm?f=1&s=9,Assertions'},tb:{class:'odd_r', val:'6'},cb:{class:'odd_r', val:'3'},ms:{class:'odd_r', val:'3'},wt:{class:'odd_r', val:'1'},hp:{class:'odd_r', val:'50.00%'},cp:{class:'bgYellow', val:'50.00%'}}
+{link:{class:'odd',val:'a.htm?f=1&s=9,Assertions'},tb:{class:'odd_r', val:'6'},cb:{class:'odd_r', val:'4'},ms:{class:'odd_r', val:'2'},wt:{class:'odd_r', val:'1'},hp:{class:'odd_r', val:'66.66%'},cp:{class:'bgYellow', val:'66.66%'}}
 ]
 }
 }

@@ -95,7 +95,7 @@ class apb_sb extends uvm_scoreboard;
   virtual function void compare(apb_seq_item exp_trans,apb_seq_item act_trans);
     if(!(exp_trans.READ_WRITE))
       begin
-        if((exp_trans.apb_write_data == act_trans.apb_write_data) && (exp_trans.apb_write_paddr == act_trans.apb_write_paddr))
+        if((exp_trans.apb_write_data === act_trans.apb_write_data) && (exp_trans.apb_write_paddr === act_trans.apb_write_paddr))
           begin
             `uvm_info("compare", $sformatf("-------------WRITE  PASS------------\n Expected apb_write_data = %0h |  Actual apb_write_data = %0h |  Expected apb_write_paddr =%0h |  Actual apb_write_apddr = %0h ", exp_trans.apb_write_data, act_trans.apb_write_data, exp_trans.apb_write_paddr, act_trans.apb_write_paddr), UVM_LOW);
              pass++;
@@ -109,7 +109,7 @@ class apb_sb extends uvm_scoreboard;
     
     else
       begin
-             if((exp_trans.apb_read_data_out == act_trans.apb_read_data_out) && (exp_trans.apb_read_paddr == act_trans.apb_read_paddr))
+             if((exp_trans.apb_read_data_out === act_trans.apb_read_data_out) && (exp_trans.apb_read_paddr === act_trans.apb_read_paddr))
           begin
             `uvm_info("compare", $sformatf("-------------READ  PASS------------\n Expected apb_read_data = %0h  | Actual apb_read_data = %0h  | Expected apb_read_paddr =%0h  | Actual apb_read_apddr = %0h ", exp_trans.apb_read_data_out, act_trans.apb_read_data_out, exp_trans.apb_read_paddr, act_trans.apb_read_paddr), UVM_LOW);
              pass++;
