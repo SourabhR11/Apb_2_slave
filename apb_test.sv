@@ -266,7 +266,7 @@ endclass
 
 
 
-///////////test case: apb_10write_1read_slave1 /////////////////////
+///////////test case: apb_3write_1read_slave1 /////////////////////
 class apb_3write_1read_slave1_test extends apb_test;
 
   //factory registration
@@ -332,16 +332,15 @@ endclass
 
 class apb_regression_test extends apb_test;
   `uvm_component_utils(apb_regression_test)
-  
+
+  apb_write_read_slave1 write_read_slave1_h;
+  apb_write_read_slave2 write_read_slave2_h;
+  apb_3write_1read_slave1 write3_read1_slave1_h;
+  apb_3write_1read_slave2 write3_read1_slave2_h; 
   apb_write_slave1 write_slave1_h;
   apb_write_slave2 write_slave2_h;
 //  apb_read_slave1 read_slave1_h;
 //  apb_read_slave2 read_slave2_h;
-  apb_write_read_slave1 write_read_slave1_h;
-  apb_write_read_slave2 write_read_slave2_h;
-  apb_3write_1read_slave1 write3_read1_slave1_h;
-  apb_3write_1read_slave2 write3_read1_slave2_h;
-
   function new (string name = "alu_regression_test", uvm_component parent);
     super.new (name, parent);
   endfunction
@@ -349,39 +348,18 @@ class apb_regression_test extends apb_test;
   virtual function void build_phase (uvm_phase phase);
     super.build_phase (phase);
 
-    write_slave1_h = apb_write_slave1::type_id::create("write_slave1_h");
-    write_slave2_h = apb_write_slave2::type_id::create("write_slave2_h");
-  //  read_slave1_h = apb_read_slave1::type_id::create("read_slave1_h");
-  //  read_slave2_h = apb_read_slave2::type_id::create("read_slave2_h");
     write_read_slave1_h = apb_write_read_slave1::type_id::create("write_read_slave1_h");
     write_read_slave2_h = apb_write_read_slave2::type_id::create("write_read_slave2_h");
     write3_read1_slave1_h = apb_3write_1read_slave1::type_id::create("write3_read1_slave1_h");
     write3_read1_slave2_h = apb_3write_1read_slave2::type_id::create("write3_read1_slave2_h");
-
+    write_slave1_h = apb_write_slave1::type_id::create("write_slave1_h");
+    write_slave2_h = apb_write_slave2::type_id::create("write_slave2_h");
+  //  read_slave1_h = apb_read_slave1::type_id::create("read_slave1_h");
+  //  read_slave2_h = apb_read_slave2::type_id::create("read_slave2_h");
   endfunction
 
   task run_phase (uvm_phase phase);
-    phase.raise_objection (this);
-    write_slave1_h.start(env_h.active_h.seqr_h);
-    phase.drop_objection (this);
-    phase.phase_done.set_drain_time(this,100);
  
-
-    phase.raise_objection (this);
-    write_slave2_h.start(env_h.active_h.seqr_h);
-    phase.drop_objection (this);
-    phase.phase_done.set_drain_time(this,100);
-/*
-    phase.raise_objection (this);
-    read_slave1_h.start(env_h.active_h.seqr_h); 
-    phase.drop_objection (this);
-    phase.phase_done.set_drain_time(this,100);
-
-    phase.raise_objection (this);
-    read_slave2_h.start(env_h.active_h.seqr_h); 
-    phase.drop_objection (this);
-    phase.phase_done.set_drain_time(this,100);
-*/
     phase.raise_objection (this);
     write_read_slave1_h.start(env_h.active_h.seqr_h);
     phase.drop_objection (this);
@@ -392,6 +370,16 @@ class apb_regression_test extends apb_test;
     phase.drop_objection (this);
     phase.phase_done.set_drain_time(this,100);
   
+    phase.raise_objection (this);
+    write_slave1_h.start(env_h.active_h.seqr_h);
+    phase.drop_objection (this);
+    phase.phase_done.set_drain_time(this,100);
+ 
+
+    phase.raise_objection (this);
+    write_slave2_h.start(env_h.active_h.seqr_h);
+    phase.drop_objection (this);
+    phase.phase_done.set_drain_time(this,100);
 
     phase.raise_objection (this);
     write3_read1_slave1_h.start(env_h.active_h.seqr_h);
@@ -403,8 +391,19 @@ class apb_regression_test extends apb_test;
     write3_read1_slave2_h.start(env_h.active_h.seqr_h);
     phase.drop_objection (this);
     phase.phase_done.set_drain_time(this,100);
- 
-  endtask
+   
+   /*
+    phase.raise_objection (this);
+    read_slave1_h.start(env_h.active_h.seqr_h); 
+    phase.drop_objection (this);
+    phase.phase_done.set_drain_time(this,100);
+
+    phase.raise_objection (this);
+    read_slave2_h.start(env_h.active_h.seqr_h); 
+    phase.drop_objection (this);
+    phase.phase_done.set_drain_time(this,100);
+*/
+   endtask
 
 endclass
 

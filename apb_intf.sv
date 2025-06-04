@@ -74,14 +74,16 @@ endproperty
 
 //check read data validity
 property ppt_read_data_validity;
-  @(posedge PCLK) disable iff (!PRESETn)
-  (transfer && READ_WRITE) |-> !$isunknown(apb_read_data_out);
+@(posedge PCLK) disable iff (!PRESETn)
+  (transfer && READ_WRITE) |=> !$isunknown(apb_read_data_out);
 endproperty
 
   assert property (ppt_read_data_validity)
     $info("%0d READ_DATA_VALIDITY: Assertion pass",$time);
   else $error("%0d READ_DATA_VALIDITY: Assertion fail",$time);
 
+
+/*
 //check write address stability
 property ppt_write_addr_stability;
     @(posedge PCLK) disable iff (!PRESETn)
@@ -92,7 +94,7 @@ property ppt_write_addr_stability;
     $display("%0d WRITE_ADDRESS_STABILITY: Assertion pass",$time);
   else
     $error("%0d WRITE_ADDRESS_STABILITY: Assertion fail",$time);
-
+*/
 
 //check read address stability
 

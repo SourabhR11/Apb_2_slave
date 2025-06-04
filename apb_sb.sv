@@ -52,7 +52,11 @@ class apb_sb extends uvm_scoreboard;
    /* `uvm_info("Scoreboard",$sformatf("EXPECTED TRANSACTION: Queue size = %0h | READ_WRITE = %0h | transfer = %0h | apb_write_paddr = %0h | apb_write_data = %0h | apb_read_paddr = %0h | apb_read_data_out = %h ",in_queue.size(),in_mon.READ_WRITE,in_mon.transfer,in_mon.apb_write_paddr,in_mon.apb_write_data,in_mon.apb_read_paddr,in_mon.apb_read_data_out),UVM_LOW)
   $display("---------------------------------------------------------------------------------------");
 */
-  in_mon.print;
+     `uvm_info("SB","-----------------------EXPECTED DATA-----------------------------------------",UVM_LOW); 
+      in_mon.print();
+     `uvm_info("SB","------------------------------------------------------------------------------------",UVM_LOW);
+
+
   endfunction
   
   //write function of actual values
@@ -61,7 +65,10 @@ class apb_sb extends uvm_scoreboard;
   /*   `uvm_info("Scoreboard",$sformatf("ACTUAL TRANSACTION: Queue size = %0h | READ_WRITE = %0h | transfer = %0h | apb_write_paddr = %0h | apb_write_data = %0h | apb_read_paddr = %0h | apb_read_data_out = %h ",out_queue.size(),out_mon.READ_WRITE,out_mon.transfer,out_mon.apb_write_paddr,out_mon.apb_write_data,out_mon.apb_read_paddr,out_mon.apb_read_data_out),UVM_LOW)
   $display("---------------------------------------------------------------------------------------");
 */
-  out_mon.print;
+     `uvm_info("SB","------------------------ACTUAL DATA-----------------------------------------",UVM_LOW); 
+      out_mon.print();
+     `uvm_info("SB","------------------------------------------------------------------------------------",UVM_LOW);
+
 
   endfunction
 

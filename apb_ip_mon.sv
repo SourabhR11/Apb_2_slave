@@ -40,10 +40,10 @@ class apb_ip_mon extends uvm_monitor;
 
         //capturing data from virtual interface in the sequence item packet
         packet.READ_WRITE = vif.mon_cb.READ_WRITE;
-        packet.transfer = vif.mon_cb.transfer;
-        packet.apb_read_paddr = vif.mon_cb.apb_read_paddr;
-        packet.apb_write_paddr = vif.mon_cb.apb_write_paddr;
-        packet.apb_write_data = vif.mon_cb.apb_write_data;
+        packet.transfer = vif.transfer;
+        packet.apb_read_paddr = vif.apb_read_paddr;
+        packet.apb_write_paddr = vif.apb_write_paddr;
+        packet.apb_write_data = vif.apb_write_data;
 
    
         //write method of analysis port

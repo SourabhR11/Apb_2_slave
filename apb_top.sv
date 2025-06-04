@@ -25,7 +25,7 @@ module apb_top;
   // reset signal
   initial begin
       PRESETn = 0;
-      #20;
+      #10;
       PRESETn = 1;
   end
 
@@ -42,6 +42,6 @@ module apb_top;
 
   //Initiating the testbench
   initial  begin
-      run_test("apb_write_read_slave1_test");
+      run_test("apb_regression_test");
   end
 endmodule

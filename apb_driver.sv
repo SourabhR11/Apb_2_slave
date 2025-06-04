@@ -30,7 +30,7 @@ class apb_driver extends uvm_driver #(apb_seq_item);
 
  //run phase of driver
  task run_phase(uvm_phase phase);
-  repeat(2)@(vif.drv_cb);
+   //repeat(2)@(vif.drv_cb);
     forever
       begin
       `uvm_info("DRIVER","Inside RUN_PHASE of apb driver",UVM_HIGH);
@@ -39,28 +39,28 @@ class apb_driver extends uvm_driver #(apb_seq_item);
       seq_item_port.item_done();
      end
     // `uvm_info("drv",$sformatf("%d %d",$time, vif.apb_write_data),UVM_HIGH)
- //  repeat(2)@(vif.drv_cb);
+  // repeat(2)@(vif.drv_cb);
  endtask
   
 //drive task 
  virtual task drive();
-   repeat(1) @(vif.drv_cb);
+   repeat(2) @(vif.drv_cb);
    @(vif.drv_cb) begin
    if(! vif.PRESETn)
      begin
 
       //if reset deasserted drive the signal as zero
-       @(posedge vif.PCLK);
+  //     @(posedge vif.PCLK);
        vif.drv_cb.transfer <= 'b0;
        vif.drv_cb.READ_WRITE <= 'bx;
        vif.drv_cb.apb_read_paddr <= 'b0;
        vif.drv_cb.apb_write_paddr <= 'b0;
        vif.drv_cb.apb_write_data <= 'b0;
- //      vif.drv_cb.apb_read_data_out <= 'b0;
-    end
+
+   end
    else
    begin
-  // repeat(2) @(vif.drv_cb);
+  // repeat(4) @(vif.drv_cb);
   // drive data
   //  @(vif.drv_cb)
 //    begin
@@ -76,14 +76,17 @@ class apb_driver extends uvm_driver #(apb_seq_item);
         vif.drv_cb.apb_write_paddr <= packet.apb_write_paddr;
         vif.drv_cb.apb_write_data <= packet.apb_write_data;
       end
- end
+    end
+     else begin
+        vif.READ_WRITE <='b0;
+        vif.apb_write_paddr <='b0;
+        vif.apb_write_data <= 'b0;
+        vif.apb_read_paddr <= 'b0;
+    end 
+  end
 end
-
      `uvm_info("DRIVER","------------------------DRIVER DRIVING DATA-----------------------------------------",UVM_LOW); 
      packet.print();
      `uvm_info("DRIVER","------------------------------------------------------------------------------------",UVM_LOW);
-
- 
-end
  endtask
 endclass
