@@ -18,35 +18,35 @@ e6:[{dummy:0}
 ]}
 ],
 c6:[{dummy:0}
-,{anchor:'cvg141',items:[{s:'3',x:'FC',z:'(transfer && ~PSLVERR)',c:'Y',p:'50.00',d:'0',F:'1'}
+,{anchor:'cvg141',cr:'m',items:[{s:'3',x:'FC',z:'(transfer && ~PSLVERR)',c:'R',p:'0.00',d:'0',F:'1'}
 ,{}
 ,{z:'transfer',c:'r',r:'\'_0\' not hit',i:'Hit \'_0\''}
-,{z:'PSLVERR',c:'g',r:'',i:''}
+,{z:'PSLVERR',c:'r',r:'\'_1\' not hit',i:'Hit \'_1\''}
 ,{}
 ,{n:'1',z:'transfer_0',h1:'0',t:'c',c1:'-'}
 ,{n:'2',z:'transfer_1',h1:'1',t:'c',c1:'~PSLVERR'}
 ,{n:'3',z:'PSLVERR_0',h1:'1',t:'c',c1:'transfer'}
-,{n:'4',z:'PSLVERR_1',h1:'1',t:'c',c1:'transfer'}
+,{n:'4',z:'PSLVERR_1',h1:'0',t:'c',c1:'transfer'}
 ]}
 ,{anchor:'cvg143',cr:'m',items:[{s:'3',x:'FC',z:'(PSEL1 || PSEL2)',c:'R',p:'0.00',d:'0',F:'1'}
 ,{}
 ,{z:'PSEL1',c:'r',r:'\'_0\' not hit',i:'Hit \'_0\''}
-,{z:'PSEL2',c:'r',r:'\'_0\' not hit',i:'Hit \'_0\''}
+,{z:'PSEL2',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
 ,{}
 ,{n:'1',z:'PSEL1_0',h1:'0',t:'c',c1:'~PSEL2'}
 ,{n:'2',z:'PSEL1_1',h1:'1',t:'c',c1:'-'}
 ,{n:'3',z:'PSEL2_0',h1:'0',t:'c',c1:'~PSEL1'}
-,{n:'4',z:'PSEL2_1',h1:'1',t:'c',c1:'~PSEL1'}
+,{n:'4',z:'PSEL2_1',h1:'0',t:'c',c1:'~PSEL1'}
 ]}
-,{anchor:'cvg145',items:[{s:'3',x:'FC',z:'(transfer & ~PSLVERR)',c:'Y',p:'50.00',d:'0',F:'1'}
+,{anchor:'cvg145',cr:'m',items:[{s:'3',x:'FC',z:'(transfer & ~PSLVERR)',c:'R',p:'0.00',d:'0',F:'1'}
 ,{}
 ,{z:'transfer',c:'r',r:'\'_0\' not hit',i:'Hit \'_0\''}
-,{z:'PSLVERR',c:'g',r:'',i:''}
+,{z:'PSLVERR',c:'r',r:'\'_1\' not hit',i:'Hit \'_1\''}
 ,{}
 ,{n:'1',z:'transfer_0',h1:'0',t:'c',c1:'~PSLVERR'}
 ,{n:'2',z:'transfer_1',h1:'1',t:'c',c1:'~PSLVERR'}
 ,{n:'3',z:'PSLVERR_0',h1:'1',t:'c',c1:'transfer'}
-,{n:'4',z:'PSLVERR_1',h1:'1',t:'c',c1:'transfer'}
+,{n:'4',z:'PSLVERR_1',h1:'0',t:'c',c1:'transfer'}
 ]}
 ,{anchor:'cvg147',cr:'c',items:[{s:'3',x:'FC',z:'((state == 2) || (state == 4))',c:'G',p:'100.00',d:'0',F:'1'}
 ,{}
@@ -71,14 +71,14 @@ c6:[{dummy:0}
 ,{anchor:'cvg151',cr:'m',items:[{s:'3',x:'FC',z:'(((apb_write_data === x) && ~READ_WRITE) && ((state == 2) || (state == 4)))',c:'R',p:'0.00',d:'0',F:'1'}
 ,{}
 ,{z:'(apb_write_data === x)',c:'r',r:'\'_1\' not hit',i:'Hit \'_1\''}
-,{z:'READ_WRITE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
+,{z:'READ_WRITE',c:'r',r:'\'_0\' not hit',i:'Hit \'_0\''}
 ,{z:'(state == 2)',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
 ,{z:'(state == 4)',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
 ,{}
 ,{n:'1',z:'(apb_write_data === x)_0',h1:'1',t:'c',c1:'-'}
 ,{n:'2',z:'(apb_write_data === x)_1',h1:'0',t:'c',c1:'(((state == 2) || (state == 4)) && ~READ_WRITE)'}
 ,{n:'3',z:'READ_WRITE_0',h1:'0',t:'c',c1:'(((state == 2) || (state == 4)) && (apb_write_data === x))'}
-,{n:'4',z:'READ_WRITE_1',h1:'0',t:'c',c1:'(apb_write_data === x)'}
+,{n:'4',z:'READ_WRITE_1',h1:'1',t:'c',c1:'(apb_write_data === x)'}
 ,{n:'5',z:'(state == 2)_0',h1:'0',t:'c',c1:'(((apb_write_data === x) && ~READ_WRITE) && ~(state == 4))'}
 ,{n:'6',z:'(state == 2)_1',h1:'0',t:'c',c1:'((apb_write_data === x) && ~READ_WRITE)'}
 ,{n:'7',z:'(state == 4)_0',h1:'0',t:'c',c1:'(((apb_write_data === x) && ~READ_WRITE) && ~(state == 2))'}
@@ -87,13 +87,13 @@ c6:[{dummy:0}
 ,{anchor:'cvg153',cr:'m',items:[{s:'3',x:'FC',z:'(((apb_read_paddr === x) && READ_WRITE) && ((state == 2) || (state == 4)))',c:'R',p:'0.00',d:'0',F:'1'}
 ,{}
 ,{z:'(apb_read_paddr === x)',c:'r',r:'\'_1\' not hit',i:'Hit \'_1\''}
-,{z:'READ_WRITE',c:'r',r:'\'_1\' not hit',i:'Hit \'_1\''}
+,{z:'READ_WRITE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
 ,{z:'(state == 2)',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
 ,{z:'(state == 4)',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
 ,{}
 ,{n:'1',z:'(apb_read_paddr === x)_0',h1:'1',t:'c',c1:'-'}
 ,{n:'2',z:'(apb_read_paddr === x)_1',h1:'0',t:'c',c1:'(((state == 2) || (state == 4)) && READ_WRITE)'}
-,{n:'3',z:'READ_WRITE_0',h1:'1',t:'c',c1:'(apb_read_paddr === x)'}
+,{n:'3',z:'READ_WRITE_0',h1:'0',t:'c',c1:'(apb_read_paddr === x)'}
 ,{n:'4',z:'READ_WRITE_1',h1:'0',t:'c',c1:'(((state == 2) || (state == 4)) && (apb_read_paddr === x))'}
 ,{n:'5',z:'(state == 2)_0',h1:'0',t:'c',c1:'(((apb_read_paddr === x) && READ_WRITE) && ~(state == 4))'}
 ,{n:'6',z:'(state == 2)_1',h1:'0',t:'c',c1:'((apb_read_paddr === x) && READ_WRITE)'}
@@ -103,27 +103,27 @@ c6:[{dummy:0}
 ,{anchor:'cvg155',cr:'m',items:[{s:'3',x:'FC',z:'(((apb_write_paddr === x) && ~READ_WRITE) && ((state == 2) || (state == 4)))',c:'R',p:'0.00',d:'0',F:'1'}
 ,{}
 ,{z:'(apb_write_paddr === x)',c:'r',r:'\'_1\' not hit',i:'Hit \'_1\''}
-,{z:'READ_WRITE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
+,{z:'READ_WRITE',c:'r',r:'\'_0\' not hit',i:'Hit \'_0\''}
 ,{z:'(state == 2)',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
 ,{z:'(state == 4)',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
 ,{}
 ,{n:'1',z:'(apb_write_paddr === x)_0',h1:'1',t:'c',c1:'-'}
 ,{n:'2',z:'(apb_write_paddr === x)_1',h1:'0',t:'c',c1:'(((state == 2) || (state == 4)) && ~READ_WRITE)'}
 ,{n:'3',z:'READ_WRITE_0',h1:'0',t:'c',c1:'(((state == 2) || (state == 4)) && (apb_write_paddr === x))'}
-,{n:'4',z:'READ_WRITE_1',h1:'0',t:'c',c1:'(apb_write_paddr === x)'}
+,{n:'4',z:'READ_WRITE_1',h1:'1',t:'c',c1:'(apb_write_paddr === x)'}
 ,{n:'5',z:'(state == 2)_0',h1:'0',t:'c',c1:'(((apb_write_paddr === x) && ~READ_WRITE) && ~(state == 4))'}
 ,{n:'6',z:'(state == 2)_1',h1:'0',t:'c',c1:'((apb_write_paddr === x) && ~READ_WRITE)'}
 ,{n:'7',z:'(state == 4)_0',h1:'0',t:'c',c1:'(((apb_write_paddr === x) && ~READ_WRITE) && ~(state == 2))'}
 ,{n:'8',z:'(state == 4)_1',h1:'0',t:'c',c1:'(((apb_write_paddr === x) && ~READ_WRITE) && ~(state == 2))'}
 ]}
-,{anchor:'cvg157',cr:'c',items:[{s:'3',x:'FC',z:'((PADDR == apb_write_paddr) && (PWDATA == apb_write_data))',c:'G',p:'100.00',d:'0',F:'1'}
+,{anchor:'cvg157',items:[{s:'3',x:'FC',z:'((PADDR == apb_write_paddr) && (PWDATA == apb_write_data))',c:'Y',p:'50.00',d:'0',F:'1'}
 ,{}
 ,{z:'(PADDR == apb_write_paddr)',c:'g',r:'',i:''}
-,{z:'(PWDATA == apb_write_data)',c:'g',r:'',i:''}
+,{z:'(PWDATA == apb_write_data)',c:'r',r:'\'_0\' not hit',i:'Hit \'_0\''}
 ,{}
 ,{n:'1',z:'(PADDR == apb_write_paddr)_0',h1:'1',t:'c',c1:'-'}
 ,{n:'2',z:'(PADDR == apb_write_paddr)_1',h1:'1',t:'c',c1:'(PWDATA == apb_write_data)'}
-,{n:'3',z:'(PWDATA == apb_write_data)_0',h1:'1',t:'c',c1:'(PADDR == apb_write_paddr)'}
+,{n:'3',z:'(PWDATA == apb_write_data)_0',h1:'0',t:'c',c1:'(PADDR == apb_write_paddr)'}
 ,{n:'4',z:'(PWDATA == apb_write_data)_1',h1:'1',t:'c',c1:'(PADDR == apb_write_paddr)'}
 ]}
 ],
@@ -146,35 +146,35 @@ e116:[{dummy:0}
 ]}
 ],
 c116:[{dummy:0}
-,{anchor:'cvg141',items:[{s:'3',x:'FC',z:'(transfer && ~PSLVERR)',c:'Y',p:'50.00',d:'0',F:'1'}
+,{anchor:'cvg141',cr:'m',items:[{s:'3',x:'FC',z:'(transfer && ~PSLVERR)',c:'R',p:'0.00',d:'0',F:'1'}
 ,{}
 ,{z:'transfer',c:'r',r:'\'_0\' not hit',i:'Hit \'_0\''}
-,{z:'PSLVERR',c:'g',r:'',i:''}
+,{z:'PSLVERR',c:'r',r:'\'_1\' not hit',i:'Hit \'_1\''}
 ,{}
 ,{n:'1',z:'transfer_0',h1:'0',t:'c',c1:'-'}
 ,{n:'2',z:'transfer_1',h1:'1',t:'c',c1:'~PSLVERR'}
 ,{n:'3',z:'PSLVERR_0',h1:'1',t:'c',c1:'transfer'}
-,{n:'4',z:'PSLVERR_1',h1:'1',t:'c',c1:'transfer'}
+,{n:'4',z:'PSLVERR_1',h1:'0',t:'c',c1:'transfer'}
 ]}
 ,{anchor:'cvg143',cr:'m',items:[{s:'3',x:'FC',z:'(PSEL1 || PSEL2)',c:'R',p:'0.00',d:'0',F:'1'}
 ,{}
 ,{z:'PSEL1',c:'r',r:'\'_0\' not hit',i:'Hit \'_0\''}
-,{z:'PSEL2',c:'r',r:'\'_0\' not hit',i:'Hit \'_0\''}
+,{z:'PSEL2',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
 ,{}
 ,{n:'1',z:'PSEL1_0',h1:'0',t:'c',c1:'~PSEL2'}
 ,{n:'2',z:'PSEL1_1',h1:'1',t:'c',c1:'-'}
 ,{n:'3',z:'PSEL2_0',h1:'0',t:'c',c1:'~PSEL1'}
-,{n:'4',z:'PSEL2_1',h1:'1',t:'c',c1:'~PSEL1'}
+,{n:'4',z:'PSEL2_1',h1:'0',t:'c',c1:'~PSEL1'}
 ]}
-,{anchor:'cvg145',items:[{s:'3',x:'FC',z:'(transfer & ~PSLVERR)',c:'Y',p:'50.00',d:'0',F:'1'}
+,{anchor:'cvg145',cr:'m',items:[{s:'3',x:'FC',z:'(transfer & ~PSLVERR)',c:'R',p:'0.00',d:'0',F:'1'}
 ,{}
 ,{z:'transfer',c:'r',r:'\'_0\' not hit',i:'Hit \'_0\''}
-,{z:'PSLVERR',c:'g',r:'',i:''}
+,{z:'PSLVERR',c:'r',r:'\'_1\' not hit',i:'Hit \'_1\''}
 ,{}
 ,{n:'1',z:'transfer_0',h1:'0',t:'c',c1:'~PSLVERR'}
 ,{n:'2',z:'transfer_1',h1:'1',t:'c',c1:'~PSLVERR'}
 ,{n:'3',z:'PSLVERR_0',h1:'1',t:'c',c1:'transfer'}
-,{n:'4',z:'PSLVERR_1',h1:'1',t:'c',c1:'transfer'}
+,{n:'4',z:'PSLVERR_1',h1:'0',t:'c',c1:'transfer'}
 ]}
 ,{anchor:'cvg147',cr:'c',items:[{s:'3',x:'FC',z:'((state == 2) || (state == 4))',c:'G',p:'100.00',d:'0',F:'1'}
 ,{}
@@ -199,14 +199,14 @@ c116:[{dummy:0}
 ,{anchor:'cvg151',cr:'m',items:[{s:'3',x:'FC',z:'(((apb_write_data === x) && ~READ_WRITE) && ((state == 2) || (state == 4)))',c:'R',p:'0.00',d:'0',F:'1'}
 ,{}
 ,{z:'(apb_write_data === x)',c:'r',r:'\'_1\' not hit',i:'Hit \'_1\''}
-,{z:'READ_WRITE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
+,{z:'READ_WRITE',c:'r',r:'\'_0\' not hit',i:'Hit \'_0\''}
 ,{z:'(state == 2)',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
 ,{z:'(state == 4)',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
 ,{}
 ,{n:'1',z:'(apb_write_data === x)_0',h1:'1',t:'c',c1:'-'}
 ,{n:'2',z:'(apb_write_data === x)_1',h1:'0',t:'c',c1:'(((state == 2) || (state == 4)) && ~READ_WRITE)'}
 ,{n:'3',z:'READ_WRITE_0',h1:'0',t:'c',c1:'(((state == 2) || (state == 4)) && (apb_write_data === x))'}
-,{n:'4',z:'READ_WRITE_1',h1:'0',t:'c',c1:'(apb_write_data === x)'}
+,{n:'4',z:'READ_WRITE_1',h1:'1',t:'c',c1:'(apb_write_data === x)'}
 ,{n:'5',z:'(state == 2)_0',h1:'0',t:'c',c1:'(((apb_write_data === x) && ~READ_WRITE) && ~(state == 4))'}
 ,{n:'6',z:'(state == 2)_1',h1:'0',t:'c',c1:'((apb_write_data === x) && ~READ_WRITE)'}
 ,{n:'7',z:'(state == 4)_0',h1:'0',t:'c',c1:'(((apb_write_data === x) && ~READ_WRITE) && ~(state == 2))'}
@@ -215,13 +215,13 @@ c116:[{dummy:0}
 ,{anchor:'cvg153',cr:'m',items:[{s:'3',x:'FC',z:'(((apb_read_paddr === x) && READ_WRITE) && ((state == 2) || (state == 4)))',c:'R',p:'0.00',d:'0',F:'1'}
 ,{}
 ,{z:'(apb_read_paddr === x)',c:'r',r:'\'_1\' not hit',i:'Hit \'_1\''}
-,{z:'READ_WRITE',c:'r',r:'\'_1\' not hit',i:'Hit \'_1\''}
+,{z:'READ_WRITE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
 ,{z:'(state == 2)',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
 ,{z:'(state == 4)',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
 ,{}
 ,{n:'1',z:'(apb_read_paddr === x)_0',h1:'1',t:'c',c1:'-'}
 ,{n:'2',z:'(apb_read_paddr === x)_1',h1:'0',t:'c',c1:'(((state == 2) || (state == 4)) && READ_WRITE)'}
-,{n:'3',z:'READ_WRITE_0',h1:'1',t:'c',c1:'(apb_read_paddr === x)'}
+,{n:'3',z:'READ_WRITE_0',h1:'0',t:'c',c1:'(apb_read_paddr === x)'}
 ,{n:'4',z:'READ_WRITE_1',h1:'0',t:'c',c1:'(((state == 2) || (state == 4)) && (apb_read_paddr === x))'}
 ,{n:'5',z:'(state == 2)_0',h1:'0',t:'c',c1:'(((apb_read_paddr === x) && READ_WRITE) && ~(state == 4))'}
 ,{n:'6',z:'(state == 2)_1',h1:'0',t:'c',c1:'((apb_read_paddr === x) && READ_WRITE)'}
@@ -231,27 +231,27 @@ c116:[{dummy:0}
 ,{anchor:'cvg155',cr:'m',items:[{s:'3',x:'FC',z:'(((apb_write_paddr === x) && ~READ_WRITE) && ((state == 2) || (state == 4)))',c:'R',p:'0.00',d:'0',F:'1'}
 ,{}
 ,{z:'(apb_write_paddr === x)',c:'r',r:'\'_1\' not hit',i:'Hit \'_1\''}
-,{z:'READ_WRITE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
+,{z:'READ_WRITE',c:'r',r:'\'_0\' not hit',i:'Hit \'_0\''}
 ,{z:'(state == 2)',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
 ,{z:'(state == 4)',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
 ,{}
 ,{n:'1',z:'(apb_write_paddr === x)_0',h1:'1',t:'c',c1:'-'}
 ,{n:'2',z:'(apb_write_paddr === x)_1',h1:'0',t:'c',c1:'(((state == 2) || (state == 4)) && ~READ_WRITE)'}
 ,{n:'3',z:'READ_WRITE_0',h1:'0',t:'c',c1:'(((state == 2) || (state == 4)) && (apb_write_paddr === x))'}
-,{n:'4',z:'READ_WRITE_1',h1:'0',t:'c',c1:'(apb_write_paddr === x)'}
+,{n:'4',z:'READ_WRITE_1',h1:'1',t:'c',c1:'(apb_write_paddr === x)'}
 ,{n:'5',z:'(state == 2)_0',h1:'0',t:'c',c1:'(((apb_write_paddr === x) && ~READ_WRITE) && ~(state == 4))'}
 ,{n:'6',z:'(state == 2)_1',h1:'0',t:'c',c1:'((apb_write_paddr === x) && ~READ_WRITE)'}
 ,{n:'7',z:'(state == 4)_0',h1:'0',t:'c',c1:'(((apb_write_paddr === x) && ~READ_WRITE) && ~(state == 2))'}
 ,{n:'8',z:'(state == 4)_1',h1:'0',t:'c',c1:'(((apb_write_paddr === x) && ~READ_WRITE) && ~(state == 2))'}
 ]}
-,{anchor:'cvg157',cr:'c',items:[{s:'3',x:'FC',z:'((PADDR == apb_write_paddr) && (PWDATA == apb_write_data))',c:'G',p:'100.00',d:'0',F:'1'}
+,{anchor:'cvg157',items:[{s:'3',x:'FC',z:'((PADDR == apb_write_paddr) && (PWDATA == apb_write_data))',c:'Y',p:'50.00',d:'0',F:'1'}
 ,{}
 ,{z:'(PADDR == apb_write_paddr)',c:'g',r:'',i:''}
-,{z:'(PWDATA == apb_write_data)',c:'g',r:'',i:''}
+,{z:'(PWDATA == apb_write_data)',c:'r',r:'\'_0\' not hit',i:'Hit \'_0\''}
 ,{}
 ,{n:'1',z:'(PADDR == apb_write_paddr)_0',h1:'1',t:'c',c1:'-'}
 ,{n:'2',z:'(PADDR == apb_write_paddr)_1',h1:'1',t:'c',c1:'(PWDATA == apb_write_data)'}
-,{n:'3',z:'(PWDATA == apb_write_data)_0',h1:'1',t:'c',c1:'(PADDR == apb_write_paddr)'}
+,{n:'3',z:'(PWDATA == apb_write_data)_0',h1:'0',t:'c',c1:'(PADDR == apb_write_paddr)'}
 ,{n:'4',z:'(PWDATA == apb_write_data)_1',h1:'1',t:'c',c1:'(PADDR == apb_write_paddr)'}
 ]}
 ],
@@ -364,139 +364,139 @@ c250:[{dummy:0}
 ]}
 ],
 c8:[{dummy:0}
-,{anchor:'cvg305',cr:'c',items:[{s:'3',x:'FC',z:'((PSEL && ~PENABLE) && ~PWRITE)',c:'G',p:'100.00',d:'0',F:'1'}
+,{anchor:'cvg305',cr:'m',items:[{s:'3',x:'FC',z:'((PSEL && ~PENABLE) && ~PWRITE)',c:'R',p:'0.00',d:'0',F:'1'}
 ,{}
-,{z:'PSEL',c:'g',r:'',i:''}
-,{z:'PENABLE',c:'g',r:'',i:''}
-,{z:'PWRITE',c:'g',r:'',i:''}
-,{}
-,{n:'1',z:'PSEL_0',h1:'1',t:'c',c1:'-'}
-,{n:'2',z:'PSEL_1',h1:'1',t:'c',c1:'(~PWRITE && ~PENABLE)'}
-,{n:'3',z:'PENABLE_0',h1:'1',t:'c',c1:'(~PWRITE && PSEL)'}
-,{n:'4',z:'PENABLE_1',h1:'1',t:'c',c1:'PSEL'}
-,{n:'5',z:'PWRITE_0',h1:'1',t:'c',c1:'(PSEL && ~PENABLE)'}
-,{n:'6',z:'PWRITE_1',h1:'1',t:'c',c1:'(PSEL && ~PENABLE)'}
-]}
-,{anchor:'cvg307',cr:'c',items:[{s:'3',x:'FC',z:'((PSEL && PENABLE) && ~PWRITE)',c:'G',p:'100.00',d:'0',F:'1'}
-,{}
-,{z:'PSEL',c:'g',r:'',i:''}
-,{z:'PENABLE',c:'g',r:'',i:''}
-,{z:'PWRITE',c:'g',r:'',i:''}
+,{z:'PSEL',c:'r',r:'\'_1\' not hit',i:'Hit \'_1\''}
+,{z:'PENABLE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
+,{z:'PWRITE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
 ,{}
 ,{n:'1',z:'PSEL_0',h1:'1',t:'c',c1:'-'}
-,{n:'2',z:'PSEL_1',h1:'1',t:'c',c1:'(~PWRITE && PENABLE)'}
-,{n:'3',z:'PENABLE_0',h1:'1',t:'c',c1:'PSEL'}
-,{n:'4',z:'PENABLE_1',h1:'1',t:'c',c1:'(~PWRITE && PSEL)'}
-,{n:'5',z:'PWRITE_0',h1:'1',t:'c',c1:'(PSEL && PENABLE)'}
-,{n:'6',z:'PWRITE_1',h1:'1',t:'c',c1:'(PSEL && PENABLE)'}
-]}
-,{anchor:'cvg309',items:[{s:'3',x:'FC',z:'((PSEL && ~PENABLE) && PWRITE)',c:'Y',p:'66.66',d:'0',F:'1'}
-,{}
-,{z:'PSEL',c:'g',r:'',i:''}
-,{z:'PENABLE',c:'g',r:'',i:''}
-,{z:'PWRITE',c:'r',r:'\'_0\' not hit',i:'Hit \'_0\''}
-,{}
-,{n:'1',z:'PSEL_0',h1:'1',t:'c',c1:'-'}
-,{n:'2',z:'PSEL_1',h1:'1',t:'c',c1:'(PWRITE && ~PENABLE)'}
-,{n:'3',z:'PENABLE_0',h1:'1',t:'c',c1:'(PWRITE && PSEL)'}
-,{n:'4',z:'PENABLE_1',h1:'1',t:'c',c1:'PSEL'}
+,{n:'2',z:'PSEL_1',h1:'0',t:'c',c1:'(~PWRITE && ~PENABLE)'}
+,{n:'3',z:'PENABLE_0',h1:'0',t:'c',c1:'(~PWRITE && PSEL)'}
+,{n:'4',z:'PENABLE_1',h1:'0',t:'c',c1:'PSEL'}
 ,{n:'5',z:'PWRITE_0',h1:'0',t:'c',c1:'(PSEL && ~PENABLE)'}
-,{n:'6',z:'PWRITE_1',h1:'1',t:'c',c1:'(PSEL && ~PENABLE)'}
+,{n:'6',z:'PWRITE_1',h1:'0',t:'c',c1:'(PSEL && ~PENABLE)'}
 ]}
-,{anchor:'cvg311',items:[{s:'3',x:'FC',z:'((PSEL && PENABLE) && PWRITE)',c:'R',p:'33.33',d:'0',F:'1'}
+,{anchor:'cvg307',cr:'m',items:[{s:'3',x:'FC',z:'((PSEL && PENABLE) && ~PWRITE)',c:'R',p:'0.00',d:'0',F:'1'}
 ,{}
-,{z:'PSEL',c:'g',r:'',i:''}
-,{z:'PENABLE',c:'r',r:'\'_0\' not hit',i:'Hit \'_0\''}
-,{z:'PWRITE',c:'r',r:'\'_0\' not hit',i:'Hit \'_0\''}
+,{z:'PSEL',c:'r',r:'\'_1\' not hit',i:'Hit \'_1\''}
+,{z:'PENABLE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
+,{z:'PWRITE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
 ,{}
 ,{n:'1',z:'PSEL_0',h1:'1',t:'c',c1:'-'}
-,{n:'2',z:'PSEL_1',h1:'1',t:'c',c1:'(PWRITE && PENABLE)'}
+,{n:'2',z:'PSEL_1',h1:'0',t:'c',c1:'(~PWRITE && PENABLE)'}
 ,{n:'3',z:'PENABLE_0',h1:'0',t:'c',c1:'PSEL'}
-,{n:'4',z:'PENABLE_1',h1:'1',t:'c',c1:'(PWRITE && PSEL)'}
+,{n:'4',z:'PENABLE_1',h1:'0',t:'c',c1:'(~PWRITE && PSEL)'}
 ,{n:'5',z:'PWRITE_0',h1:'0',t:'c',c1:'(PSEL && PENABLE)'}
-,{n:'6',z:'PWRITE_1',h1:'1',t:'c',c1:'(PSEL && PENABLE)'}
+,{n:'6',z:'PWRITE_1',h1:'0',t:'c',c1:'(PSEL && PENABLE)'}
+]}
+,{anchor:'cvg309',cr:'m',items:[{s:'3',x:'FC',z:'((PSEL && ~PENABLE) && PWRITE)',c:'R',p:'0.00',d:'0',F:'1'}
+,{}
+,{z:'PSEL',c:'r',r:'\'_1\' not hit',i:'Hit \'_1\''}
+,{z:'PENABLE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
+,{z:'PWRITE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
+,{}
+,{n:'1',z:'PSEL_0',h1:'1',t:'c',c1:'-'}
+,{n:'2',z:'PSEL_1',h1:'0',t:'c',c1:'(PWRITE && ~PENABLE)'}
+,{n:'3',z:'PENABLE_0',h1:'0',t:'c',c1:'(PWRITE && PSEL)'}
+,{n:'4',z:'PENABLE_1',h1:'0',t:'c',c1:'PSEL'}
+,{n:'5',z:'PWRITE_0',h1:'0',t:'c',c1:'(PSEL && ~PENABLE)'}
+,{n:'6',z:'PWRITE_1',h1:'0',t:'c',c1:'(PSEL && ~PENABLE)'}
+]}
+,{anchor:'cvg311',cr:'m',items:[{s:'3',x:'FC',z:'((PSEL && PENABLE) && PWRITE)',c:'R',p:'0.00',d:'0',F:'1'}
+,{}
+,{z:'PSEL',c:'r',r:'\'_1\' not hit',i:'Hit \'_1\''}
+,{z:'PENABLE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
+,{z:'PWRITE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
+,{}
+,{n:'1',z:'PSEL_0',h1:'1',t:'c',c1:'-'}
+,{n:'2',z:'PSEL_1',h1:'0',t:'c',c1:'(PWRITE && PENABLE)'}
+,{n:'3',z:'PENABLE_0',h1:'0',t:'c',c1:'PSEL'}
+,{n:'4',z:'PENABLE_1',h1:'0',t:'c',c1:'(PWRITE && PSEL)'}
+,{n:'5',z:'PWRITE_0',h1:'0',t:'c',c1:'(PSEL && PENABLE)'}
+,{n:'6',z:'PWRITE_1',h1:'0',t:'c',c1:'(PSEL && PENABLE)'}
 ]}
 ],
 c302:[{dummy:0}
-,{anchor:'cvg305',cr:'c',items:[{s:'3',x:'FC',z:'((PSEL && ~PENABLE) && ~PWRITE)',c:'G',p:'100.00',d:'0',F:'1'}
+,{anchor:'cvg305',cr:'m',items:[{s:'3',x:'FC',z:'((PSEL && ~PENABLE) && ~PWRITE)',c:'R',p:'0.00',d:'0',F:'1'}
 ,{}
-,{z:'PSEL',c:'g',r:'',i:''}
-,{z:'PENABLE',c:'g',r:'',i:''}
-,{z:'PWRITE',c:'g',r:'',i:''}
-,{}
-,{n:'1',z:'PSEL_0',h1:'1',t:'c',c1:'-'}
-,{n:'2',z:'PSEL_1',h1:'1',t:'c',c1:'(~PWRITE && ~PENABLE)'}
-,{n:'3',z:'PENABLE_0',h1:'1',t:'c',c1:'(~PWRITE && PSEL)'}
-,{n:'4',z:'PENABLE_1',h1:'1',t:'c',c1:'PSEL'}
-,{n:'5',z:'PWRITE_0',h1:'1',t:'c',c1:'(PSEL && ~PENABLE)'}
-,{n:'6',z:'PWRITE_1',h1:'1',t:'c',c1:'(PSEL && ~PENABLE)'}
-]}
-,{anchor:'cvg307',cr:'c',items:[{s:'3',x:'FC',z:'((PSEL && PENABLE) && ~PWRITE)',c:'G',p:'100.00',d:'0',F:'1'}
-,{}
-,{z:'PSEL',c:'g',r:'',i:''}
-,{z:'PENABLE',c:'g',r:'',i:''}
-,{z:'PWRITE',c:'g',r:'',i:''}
+,{z:'PSEL',c:'r',r:'\'_1\' not hit',i:'Hit \'_1\''}
+,{z:'PENABLE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
+,{z:'PWRITE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
 ,{}
 ,{n:'1',z:'PSEL_0',h1:'1',t:'c',c1:'-'}
-,{n:'2',z:'PSEL_1',h1:'1',t:'c',c1:'(~PWRITE && PENABLE)'}
-,{n:'3',z:'PENABLE_0',h1:'1',t:'c',c1:'PSEL'}
-,{n:'4',z:'PENABLE_1',h1:'1',t:'c',c1:'(~PWRITE && PSEL)'}
-,{n:'5',z:'PWRITE_0',h1:'1',t:'c',c1:'(PSEL && PENABLE)'}
-,{n:'6',z:'PWRITE_1',h1:'1',t:'c',c1:'(PSEL && PENABLE)'}
-]}
-,{anchor:'cvg309',items:[{s:'3',x:'FC',z:'((PSEL && ~PENABLE) && PWRITE)',c:'Y',p:'66.66',d:'0',F:'1'}
-,{}
-,{z:'PSEL',c:'g',r:'',i:''}
-,{z:'PENABLE',c:'g',r:'',i:''}
-,{z:'PWRITE',c:'r',r:'\'_0\' not hit',i:'Hit \'_0\''}
-,{}
-,{n:'1',z:'PSEL_0',h1:'1',t:'c',c1:'-'}
-,{n:'2',z:'PSEL_1',h1:'1',t:'c',c1:'(PWRITE && ~PENABLE)'}
-,{n:'3',z:'PENABLE_0',h1:'1',t:'c',c1:'(PWRITE && PSEL)'}
-,{n:'4',z:'PENABLE_1',h1:'1',t:'c',c1:'PSEL'}
+,{n:'2',z:'PSEL_1',h1:'0',t:'c',c1:'(~PWRITE && ~PENABLE)'}
+,{n:'3',z:'PENABLE_0',h1:'0',t:'c',c1:'(~PWRITE && PSEL)'}
+,{n:'4',z:'PENABLE_1',h1:'0',t:'c',c1:'PSEL'}
 ,{n:'5',z:'PWRITE_0',h1:'0',t:'c',c1:'(PSEL && ~PENABLE)'}
-,{n:'6',z:'PWRITE_1',h1:'1',t:'c',c1:'(PSEL && ~PENABLE)'}
+,{n:'6',z:'PWRITE_1',h1:'0',t:'c',c1:'(PSEL && ~PENABLE)'}
 ]}
-,{anchor:'cvg311',items:[{s:'3',x:'FC',z:'((PSEL && PENABLE) && PWRITE)',c:'R',p:'33.33',d:'0',F:'1'}
+,{anchor:'cvg307',cr:'m',items:[{s:'3',x:'FC',z:'((PSEL && PENABLE) && ~PWRITE)',c:'R',p:'0.00',d:'0',F:'1'}
 ,{}
-,{z:'PSEL',c:'g',r:'',i:''}
-,{z:'PENABLE',c:'r',r:'\'_0\' not hit',i:'Hit \'_0\''}
-,{z:'PWRITE',c:'r',r:'\'_0\' not hit',i:'Hit \'_0\''}
+,{z:'PSEL',c:'r',r:'\'_1\' not hit',i:'Hit \'_1\''}
+,{z:'PENABLE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
+,{z:'PWRITE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
 ,{}
 ,{n:'1',z:'PSEL_0',h1:'1',t:'c',c1:'-'}
-,{n:'2',z:'PSEL_1',h1:'1',t:'c',c1:'(PWRITE && PENABLE)'}
+,{n:'2',z:'PSEL_1',h1:'0',t:'c',c1:'(~PWRITE && PENABLE)'}
 ,{n:'3',z:'PENABLE_0',h1:'0',t:'c',c1:'PSEL'}
-,{n:'4',z:'PENABLE_1',h1:'1',t:'c',c1:'(PWRITE && PSEL)'}
+,{n:'4',z:'PENABLE_1',h1:'0',t:'c',c1:'(~PWRITE && PSEL)'}
 ,{n:'5',z:'PWRITE_0',h1:'0',t:'c',c1:'(PSEL && PENABLE)'}
-,{n:'6',z:'PWRITE_1',h1:'1',t:'c',c1:'(PSEL && PENABLE)'}
+,{n:'6',z:'PWRITE_1',h1:'0',t:'c',c1:'(PSEL && PENABLE)'}
+]}
+,{anchor:'cvg309',cr:'m',items:[{s:'3',x:'FC',z:'((PSEL && ~PENABLE) && PWRITE)',c:'R',p:'0.00',d:'0',F:'1'}
+,{}
+,{z:'PSEL',c:'r',r:'\'_1\' not hit',i:'Hit \'_1\''}
+,{z:'PENABLE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
+,{z:'PWRITE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
+,{}
+,{n:'1',z:'PSEL_0',h1:'1',t:'c',c1:'-'}
+,{n:'2',z:'PSEL_1',h1:'0',t:'c',c1:'(PWRITE && ~PENABLE)'}
+,{n:'3',z:'PENABLE_0',h1:'0',t:'c',c1:'(PWRITE && PSEL)'}
+,{n:'4',z:'PENABLE_1',h1:'0',t:'c',c1:'PSEL'}
+,{n:'5',z:'PWRITE_0',h1:'0',t:'c',c1:'(PSEL && ~PENABLE)'}
+,{n:'6',z:'PWRITE_1',h1:'0',t:'c',c1:'(PSEL && ~PENABLE)'}
+]}
+,{anchor:'cvg311',cr:'m',items:[{s:'3',x:'FC',z:'((PSEL && PENABLE) && PWRITE)',c:'R',p:'0.00',d:'0',F:'1'}
+,{}
+,{z:'PSEL',c:'r',r:'\'_1\' not hit',i:'Hit \'_1\''}
+,{z:'PENABLE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
+,{z:'PWRITE',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\''}
+,{}
+,{n:'1',z:'PSEL_0',h1:'1',t:'c',c1:'-'}
+,{n:'2',z:'PSEL_1',h1:'0',t:'c',c1:'(PWRITE && PENABLE)'}
+,{n:'3',z:'PENABLE_0',h1:'0',t:'c',c1:'PSEL'}
+,{n:'4',z:'PENABLE_1',h1:'0',t:'c',c1:'(PWRITE && PSEL)'}
+,{n:'5',z:'PWRITE_0',h1:'0',t:'c',c1:'(PSEL && PENABLE)'}
+,{n:'6',z:'PWRITE_1',h1:'0',t:'c',c1:'(PSEL && PENABLE)'}
 ]}
 ],
 e5:[{dummy:0}
-,{anchor:'cvg19',cr:'c',items:[{s:'5',x:'FE',z:'(PADDR[8]? PREADY2: PREADY1)',c:'G',p:'100.00',d:'0',F:'2'}
+,{anchor:'cvg19',items:[{s:'5',x:'FE',z:'(PADDR[8]? PREADY2: PREADY1)',c:'R',p:'33.33',d:'0',F:'2'}
 ,{}
-,{z:'PADDR[8]',c:'g',r:'',i:''}
-,{z:'PREADY2',c:'g',r:'',i:''}
+,{z:'PADDR[8]',c:'r',r:'\'_0\' hit but \'_1\' not hit',i:'Hit \'_1\' for output ->0 or ->1'}
+,{z:'PREADY2',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\' for different outputs'}
 ,{z:'PREADY1',c:'g',r:'',i:''}
 ,{}
 ,{n:'1',z:'PADDR[8]_0',t:'e',h1:'1',h2:'1',c1:'-',c2:'-'}
-,{n:'2',z:'PADDR[8]_1',t:'e',h1:'1',h2:'0',c1:'-',c2:'-'}
-,{n:'3',z:'PREADY2_0',t:'e',h1:'1',h2:'0',c1:'PADDR[8]',c2:'PADDR[8]'}
-,{n:'4',z:'PREADY2_1',t:'e',h1:'0',h2:'1',c1:'PADDR[8]',c2:'PADDR[8]'}
+,{n:'2',z:'PADDR[8]_1',t:'e',h1:'0',h2:'0',c1:'-',c2:'-'}
+,{n:'3',z:'PREADY2_0',t:'e',h1:'0',h2:'0',c1:'PADDR[8]',c2:'PADDR[8]'}
+,{n:'4',z:'PREADY2_1',t:'e',h1:'0',h2:'0',c1:'PADDR[8]',c2:'PADDR[8]'}
 ,{n:'5',z:'PREADY1_0',t:'e',h1:'1',h2:'0',c1:'~PADDR[8]',c2:'~PADDR[8]'}
 ,{n:'6',z:'PREADY1_1',t:'e',h1:'0',h2:'1',c1:'~PADDR[8]',c2:'~PADDR[8]'}
 ]}
 ],
 e14:[{dummy:0}
-,{anchor:'cvg19',cr:'c',items:[{s:'5',x:'FE',z:'(PADDR[8]? PREADY2: PREADY1)',c:'G',p:'100.00',d:'0',F:'2'}
+,{anchor:'cvg19',items:[{s:'5',x:'FE',z:'(PADDR[8]? PREADY2: PREADY1)',c:'R',p:'33.33',d:'0',F:'2'}
 ,{}
-,{z:'PADDR[8]',c:'g',r:'',i:''}
-,{z:'PREADY2',c:'g',r:'',i:''}
+,{z:'PADDR[8]',c:'r',r:'\'_0\' hit but \'_1\' not hit',i:'Hit \'_1\' for output ->0 or ->1'}
+,{z:'PREADY2',c:'r',r:'No hits',i:'Hit \'_0\' and \'_1\' for different outputs'}
 ,{z:'PREADY1',c:'g',r:'',i:''}
 ,{}
 ,{n:'1',z:'PADDR[8]_0',t:'e',h1:'1',h2:'1',c1:'-',c2:'-'}
-,{n:'2',z:'PADDR[8]_1',t:'e',h1:'1',h2:'0',c1:'-',c2:'-'}
-,{n:'3',z:'PREADY2_0',t:'e',h1:'1',h2:'0',c1:'PADDR[8]',c2:'PADDR[8]'}
-,{n:'4',z:'PREADY2_1',t:'e',h1:'0',h2:'1',c1:'PADDR[8]',c2:'PADDR[8]'}
+,{n:'2',z:'PADDR[8]_1',t:'e',h1:'0',h2:'0',c1:'-',c2:'-'}
+,{n:'3',z:'PREADY2_0',t:'e',h1:'0',h2:'0',c1:'PADDR[8]',c2:'PADDR[8]'}
+,{n:'4',z:'PREADY2_1',t:'e',h1:'0',h2:'0',c1:'PADDR[8]',c2:'PADDR[8]'}
 ,{n:'5',z:'PREADY1_0',t:'e',h1:'1',h2:'0',c1:'~PADDR[8]',c2:'~PADDR[8]'}
 ,{n:'6',z:'PREADY1_1',t:'e',h1:'0',h2:'1',c1:'~PADDR[8]',c2:'~PADDR[8]'}
 ]}

@@ -42,6 +42,6 @@ module apb_top;
 
   //Initiating the testbench
   initial  begin
-      run_test("apb_regression_test");
+      run_test("apb_write_read_slave1_test");
   end
 endmodule
