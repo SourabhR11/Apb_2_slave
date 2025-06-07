@@ -4,12 +4,32 @@ APB is low bandwidth and low performance bus. So, the components requiring lower
 
 ## Design specification
 
-The design consists of a single APB master controlled by external signals, communicating with two connected slaves. The master selects one slave at a time based on the least significant bit of the paddress. The APB is enabled only when the transfer signal is high; otherwise, it remains disabled.
-1.Parallel bus operation. All the data will be captured at rising edge clock.
-2.Two slave design based on 9th bit of apb_write_paddress bit it will elect the slave1 and slave2.
-3.Signal priority: 1.PRESET (active low) 2. PSEL (active high) 3. PENABLE (active high) 4. PREADY (active high) 5. PWRITE
-4.Data width 8 bit and address width 9 bit.
-5.PWRITE=1 indicates write PWDATA to slave. PWRITE=0 indicates read PRDATA from slave.
+##  APB Protocol Design Overview
+
+###  Master-Slave Architecture
+- Single APB master controlled via external signals.
+- Two APB slave devices are connected to the bus.
+- Master selects one slave at a time based on the **9th bit (bit 8)** of the `PADDR`.
+
+###  Slave Selection Logic
+- `PADDR[8] = 0` → Slave 1 is selected.
+- `PADDR[8] = 1` → Slave 2 is selected.
+
+###  Transfer Control
+- APB is **enabled only when `transfer` signal is high**.
+- When `transfer = 0`, the APB bus remains **inactive**.
+
+###  Clocking
+- All data is **captured on the rising edge** of the clock.
+
+###  Bus Specifications
+- **Data Width:** 8 bits
+- **Address Width:** 9 bits
+
+###  Operation Modes
+- `PWRITE = 1` → Write operation: `PWDATA` is sent to the selected slave.
+- `PWRITE = 0` → Read operation: `PRDATA` is read from the selected slave.
+
 
 ## Apb interface block diagram
 
