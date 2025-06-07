@@ -37,7 +37,7 @@ APB is low bandwidth and low performance bus. So, the components requiring lower
 
 ## State diagram
 
-![Screenshot 2025-04-22 100310](https://github.com/user-attachments/assets/9cd5e536-5a46-4da8-8e8e-c754046afd2a)
+<img src="https://github.com/user-attachments/assets/4e60309a-6302-41dc-bb93-4565e0a456ab" width="400">
 
 ## Testbench architecture
 
