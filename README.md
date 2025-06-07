@@ -1,10 +1,48 @@
 # APB 2 SLAVE
 
-APB is low bandwidth and low performance bus. So, the components requiring lower bandwidth like the peripheral devices such as UART, Keypad, Timer and PIO (Peripheral Input Output) devices are connected to the APB. The bridge connects the high performance AHB or ASB bus to the APB bus. So, for APB the bridge acts as the master and all the devices connected on the APB bus acts as the slave.
+
+##  About APB Protocol 
+
+- **AMBA APB** (Advanced Peripheral Bus) is part of ARM's AMBA bus family.
+- It is a **low-power, low-complexity** interface used for connecting **peripherals**.
+
+###  Bus Characteristics
+- **Synchronous** with the system clock.
+- **Non-pipelined** and **non-bursting** protocol.
+- **Simple read/write access**—ideal for slow peripherals.
+
+###  Signal Overview
+| Signal      | Description                           |
+|-------------|---------------------------------------|
+| `PCLK`      | APB clock                             |
+| `PRESETn`   | Active-low reset                      |
+| `PADDR`     | Address bus                           |
+| `PWDATA`    | Write data                            |
+| `PRDATA`    | Read data                             |
+| `PWRITE`    | Transfer direction (1 = Write, 0 = Read) |
+| `PSEL`      | Slave select                          |
+| `PENABLE`   | Transfer phase indicator              |
+| `PREADY`    | Slave ready for next transfer         |
+| `PSLVERR`   | Optional error indication             |
+
+###  Transfer Phases
+1. **Setup Phase**:  
+   - `PADDR`, `PWRITE`, `PWDATA`, and `PSEL` are asserted.
+   - `PENABLE = 0`
+2. **Enable Phase**:  
+   - `PENABLE = 1`  
+   - Transfer occurs when `PREADY = 1`.
+
+###  Features
+- Designed for **low bandwidth** communication.
+- Ensures **low power consumption**.
+- Simple interface ideal for **peripherals like UART, GPIO, timers**.
+
+###  Common Use Cases
+- Connecting **UART**, **SPI**, **I2C**, **GPIO**, **Timers** to the system bus.
+
 
 ## Design specification
-
-##  APB Protocol Design Overview
 
 ###  Master-Slave Architecture
 - Single APB master controlled via external signals.
@@ -33,14 +71,15 @@ APB is low bandwidth and low performance bus. So, the components requiring lower
 
 ## Apb interface block diagram
 
-![Screenshot 2025-04-21 123800](https://github.com/user-attachments/assets/fe7c0b51-af88-4692-869a-fac893e97a54)
+<img src="https://github.com/user-attachments/assets/fe7c0b51-af88-4692-869a-fac893e97a54" width="400">
+
 
 ## State diagram
+<img src="https://github.com/user-attachments/assets/6ca2fc10-85aa-4102-9f9a-54c7a31b788c" width="400">
 
-<img src="https://github.com/user-attachments/assets/4e60309a-6302-41dc-bb93-4565e0a456ab" width="400">
 
 ## Testbench architecture
 
-![Apb_2_slave drawio (1) drawio](https://github.com/user-attachments/assets/4e60309a-6302-41dc-bb93-4565e0a456ab)
+<img src="https://github.com/user-attachments/assets/4e60309a-6302-41dc-bb93-4565e0a456ab" width="400">
 
 
