@@ -65,8 +65,8 @@
 - **Address Width:** 9 bits
 
 ###  Operation Modes
-- `PWRITE = 1` → Write operation: `PWDATA` is sent to the selected slave.
-- `PWRITE = 0` → Read operation: `PRDATA` is read from the selected slave.
+- `READ_WRITE = 1` → Read operation: `PRDATA` is read from the selected slave.
+- `READ_WRITE = 0` → Write operation: `PWDATA` is sent to the selected slave
 
 
 ## Apb interface block diagram
