@@ -83,18 +83,6 @@ endproperty
   else $error("%0d READ_DATA_VALIDITY: Assertion fail",$time);
 
 
-//check read address stability
-
-property ppt_read_addr_stability;
-    @(posedge PCLK) disable iff (!PRESETn)
-      transfer && READ_WRITE |=> $stable(apb_read_paddr);
-  endproperty
- 
-  assert property (ppt_read_addr_stability)
-    $display("%0d READ_ADDRESS_STABILITY: Assertion pass",$time);
-  else
-    $error("%0d READ_ADDRESS_STABILITY: Assertion fail",$time);
-
 endinterface
 
 

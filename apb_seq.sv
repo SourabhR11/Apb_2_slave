@@ -245,13 +245,11 @@ class apb_3write_1read_slave1 extends apb_seq;
 
 virtual task body();
   `uvm_info(get_type_name(),"###### 3Write 1Read slave1 sequence ######",UVM_LOW);
-   // repeat(10)begin
-  // for (int i = 0; i < 4; i++) begin
      `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 0; item.apb_write_paddr[8] == 0;})
      // `uvm_send(item);
      
        addr = item.apb_write_paddr;
-    for (int i = 0; i<3; i++) begin
+    for (int i = 0; i<2; i++) begin
      `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 0; item.apb_write_paddr == addr;})
     end
      `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 1; item.apb_read_paddr == addr;})
@@ -276,13 +274,11 @@ class apb_3write_1read_slave2 extends apb_seq;
   bit [8:0] addr;
 virtual task body();
   `uvm_info(get_type_name(),"###### 3Write 1Read slave2 sequence ######",UVM_LOW);
-   // repeat(10)begin
-  // for (int i = 0; i < 4; i++) begin
      `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 0; item.apb_write_paddr[8] == 1;})
      // `uvm_send(item);
      
        addr = item.apb_write_paddr;
-    for (int i = 0; i<3; i++) begin
+    for (int i = 0; i<2; i++) begin
      `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 0; item.apb_write_paddr == addr;})
     end
      `uvm_do_with(item, {item.transfer == 1; item.READ_WRITE == 1; item.apb_read_paddr == addr;})

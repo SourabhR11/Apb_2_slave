@@ -5,12 +5,12 @@ scopes:[{link:'z.htm?f=0&s=6',val:'work.master_bridge'}]
 ,{anchor:'cvg158',items:[{c:'Y',p:'80.00',z:'state'}
 ,{cr:'c',s:'1',z:'IDLE',h:'2',c:'g'}
 ,{cr:'c',z:'IDLE -> SETUP',h:'1',c:'g'}
-,{cr:'c',s:'1',z:'SETUP',h:'20',c:'g'}
+,{cr:'c',s:'1',z:'SETUP',h:'19',c:'g'}
 ,{cr:'m',z:'SETUP -> IDLE',h:'0',c:'r'}
-,{cr:'c',z:'SETUP -> ENABLE',h:'20',c:'g'}
-,{cr:'c',s:'1',z:'ENABLE',h:'20',c:'g'}
+,{cr:'c',z:'SETUP -> ENABLE',h:'18',c:'g'}
+,{cr:'c',s:'1',z:'ENABLE',h:'18',c:'g'}
 ,{cr:'m',z:'ENABLE -> IDLE',h:'0',c:'r'}
-,{cr:'c',z:'ENABLE -> SETUP',h:'19',c:'g'}
+,{cr:'c',z:'ENABLE -> SETUP',h:'18',c:'g'}
 ]}
 
 ],
@@ -21,12 +21,12 @@ scopes:[{s:'11',b:'0',val:'apb_top'},{s:'14',b:'0',val:'dut'},{link:'z.htm?f=0&s
 ,{anchor:'cvg158',items:[{c:'Y',p:'80.00',z:'state'}
 ,{cr:'c',s:'1',z:'IDLE',h:'2',c:'g'}
 ,{cr:'c',z:'IDLE -> SETUP',h:'1',c:'g'}
-,{cr:'c',s:'1',z:'SETUP',h:'20',c:'g'}
+,{cr:'c',s:'1',z:'SETUP',h:'19',c:'g'}
 ,{cr:'m',z:'SETUP -> IDLE',h:'0',c:'r'}
-,{cr:'c',z:'SETUP -> ENABLE',h:'20',c:'g'}
-,{cr:'c',s:'1',z:'ENABLE',h:'20',c:'g'}
+,{cr:'c',z:'SETUP -> ENABLE',h:'18',c:'g'}
+,{cr:'c',s:'1',z:'ENABLE',h:'18',c:'g'}
 ,{cr:'m',z:'ENABLE -> IDLE',h:'0',c:'r'}
-,{cr:'c',z:'ENABLE -> SETUP',h:'19',c:'g'}
+,{cr:'c',z:'ENABLE -> SETUP',h:'18',c:'g'}
 ]}
 
 ],
