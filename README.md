@@ -85,7 +85,7 @@
 ##  Google Spreadsheet
 
 
- [Google Sheet - Project Tracker](https://docs.google.com/spreadsheets/d/1WyoCqZt0ZHxK2M5d2M0W-2_4hN_2HQqJaGapq3ucSZo/edit?gid=574273368)
+ [Google Sheet](https://docs.google.com/spreadsheets/d/1WyoCqZt0ZHxK2M5d2M0W-2_4hN_2HQqJaGapq3ucSZo/edit?gid=574273368)
 
 
 
